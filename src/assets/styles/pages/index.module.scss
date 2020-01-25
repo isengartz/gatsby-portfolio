@@ -1,0 +1,95 @@
+@import "../variables";
+
+.Wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+
+.Sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  min-height: 100vh;
+}
+
+.Sidebar {
+  &.active {
+    margin-left: -250px;
+  }
+}
+  .TextSection {
+    position: absolute;
+    left: 0%;
+    top: 100%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    max-height: 90%;
+
+    h1 {
+      font-family: 'Bangers', cursive;
+      &:before {
+          content: '<h1>';
+          font-family: 'La Belle Aurore',cursive;
+          color: #515152;
+          font-size: 18px;
+          position: absolute;
+          margin-top: -20px;
+          left: -15px;
+
+      }
+      &:after {
+        content: '<h1/>';
+        font-family: 'La Belle Aurore',cursive;
+        color: #515152;
+        font-size: 18px;
+        position: absolute;
+        margin-top: 35px;
+        margin-left: 10px;
+      }
+      @media screen and (max-width: 772px) {
+        font-size: 1.7rem;
+      }
+    }
+    @media screen and (max-width: 1170px) {
+      left: 15%;
+      top: 70%;
+    }
+    @media screen and (max-width: 772px) {
+      left: 0%;
+      top: 90%;
+    }
+  }
+.TextSectionContainer {
+  position: relative;
+  color: $color-white;
+  height: 400px;
+}
+.HomeImageSection {
+  position: absolute;
+  top: 45%;
+  //left: 40%;
+  left: 60%;
+  height: auto;
+  width: 70%;
+  @media screen and (max-width: 1380px) {
+    width: 50%;
+  }
+  @media screen and (max-width: 1170px) {
+    left: 10%;
+    top: 100%;
+  }
+  @media screen and (max-width: 772px) {
+    left: 0%;
+    top: 115%;
+  }
+  @media screen and (max-width: 520px) {
+    display: none;
+  }
+}
+.AboutPage {
+  height: 100vh;
+}
+.aboutParagraphContainer {
+  margin-top: 25%;
+}

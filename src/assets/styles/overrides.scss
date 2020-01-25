@@ -1,0 +1,59 @@
+@import "variables";
+.container,.container-fluid {
+  &.home-container {
+    margin-left: 60px;
+    height: 100vh;
+  }
+}
+
+.top-tags {
+  bottom: auto;
+  top: 20px;
+}
+
+.bottom-tags {
+bottom:5%;
+}
+.timeline-paragraph {
+  font-family: "Open Sans";
+}
+.customHeadings {
+  font-family: 'Bangers', cursive;
+  margin: 20px 0;
+  padding: 20px 0;
+  margin-bottom: 1.45rem;
+  color: $color-white;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+  font-size: 2.25rem;
+}
+
+.aboutParagraph {
+  color: $color-white;
+  font-family: "Open Sans";
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.container {
+
+  @media screen and (min-width: 1500px) {
+    max-width: 1400px;
+  }
+  @media screen and (min-width: 1700px) {
+    max-width: 1550px;
+  }
+  //@media screen and (min-width: 1900px) {
+  //  max-width: 1700px;
+  //}
+
+}
+.skillbar-title {
+  //background: #d36135 !important;
+  width: 111px !important;
+}
+.skillbar-title {
+  span {
+    padding: 0px 10px !important;
+  }
+}
