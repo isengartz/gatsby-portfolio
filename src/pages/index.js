@@ -1,4 +1,4 @@
-import React from "react"
+import React,{useEffect,useState} from "react"
 import {graphql} from 'gatsby'
 import Img from "gatsby-image"
 import Layout from "../components/layout"
@@ -21,7 +21,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import 'react-vertical-timeline-component/style.min.css';
 import moment from 'moment'
-import SkillBar from 'react-skillbars';
+import SkillBar from "react-skillbars"
+
+
 
 const IndexPage = ({isDarkMode, dispatch, data}) => {
 
@@ -101,6 +103,11 @@ const IndexPage = ({isDarkMode, dispatch, data}) => {
             "background": "#d36135"
         }
     }
+    const [mount,setMount] = useState(false);
+    useEffect(()=>{
+        setMount(true)
+
+    });
     return (
         <Layout>
             <SEO title="Home" keywords={[`gatsby`, `application`, `react`]}/>
@@ -160,8 +167,14 @@ const IndexPage = ({isDarkMode, dispatch, data}) => {
 
                     </Col>
                     <Col>
+                        {
 
-                        <SkillBar skills={SKILLS} colors={colors}/>
+                         mount ?  <SkillBar skills={SKILLS} colors={colors}/> : null
+
+                        }
+
+
+
                     </Col>
                 </Row>
             </Container>

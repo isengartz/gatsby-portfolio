@@ -125,13 +125,15 @@ class SplitSlider extends React.Component {
     }
 
     handleMouseMove(event) {
+        if (window){
+            let delta = (event.clientX - window.innerWidth / 2) * 0.5;
+            this.setState({
+                delta: delta,
+                layerWidth: event.clientX + this.state.skew + delta + "px",
+                handle: event.clientX + delta + 'px'
+            });
+        }
 
-        let delta = (event.clientX - window.innerWidth / 2) * 0.5;
-        this.setState({
-            delta: delta,
-            layerWidth: event.clientX + this.state.skew + delta + "px",
-            handle: event.clientX + delta + 'px'
-        });
     }
 
     handleDegrees(degr) {
