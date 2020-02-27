@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from "react"
+import React, {useEffect, useState} from "react"
 import {graphql} from 'gatsby'
 import Img from "gatsby-image"
 import Layout from "../components/layout"
@@ -9,6 +9,8 @@ import styles from "../assets/styles/pages/index.module.scss"
 import Col from "react-bootstrap/Col";
 import CodeTag from "../components/layout/CodeTag/CodeTag"
 import PrimaryButton from "../components/layout/Buttons/PrimaryButton/PrimaryButton"
+import BackgroundImage from 'gatsby-background-image'
+import headerSvg from "../images/svg/header2.svg"
 import {VerticalTimeline, VerticalTimelineElement} from 'react-vertical-timeline-component';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
@@ -22,8 +24,9 @@ import {
 import 'react-vertical-timeline-component/style.min.css';
 import moment from 'moment'
 import SkillBar from "react-skillbars"
-
-
+import MatrixLetters from '../components/typography/MatrixLetters/MatrixLetters'
+import { ReactSVG } from 'react-svg'
+import Typist from "react-typist"
 
 const IndexPage = ({isDarkMode, dispatch, data}) => {
 
@@ -103,47 +106,74 @@ const IndexPage = ({isDarkMode, dispatch, data}) => {
             "background": "#d36135"
         }
     }
-    const [mount,setMount] = useState(false);
-    useEffect(()=>{
+    const [mount, setMount] = useState(false);
+    useEffect(() => {
         setMount(true)
 
-    });
+    }, []);
     return (
         <Layout>
             <SEO title="Home" keywords={[`gatsby`, `application`, `react`]}/>
 
-            <Container id="home" className="home-container">
+            {/*// <Container id="home" className="home-container">*/}
+            {/*//*/}
+            {/*/!*    <CodeTag className="top-tags">*!/*/}
+            {/*/!*        &#x3C;body&#x3E;*!/*/}
+            {/*/!*    </CodeTag>*!/*/}
 
-                <CodeTag className="top-tags">
-                    &#x3C;body&#x3E;
-                </CodeTag>
+            {/*//     <Row>*/}
+            {/*//         <Col md={2}/>*/}
+            {/*//         <Col md={10}>*/}
+            {/*/!*            <div className={styles.TextSectionContainer}>*!/*/}
+            {/*//                 <div className={styles.TextSection}>*/}
+            {/*/!*                    <h1>*!/*/}
+            {/*/!*                        Hi Lads, I'm Thanasis,<br/>*!/*/}
+            {/*/!*                        Senior Full Stack Web Developer*!/*/}
+            {/*/!*                    </h1>*!/*/}
+            {/*/!*                    <PrimaryButton>Contact Me</PrimaryButton>*!/*/}
+            {/*/!*                </div>*!/*/}
+            {/*/!*                <div className={styles.HomeImageSection}>*!/*/}
+            {/*/!*                    <Img fluid={data.file.childImageSharp.fluid}/>*!/*/}
+            {/*/!*                </div>*!/*/}
+            {/*/!*            </div>*!/*/}
+
+            {/*/!*        </Col>*!/*/}
+            {/*/!*    </Row>*!/*/}
+
+            {/*/!*    <CodeTag className="bottom-tags">*!/*/}
+            {/*/!*        &#x3C;body&#x3E;*!/*/}
+            {/*/!*    </CodeTag>*!/*/}
+            {/*/!*</Container>*!/*/}
+            <Container fluid={true}>
 
                 <Row>
-                    <Col md={2}/>
-                    <Col md={10}>
-                        <div className={styles.TextSectionContainer}>
-                            <div className={styles.TextSection}>
-                                <h1>
-                                    Hi Lads, I'm Thanasis,<br/>
-                                    Senior Full Stack Web Developer
-                                </h1>
-                                <PrimaryButton>Contact Me</PrimaryButton>
-                            </div>
-                            <div className={styles.HomeImageSection}>
-                                <Img fluid={data.file.childImageSharp.fluid}/>
-                            </div>
-                        </div>
+                    <Col>
+                        <ReactSVG src={headerSvg} />
+                        {/*<img style={ {maxWidth:'100%',maxHeight:'80%'}} src={headerSvg} />*/}
 
                     </Col>
                 </Row>
-
-                <CodeTag className="bottom-tags">
-                    &#x3C;body&#x3E;
-                </CodeTag>
+                <Row>
+                    <Col/>
+                    <Col>
+                        <Typist>
+                            Animate this text.
+                        </Typist>
+                    </Col>
+                    <Col/>
+                </Row>
             </Container>
-
             <div className="clearfix"/>
-
+            <Container>
+                <div style={{padding: '100px'}}></div>
+                {/*<MatrixLetters message={[*/}
+                {/*    'Incoming transmission',*/}
+                {/*    'You don\'t talk to anybody.',*/}
+                {/*    'You don\'t interact with anybody.',*/}
+                {/*    'Your whole sense of reality is, pretty warped',*/}
+                {/*    'Does it bother you that we\'re not real?'*/}
+                {/*]} />*/}
+            </Container>
             <Container id="about" className={styles.AboutPage}>
                 <h2 className="text-center customHeadings">About</h2>
                 <Row noGutters={true}>
@@ -169,10 +199,9 @@ const IndexPage = ({isDarkMode, dispatch, data}) => {
                     <Col>
                         {
 
-                         mount ?  <SkillBar skills={SKILLS} colors={colors}/> : null
+                            mount ? <SkillBar skills={SKILLS} colors={colors}/> : null
 
                         }
-
 
 
                     </Col>

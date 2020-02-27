@@ -1,5 +1,4 @@
 import React,{Fragment} from 'react';
-import styled from 'styled-components'
 import '../assets/styles/imports.scss'
 import SplitSlider from '../components/layout/SplitSlider'
 import {Container} from 'react-bootstrap'
