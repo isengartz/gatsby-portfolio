@@ -26,7 +26,7 @@ import moment from 'moment'
 import SkillBar from "react-skillbars"
 import MatrixLetters from '../components/typography/MatrixLetters/MatrixLetters'
 import SvgHeader from '../components/layout/SvgHeader/SvgHeader'
-import Typist from "react-typist"
+
 
 const IndexPage = ({isDarkMode, dispatch, data}) => {
 
@@ -153,15 +153,7 @@ const IndexPage = ({isDarkMode, dispatch, data}) => {
 
                     </Col>
                 </Row>
-                <Row>
-                    <Col/>
-                    <Col>
-                        <Typist>
-                            Animate this text.
-                        </Typist>
-                    </Col>
-                    <Col/>
-                </Row>
+
             </Container>
             <div className="clearfix"/>
             {/*<Container>*/}

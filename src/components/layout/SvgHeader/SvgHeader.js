@@ -1,7 +1,9 @@
 import React, {useEffect, useState, useRef} from 'react';
 
 import {gsap, TweenMax, TimelineMax, Power2,Bounce,Elastic,Linear} from "gsap/dist/gsap";
-
+import Typist from "react-typist"
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 const SvgHeader = () => {
     let myElement = React.createRef();
     let cloud2 = useRef(null);
@@ -1472,6 +1474,12 @@ const SvgHeader = () => {
                     </g>
                 </g>
             </svg>
+
+                <Typist startDelay={3000} cursor={{ show: false, blink: true, element: '|', hideWhenDone: true, hideWhenDoneDelay: 1000}}  className="headerTypist" >
+                    {/*<Typist.Delay ms={3000} />*/}
+                    Animate this fucking text
+                </Typist>
+
         </div>
 
 
