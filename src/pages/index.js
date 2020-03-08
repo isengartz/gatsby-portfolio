@@ -10,7 +10,7 @@ import Col from "react-bootstrap/Col";
 import CodeTag from "../components/layout/CodeTag/CodeTag"
 import PrimaryButton from "../components/layout/Buttons/PrimaryButton/PrimaryButton"
 import BackgroundImage from 'gatsby-background-image'
-import headerSvg from "../images/svg/header2.svg"
+
 import {VerticalTimeline, VerticalTimelineElement} from 'react-vertical-timeline-component';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
@@ -25,7 +25,7 @@ import 'react-vertical-timeline-component/style.min.css';
 import moment from 'moment'
 import SkillBar from "react-skillbars"
 import MatrixLetters from '../components/typography/MatrixLetters/MatrixLetters'
-import { ReactSVG } from 'react-svg'
+import SvgHeader from '../components/layout/SvgHeader/SvgHeader'
 import Typist from "react-typist"
 
 const IndexPage = ({isDarkMode, dispatch, data}) => {
@@ -148,7 +148,7 @@ const IndexPage = ({isDarkMode, dispatch, data}) => {
 
                 <Row>
                     <Col>
-                        <ReactSVG src={headerSvg} />
+                       <SvgHeader/>
                         {/*<img style={ {maxWidth:'100%',maxHeight:'80%'}} src={headerSvg} />*/}
 
                     </Col>
