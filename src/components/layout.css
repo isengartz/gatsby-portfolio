@@ -726,12 +726,7 @@ pre tt:after {
     margin: auto;
     z-index: 2;
 }
-.headerTypist {
-    position: absolute;
-    top:25%;
-    left:25%;
-    color:#fff;
-}
+
 #myCanvasContainer {
     position: relative;
     height: 100%;

@@ -1,11 +1,12 @@
 import React, {useEffect, useState, useRef} from 'react';
-
 import {gsap, TweenMax, TimelineMax, Power2,Bounce,Elastic,Linear} from "gsap/dist/gsap";
 import Typist from "react-typist"
+import styles from "./SvgHeader.module.scss"
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import CodeTag from "../../../components/layout/CodeTag/CodeTag"
+import Layout from "../../layout";
 const SvgHeader = () => {
-    let myElement = React.createRef();
     let cloud2 = useRef(null);
     let cloud3 = useRef(null);
     let moon = useRef(null);
@@ -13,31 +14,36 @@ const SvgHeader = () => {
     let bigSnowRef = useRef([]);
     let smallSnowRef = useRef([]);
 
+
     useEffect(() => {
         const tl = new TimelineMax();
         const tlSnow = new TimelineMax();
+        // hide snowflakes
         bigSnowRef.current.map(snow =>{
-            tlSnow.set(snow,{autoAlpha:0})
+            tlSnow.set(snow,{autoAlpha:0,display:"block"})
         })
         smallSnowRef.current.map(snow =>{
-            tlSnow.set(snow,{autoAlpha:0})
+            tlSnow.set(snow,{autoAlpha:0,display:"block"})
         })
-        tl.set(cloud2, {x: '-=260'})
-            .set(cloud3, {x: '+=260'})
+
+        // initialize elements positions
+        tl.set(cloud2, {x: '-=260',display:"block"})
+            .set(cloud3, {x: '+=260',display:"block"})
             .set(moon, {y: '+=260'})
-            .set(moonLight, {autoAlpha:0})
+            .set(moon, {autoAlpha: 1})
+            .set(moonLight, {autoAlpha:0,display:"block"})
             .to(moon, 5, {y: '-=260', display: "block", ease: Power2.easeOut})
             .to(moonLight, 5, {autoAlpha:1,ease: Power2.easeOut},"-=3")
-            .to(cloud2, 2.5, {x: '+=260', display: "block", autoAlpha: 0.05},"-=2")
-            .to(cloud3, 2.5, {x: '-=260', display: "block", autoAlpha: 0.03,onComplete: startLoops},"-=1")
+            .to(cloud2, 2.5, {x: '+=260', display: "block", autoAlpha: 0.05},"-=3")
+            .to(cloud3, 2.5, {x: '-=260', display: "block", autoAlpha: 0.03,onComplete: startLoops},"-=3")
 
+        // start snowflake looping
         function startLoops() {
             bigSnowRef.current.map(snow =>{
                 tlSnow.set(snow,{autoAlpha:0})
             })
             bigSnowRef.current.map(snow =>{
                 TweenMax.to(snow, 10 + Math.random()*10, {y:'+=1200', autoAlpha:1, ease: Linear.easeNone, onComplete: doneFalling, onCompleteParams: [snow],yoyo:true },'+=0.5');
-
             })
 
             smallSnowRef.current.map(snow =>{
@@ -46,6 +52,7 @@ const SvgHeader = () => {
             smallSnowRef.current.map(snow =>{
                 TweenMax.to(snow, 10 + Math.random()*10, {y:'+=1200', autoAlpha:1, ease: Linear.easeNone, onComplete: doneFalling, onCompleteParams: [snow],yoyo:true },'+=1');
             })
+
             function doneFalling(snowId) {
                 let range = Math.random() * 800;
                 range = range - 400;
@@ -58,6 +65,7 @@ const SvgHeader = () => {
     }, []); // Only re-run the effect if count changes
     return (
         <div>
+
             <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
                  style={{minHeight: "800px"}}
                  height="1000px" width="100%"
@@ -66,7 +74,7 @@ const SvgHeader = () => {
                  preserveAspectRatio="xMidYMax slice"
                 // preserveAspectRatio="none"
             >
-                <g id="Layer_1" ref={el => (moonLight = el)}>
+                <g id="Layer_1" style={{display:"none"}} ref={el => (moonLight = el)}>
                     <radialGradient id="SVGID_1_" cx="319.5029" cy="253.5" r="643.6034" fx="674.3281" fy="370.3917"
                                     gradientUnits="userSpaceOnUse">
                         <stop offset="0" stopColor="#D2998B"/>
@@ -82,7 +90,7 @@ const SvgHeader = () => {
                     </radialGradient>
                     <rect fill="url(#SVGID_1_)" width="720" height="503.999"/>
                 </g>
-                <g id="Layer_7" ref={el => (moon = el)}>
+                <g id="Layer_7" style={{display:"none"}} ref={el => (moon = el)}>
                     <circle fill="#F4D6BC" cx="653.985" cy="364.586" r="39.089"/>
                 </g>
                 <g id="Layer_8">
@@ -113,303 +121,303 @@ const SvgHeader = () => {
                         {/*<circle fill="#FFFFFF" cx="130.602" cy="123.098" r="1.5"/>*/}
                         <g>
                             <g>
-                                <g ref={el => {bigSnowRef.current[0] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[0] = el;}}>
                                     <circle fill="#FFFFFF" cx="58.092" cy="192.717" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[1] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[1] = el;}}>
                                     <circle fill="#FFFFFF" cx="75.982" cy="265.248" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[2] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[2] = el;}}>
                                     <circle fill="#FFFFFF" cx="136.613" cy="257.79" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[3] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[3] = el;}}>
                                     <circle fill="#FFFFFF" cx="175.531" cy="185.103" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[4] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[4] = el;}}>
                                     <circle fill="#FFFFFF" cx="202.724" cy="103.64" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[5] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[5] = el;}}>
                                     <circle fill="#FFFFFF" cx="288.973" cy="104.966" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[6] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[6] = el;}}>
                                     <circle fill="#FFFFFF" cx="328.834" cy="164.033" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[7] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[7] = el;}}>
                                     <circle fill="#FFFFFF" cx="297.977" cy="176.162" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[8] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[8] = el;}}>
                                     <circle fill="#FFFFFF" cx="382.961" cy="150.691" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[9] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[9] = el;}}>
                                     <circle fill="#FFFFFF" cx="445.771" cy="122.104" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[10] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[10] = el;}}>
                                     <circle fill="#FFFFFF" cx="487.92" cy="94.587" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[11] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[11] = el;}}>
                                     <circle fill="#FFFFFF" cx="542.819" cy="103.128" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[12] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[12] = el;}}>
                                     <circle fill="#FFFFFF" cx="548.333" cy="116.887" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[13] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[13] = el;}}>
                                     <circle fill="#FFFFFF" cx="539.816" cy="152.369" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[14] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[14] = el;}}>
                                     <circle fill="#FFFFFF" cx="529.554" cy="166.325" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[15] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[15] = el;}}>
                                     <circle fill="#FFFFFF" cx="525.367" cy="162.475" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[16] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[16] = el;}}>
                                     <circle fill="#FFFFFF" cx="18.973" cy="78.634" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[17] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[17] = el;}}>
                                     <circle fill="#FFFFFF" cx="37.655" cy="56.76" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[18] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[18] = el;}}>
                                     <circle fill="#FFFFFF" cx="115.738" cy="16.064" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[19] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[19] = el;}}>
                                     <circle fill="#FFFFFF" cx="202.852" cy="26.102" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[20] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[20] = el;}}>
                                     <circle fill="#FFFFFF" cx="233.402" cy="48.968" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[21] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[21] = el;}}>
                                     <circle fill="#FFFFFF" cx="311.73" cy="59.241" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[22] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[22] = el;}}>
                                     <circle fill="#FFFFFF" cx="366.077" cy="50.269" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[23] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[23] = el;}}>
                                     <circle fill="#FFFFFF" cx="427.769" cy="42.668" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[24] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[24] = el;}}>
                                     <circle fill="#FFFFFF" cx="508.98" cy="47.033" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[25] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[25] = el;}}>
                                     <circle fill="#FFFFFF" cx="548.642" cy="50.287" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[26] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[26] = el;}}>
                                     <circle fill="#FFFFFF" cx="586.144" cy="50.876" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[27] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[27] = el;}}>
                                     <circle fill="#FFFFFF" cx="605.716" cy="48.374" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[28] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[28] = el;}}>
                                     <circle fill="#FFFFFF" cx="613.396" cy="45.716" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[29] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[29] = el;}}>
                                     <circle fill="#FFFFFF" cx="487.814" cy="246.846" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[30] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[30] = el;}}>
                                     <circle fill="#FFFFFF" cx="459.738" cy="234.233" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[31] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[31] = el;}}>
                                     <circle fill="#FFFFFF" cx="293.75" cy="221.96" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[32] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[32] = el;}}>
                                     <circle fill="#FFFFFF" cx="296.779" cy="304.069" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[33] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[33] = el;}}>
                                     <circle fill="#FFFFFF" cx="313.304" cy="305.816" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[34] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[34] = el;}}>
                                     <circle fill="#FFFFFF" cx="262.054" cy="348.416" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[35] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[35] = el;}}>
                                     <circle fill="#FFFFFF" cx="426.901" cy="363.268" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[36] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[36] = el;}}>
                                     <circle fill="#FFFFFF" cx="412.957" cy="300.851" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[37] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[37] = el;}}>
                                     <circle fill="#FFFFFF" cx="274.885" cy="300.758" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[38] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[38] = el;}}>
                                     <circle fill="#FFFFFF" cx="441.027" cy="310.204" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[39] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[39] = el;}}>
                                     <circle fill="#FFFFFF" cx="243.484" cy="201.891" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[40] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[40] = el;}}>
                                     <circle fill="#FFFFFF" cx="339.628" cy="252.262" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[41] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[41] = el;}}>
                                     <circle fill="#FFFFFF" cx="208.963" cy="256.631" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[42] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[42] = el;}}>
                                     <circle fill="#FFFFFF" cx="177.722" cy="326.35" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[43] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[43] = el;}}>
                                     <circle fill="#FFFFFF" cx="97.442" cy="312.51" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[44] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[44] = el;}}>
                                     <circle fill="#FFFFFF" cx="155.007" cy="360.051" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[45] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[45] = el;}}>
                                     <circle fill="#FFFFFF" cx="46.062" cy="383.83" r="1.5"/>
                                 </g>
-                                <g ref={el => {bigSnowRef.current[46] = el;}}>
+                                <g style={{display:"none"}} ref={el => {bigSnowRef.current[46] = el;}}>
                                     <circle fill="#FFFFFF" cx="63.242" cy="366.622" r="1.5"/>
                                 </g>
                             </g>
                             <g>
-                                <g ref={el => {smallSnowRef.current[0] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[0] = el;}}>
                                     <circle fill="#FFFFFF" cx="463.393" cy="2.114" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[1] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[1] = el;}}>
                                     <circle fill="#FFFFFF" cx="525.113" cy="14.209" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[2] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[2] = el;}}>
                                     <circle fill="#FFFFFF" cx="604.517" cy="17.178" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[3] = el;}} >
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[3] = el;}} >
                                     <circle fill="#FFFFFF" cx="640.529" cy="27.831" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[4] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[4] = el;}}>
                                     <circle fill="#FFFFFF" cx="668.561" cy="27.886" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[5] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[5] = el;}}>
                                     <circle fill="#FFFFFF" cx="678.483" cy="25.13" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[6] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[6] = el;}}>
                                     <circle fill="#FFFFFF" cx="682.359" cy="30.335" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[7] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[7] = el;}}>
                                     <circle fill="#FFFFFF" cx="692.342" cy="29.442" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[8] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[8] = el;}}>
                                     <circle fill="#FFFFFF" cx="678.889" cy="108.938" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[9] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[9] = el;}}>
                                     <circle fill="#FFFFFF" cx="674.461" cy="139.263" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[10] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[10] = el;}}>
                                     <circle fill="#FFFFFF" cx="673.934" cy="136.728" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[11] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[11] = el;}}>
                                     <circle fill="#FFFFFF" cx="709.508" cy="169.318" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[12] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[12] = el;}}>
                                     <circle fill="#FFFFFF" cx="704.613" cy="182.252" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[13] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[13] = el;}}>
                                     <circle fill="#FFFFFF" cx="667.863" cy="227.093" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[14] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[14] = el;}}>
                                     <circle fill="#FFFFFF" cx="660.097" cy="227.03" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[15] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[15] = el;}}>
                                     <circle fill="#FFFFFF" cx="620.241" cy="245.146" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[16] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[16] = el;}}>
                                     <circle fill="#FFFFFF" cx="550.821" cy="246.54" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[17] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[17] = el;}}>
                                     <circle fill="#FFFFFF" cx="544.239" cy="246.505" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[18] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[18] = el;}}>
                                     <circle fill="#FFFFFF" cx="552.701" cy="206.729" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[19] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[19] = el;}}>
                                     <circle fill="#FFFFFF" cx="336.548" cy="204.588" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[20] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[20] = el;}}>
                                     <circle fill="#FFFFFF" cx="402.839" cy="194.623" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[21] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[21] = el;}}>
                                     <circle fill="#FFFFFF" cx="427.744" cy="219.654" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[22] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[22] = el;}}>
                                     <circle fill="#FFFFFF" cx="398.23" cy="243.904" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[23] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[23] = el;}}>
                                     <circle fill="#FFFFFF" cx="399.351" cy="263.28" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[24] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[24] = el;}}>
                                     <circle fill="#FFFFFF" cx="412.195" cy="266.457" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[25] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[25] = el;}}>
                                     <circle fill="#FFFFFF" cx="373.031" cy="289.627" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[26] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[26] = el;}}>
                                     <circle fill="#FFFFFF" cx="363.575" cy="294.938" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[27] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[27] = el;}}>
                                     <circle fill="#FFFFFF" cx="302.158" cy="289.912" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[28] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[28] = el;}}>
                                     <circle fill="#FFFFFF" cx="300.28" cy="245.895" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[29] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[29] = el;}}>
                                     <circle fill="#FFFFFF" cx="313.734" cy="251.354" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[30] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[30] = el;}}>
                                     <circle fill="#FFFFFF" cx="320.766" cy="232.103" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[31] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[31] = el;}}>
                                     <circle fill="#FFFFFF" cx="353.658" cy="230.698" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[32] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[32] = el;}}>
                                     <circle fill="#FFFFFF" cx="376.04" cy="225.045" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[33] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[33] = el;}}>
                                     <circle fill="#FFFFFF" cx="380.878" cy="228.954" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[34] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[34] = el;}}>
                                     <circle fill="#FFFFFF" cx="382.286" cy="235.315" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[35] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[35] = el;}}>
                                     <circle fill="#FFFFFF" cx="380.516" cy="253.526" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[36] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[36] = el;}}>
                                     <circle fill="#FFFFFF" cx="369.703" cy="265.954" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[37] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[37] = el;}}>
                                     <circle fill="#FFFFFF" cx="347.388" cy="267.378" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[38] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[38] = el;}}>
                                     <circle fill="#FFFFFF" cx="349.023" cy="255.755" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[39] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[39] = el;}}>
                                     <circle fill="#FFFFFF" cx="302.199" cy="258.067" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[40] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[40] = el;}}>
                                     <circle fill="#FFFFFF" cx="337.972" cy="235.541" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[41] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[41] = el;}}>
                                     <circle fill="#FFFFFF" cx="288.059" cy="267.13" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[42] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[42] = el;}}>
                                     <circle fill="#FFFFFF" cx="267.227" cy="285.75" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[43] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[43] = el;}}>
                                     <circle fill="#FFFFFF" cx="303.723" cy="298.88" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[44] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[44] = el;}}>
                                     <circle fill="#FFFFFF" cx="312.151" cy="308.356" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[45] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[45] = el;}}>
                                     <circle fill="#FFFFFF" cx="331.791" cy="296.062" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[46] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[46] = el;}}>
                                     <circle fill="#FFFFFF" cx="310.527" cy="324" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[47] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[47] = el;}}>
                                     <circle fill="#FFFFFF" cx="348.012" cy="311.834" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[48] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[48] = el;}}>
                                     <circle fill="#FFFFFF" cx="351.222" cy="331.628" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[49] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[49] = el;}}>
                                     <circle fill="#FFFFFF" cx="380.634" cy="289.901" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[50] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[50] = el;}}>
                                     <circle fill="#FFFFFF" cx="350.944" cy="289.467" r="0.693"/>
                                 </g>
-                                <g ref={el => {smallSnowRef.current[51] = el;}}>
+                                <g style={{display:"none"}} ref={el => {smallSnowRef.current[51] = el;}}>
                                     <circle fill="#FFFFFF" cx="334.911" cy="285.615" r="0.693"/>
                                 </g>
                             </g>
@@ -1430,7 +1438,7 @@ const SvgHeader = () => {
 			s30.523,0.306,34.29,0c3.768-0.304,6.596-2.593,10.36-1.982c3.768,0.61,5.463-0.151,5.463-0.151s0.756,2.134,7.541,2.134
 			c6.779,0,7.532-3.196,11.679-2.813c4.143,0.373,14.316,2.813,19.968,2.813c5.65,0,25.616,0,25.616,0s4.147-1.524,6.029,0
 			c1.886,1.525,12.435,0,12.435,0s11.306-3.088,13.939-1.085C246.577,107.832,250.72,100.819,243.938,100.819z"/>
-                        <path id="cloud2" ref={el => (cloud2 = el)} opacity="0.05" fill="#FFFFFF" d="M128.412,160.094c-6.78,0-6.78,0-6.78,0s-0.042-0.108-0.126-0.29
+                        <path style={{display:"none"}} id="cloud2" ref={el => (cloud2 = el)} opacity="0.05" fill="#FFFFFF" d="M128.412,160.094c-6.78,0-6.78,0-6.78,0s-0.042-0.108-0.126-0.29
 			c-0.659-1.414-4.051-7.546-12.872-6.27c-5.276,0.76-9.23,2.135-9.23,2.135s-0.856-13.04-15.07-11.135
 			c-6.782,0.91-5.305-0.471-7.159-4.729c-2.824-6.479-20.751-12.571-29.014,1.985c-3.342,5.893-3.298,3.202-7.109,1.83
 			c-3.816-1.373-9.031-2.174-13.612,5.389c-3.39,5.592-7.909-4.171-12.81,2.847c-4.9,7.02-7.199-3.385-13.189,2.133
@@ -1446,7 +1454,7 @@ const SvgHeader = () => {
 			s30.523,0.306,34.289,0c3.768-0.304,6.596-2.593,10.361-1.982c3.768,0.61,5.463-0.151,5.463-0.151s0.756,2.134,7.541,2.134
 			c6.779,0,7.531-3.196,11.678-2.813c4.143,0.373,14.316,2.813,19.969,2.813c5.65,0,25.615,0,25.615,0s4.148-1.524,6.029,0
 			c1.887,1.525,12.436,0,12.436,0s11.305-3.088,13.939-1.085C451.44,68.111,455.583,61.099,448.802,61.099z"/>
-                        <path opacity="0.03" id="cloud3" ref={el => (cloud3 = el)} fill="#FFFFFF" d="M718.051,143.076c-9.53,0-9.53,0-9.53,0s-0.058-0.108-0.176-0.29
+                        <path style={{display:"none"}} opacity="0.03" id="cloud3" ref={el => (cloud3 = el)} fill="#FFFFFF" d="M718.051,143.076c-9.53,0-9.53,0-9.53,0s-0.058-0.108-0.176-0.29
 			c-0.928-1.414-5.692-7.546-18.091-6.27c-7.414,0.76-12.973,2.135-12.973,2.135s-1.202-13.04-21.18-11.135
 			c-9.53,0.91-7.455-0.471-10.06-4.729c-3.969-6.479-29.164-12.571-40.775,1.985c-4.696,5.893-4.636,3.202-9.991,1.83
 			c-5.363-1.373-12.692-2.174-19.132,5.389c-4.763,5.592-11.114-4.171-18.001,2.847c-6.887,7.02-10.117-3.385-18.536,2.133
@@ -1475,9 +1483,12 @@ const SvgHeader = () => {
                 </g>
             </svg>
 
-                <Typist startDelay={3000} cursor={{ show: false, blink: true, element: '|', hideWhenDone: true, hideWhenDoneDelay: 1000}}  className="headerTypist" >
-                    {/*<Typist.Delay ms={3000} />*/}
-                    Animate this fucking text
+                <Typist startDelay={3000} cursor={{ show: false, blink: true, element: '|', hideWhenDone: true, hideWhenDoneDelay: 1000}}  className={styles.headerTypist} >
+
+                    <h2>Hello Lad, Im Thanasis</h2>
+                    <h2>Backend Developer</h2>
+                    <Typist.Backspace count={17} delay={200} />
+                    <h2>FullStack Developer from Greece ^.^</h2>
                 </Typist>
 
         </div>

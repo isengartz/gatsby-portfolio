@@ -1,0 +1,12 @@
+@import "../../../assets/styles/variables";
+.headerTypist {
+  position: absolute;
+  top:25%;
+  left:25%;
+  color:#fff;
+  h2 {
+    color: $primary-btn-color;
+    font-family: Courier;
+    text-shadow: 0 0 8px rgba(lighten(#fff, 50%), 0.3)
+  }
+}
