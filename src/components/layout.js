@@ -46,18 +46,18 @@ const Layout = ({children}) => (
                                 <FontAwesomeIcon icon={faAt}/>
                             </Scrollchor>
                         </nav>
-                        <ul>
-                            <li><a href="https://twitter.com/JeznachJacek" target="_blank"><i
-                                className="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="https://pl.linkedin.com/pub/jacek-jeznach/40/9b6/a9" target="_blank">
-                                <i className="fa fa-linkedin"/></a>
-                            </li>
-                            <li><a href="https://www.facebook.com/pages/JJ-Front-End-Web-Developer/1065969103428564"
-                                   target="_blank"><i className="fa fa-facebook"/></a></li>
-                            <li><a href="https://jacekjeznach.com/feed/" target="_blank"><i className="fa fa-rss"/></a>
-                            </li>
-                        </ul>
+                        {/*<ul>*/}
+                        {/*    <li><a href="https://twitter.com/JeznachJacek" rel="noopener noreferrer" target="_blank"><i*/}
+                        {/*        className="fa fa-twitter"></i></a>*/}
+                        {/*    </li>*/}
+                        {/*    <li><a href="https://pl.linkedin.com/pub/jacek-jeznach/40/9b6/a9" rel="noopener noreferrer" target="_blank">*/}
+                        {/*        <i className="fa fa-linkedin"/></a>*/}
+                        {/*    </li>*/}
+                        {/*    <li><a href="https://www.facebook.com/pages/JJ-Front-End-Web-Developer/1065969103428564"*/}
+                        {/*           target="_blank"><i className="fa fa-facebook"/></a></li>*/}
+                        {/*    <li><a href="https://jacekjeznach.com/feed/" target="_blank"><i className="fa fa-rss"/></a>*/}
+                        {/*    </li>*/}
+                        {/*</ul>*/}
                         <a id="mobile-link" href=""><i className="fa fa-bars"/></a>
                     </div>
                     {children}

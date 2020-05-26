@@ -1,11 +1,8 @@
-import React, {useEffect, useState, useRef} from 'react';
-import {gsap, TweenMax, TimelineMax, Power2,Bounce,Elastic,Linear} from "gsap/dist/gsap";
+import React, {useEffect, useRef} from 'react';
+import { TweenMax, TimelineMax, Power2,Linear} from "gsap/dist/gsap";
 import Typist from "react-typist"
 import styles from "./SvgHeader.module.scss"
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import CodeTag from "../../../components/layout/CodeTag/CodeTag"
-import Layout from "../../layout";
+
 const SvgHeader = () => {
     let cloud2 = useRef(null);
     let cloud3 = useRef(null);
@@ -19,10 +16,10 @@ const SvgHeader = () => {
         const tl = new TimelineMax();
         const tlSnow = new TimelineMax();
         // hide snowflakes
-        bigSnowRef.current.map(snow =>{
+        bigSnowRef.current.forEach(snow =>{
             tlSnow.set(snow,{autoAlpha:0,display:"block"})
         })
-        smallSnowRef.current.map(snow =>{
+        smallSnowRef.current.forEach(snow =>{
             tlSnow.set(snow,{autoAlpha:0,display:"block"})
         })
 
@@ -39,19 +36,21 @@ const SvgHeader = () => {
 
         // start snowflake looping
         function startLoops() {
-            bigSnowRef.current.map(snow =>{
+            bigSnowRef.current.forEach(snow =>{
                 tlSnow.set(snow,{autoAlpha:0})
-            })
-            bigSnowRef.current.map(snow =>{
-                TweenMax.to(snow, 10 + Math.random()*10, {y:'+=1200', autoAlpha:1, ease: Linear.easeNone, onComplete: doneFalling, onCompleteParams: [snow],yoyo:true },'+=0.5');
-            })
+            });
 
-            smallSnowRef.current.map(snow =>{
+            bigSnowRef.current.forEach(snow =>{
+                TweenMax.to(snow, 10 + Math.random()*10, {y:'+=1200', autoAlpha:1, ease: Linear.easeNone, onComplete: doneFalling, onCompleteParams: [snow],yoyo:true },'+=0.5');
+            });
+
+            smallSnowRef.current.forEach(snow =>{
                 tlSnow.set(snow,{autoAlpha:0})
-            })
-            smallSnowRef.current.map(snow =>{
+            });
+
+            smallSnowRef.current.forEach(snow =>{
                 TweenMax.to(snow, 10 + Math.random()*10, {y:'+=1200', autoAlpha:1, ease: Linear.easeNone, onComplete: doneFalling, onCompleteParams: [snow],yoyo:true },'+=1');
-            })
+            });
 
             function doneFalling(snowId) {
                 let range = Math.random() * 800;
@@ -62,7 +61,7 @@ const SvgHeader = () => {
             }
         }
 
-    }, []); // Only re-run the effect if count changes
+    }, []);
     return (
         <div>
 

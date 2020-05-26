@@ -9,6 +9,10 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sass`,
     {
+      resolve: `sin-api-source-plugin`
+    },
+
+    {
       resolve: `gatsby-source-filesystem`,
 
       options: {

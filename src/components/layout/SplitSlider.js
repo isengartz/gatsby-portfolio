@@ -149,9 +149,9 @@ class SplitSlider extends React.Component {
     componentDidMount() {
         let erd = elementResizeDetectorMaker();
 
-        let erdUltraFast = elementResizeDetectorMaker({
-            strategy: "scroll" //<- For ultra performance.
-        });
+        // let erdUltraFast = elementResizeDetectorMaker({
+        //     strategy: "scroll" //<- For ultra performance.
+        // });
 
         const heightLower = this.divElementLower.clientHeight;
         const heightHigher = this.divElementHigher.clientHeight;
