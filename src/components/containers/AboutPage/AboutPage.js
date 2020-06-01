@@ -4,8 +4,6 @@ import Col from "react-bootstrap/Col";
 import styles from "./AboutPage.module.scss"
 import React from "react";
 import {Fade} from 'react-awesome-reveal';
-import Split from 'react-split'
-import Img from "gatsby-image"
 import ReactCompareImage from "../../SinCompareImage/ReactCompareImage";
 import { useStaticQuery, graphql } from "gatsby"
 const SKILLS = [
