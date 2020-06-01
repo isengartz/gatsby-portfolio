@@ -1,0 +1,198 @@
+@import "../../assets/styles/variables";
+.Timeline {
+  position: relative;
+  margin: 50px auto;
+  padding: 40px 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: #c5c5c5;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.TimelineItem {
+  padding-bottom: 20px;
+  .JobTitle {
+    font-style: italic;
+    padding: 5px;
+    margin: 5px;
+    display: block;
+    color:$light-color-white;
+
+  }
+}
+.TimelineContainer {
+  list-style-type: none;
+  line-height: normal;
+  position: relative;
+  width: 50%;
+  padding: 20px 40px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  h3 {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+  }
+
+  p {
+    margin: 10px 0 0 0 ;
+    padding: 0;
+  }
+}
+.TimelineOrientationLeft {
+  float: left;
+  text-align: right;
+  clear: both;
+  .Icon {
+    position: absolute;
+    top: 28px;
+    right: -8.5px;
+    width: 25px;
+    height: 25px;
+    color: $light-icon-color;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    background: $timeline-bg-color;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
+    -moz-box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
+    box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
+
+  }
+  .TimelineDate {
+    position: absolute;
+    top: 20px;
+    right: -250px;
+    margin: 0;
+    padding: 8px 16px;
+    background: $timeline-bg-color;
+    color: #fff;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    -webkit-box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color ;
+    -moz-box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
+    box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
+    h4 {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+}
+.TimelineOrientationRight {
+  float: right;
+  text-align: left;
+  clear: both;
+  .Icon {
+    position: absolute;
+    top: 28px;
+    left: -7.5px;
+    width: 25px;
+    height: 25px;
+    color: $light-icon-color;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: -14px;
+    width: 30px;
+    height: 30px;
+    background: $timeline-bg-color;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
+    -moz-box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
+    box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
+
+  }
+  .TimelineDate {
+    position: absolute;
+    top: 20px;
+    left: -250px;
+    margin: 0;
+    padding: 8px 16px;
+    background: $timeline-bg-color;
+    color: #fff;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    -webkit-box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color ;
+    -moz-box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
+    box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
+    h4 {
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
+@media (max-width: 999px) {
+  .Timeline {
+    width: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .Timeline {
+    width: 100%;
+    padding: 0;
+    &:before {
+      left: 20px;
+    }
+      ul {
+        li {
+           &:nth-child(even),&:nth-child(odd) {
+
+           }
+        }
+
+        .TimelineOrientationLeft, .TimelineOrientationRight {
+          width: 100%;
+          text-align: left;
+          padding-left: 50px;
+          padding-bottom: 50px;
+          .Icon {
+            position: absolute;
+            top: -15px;
+            width: 25px;
+            height: 25px;
+            left: 11.5px;
+          }
+          &:before {
+            top: -18px;
+            left: 6px;
+          }
+          .TimelineDate {
+            top: -30px;
+            left: 50px;
+            right: inherit;
+          }
+        }
+      }
+
+  }
+}

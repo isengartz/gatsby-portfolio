@@ -7,8 +7,11 @@ import '../assets/styles/imports.scss'
 import "./layout.css"
 import styles from "../assets/styles/layout.module.scss"
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faHome,faUser,faCog,faFileCode,faAt} from '@fortawesome/free-solid-svg-icons'
+import {faHome,faUser,faCog,faFileCode,faAt,faRoute} from '@fortawesome/free-solid-svg-icons'
 import Scrollchor from 'react-scrollchor';
+import { bubble as Menu } from 'react-burger-menu'
+// import { slide as Menu } from 'react-burger-menu'
+import '../assets/styles/menu.scss'
 
 const Layout = ({children}) => (
     <StaticQuery
@@ -25,43 +28,53 @@ const Layout = ({children}) => (
             <>
                 <Header siteTitle={data.site.siteMetadata.title}/>
 
-                <main>
-                    <div className={styles.Navbar}>
+                <div id="outer-container">
+                    <Menu
+                        pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }
+                    >
 
                         <nav className="en">
-                            <Scrollchor to="#home" className="home-link active">
-                                <FontAwesomeIcon icon={faHome}/>
-                            </Scrollchor>
+                            <ul>
+                                <li>
+                                    <Scrollchor to="#home" className="home-link active">
+                                        <FontAwesomeIcon icon={faHome}/> Home
+                                    </Scrollchor>
+                                </li>
+                                <li>
+                                    <Scrollchor to="#about" className="">
+                                        <FontAwesomeIcon icon={faUser}/> About
+                                    </Scrollchor>
+                                </li>
+                                <li>
+                                    <Scrollchor to="#journey" className="">
+                                        <FontAwesomeIcon icon={faRoute}/> The Journey
+                                    </Scrollchor>
+                                </li>
+                                <li>
+                                    <Scrollchor to="#projects" className="home-link active">
+                                        <FontAwesomeIcon icon={faFileCode}/> Projects
+                                    </Scrollchor>
+                                </li>
+                                <li>
+                                    <Scrollchor to="#contact" className="home-link active">
+                                        <FontAwesomeIcon icon={faAt}/> Contact
+                                    </Scrollchor>
+                                </li>
+                            </ul>
 
-                            <Scrollchor to="#about" className="">
-                                <FontAwesomeIcon icon={faUser}/>
-                            </Scrollchor>
-                            <Scrollchor to="#skills" className="">
-                                <FontAwesomeIcon icon={faCog}/>
-                            </Scrollchor>
-                            <Scrollchor to="#projects" className="home-link active">
-                                <FontAwesomeIcon icon={faFileCode}/>
-                            </Scrollchor>
-                            <Scrollchor to="#contact" className="home-link active">
-                                <FontAwesomeIcon icon={faAt}/>
-                            </Scrollchor>
                         </nav>
-                        {/*<ul>*/}
-                        {/*    <li><a href="https://twitter.com/JeznachJacek" rel="noopener noreferrer" target="_blank"><i*/}
-                        {/*        className="fa fa-twitter"></i></a>*/}
-                        {/*    </li>*/}
-                        {/*    <li><a href="https://pl.linkedin.com/pub/jacek-jeznach/40/9b6/a9" rel="noopener noreferrer" target="_blank">*/}
-                        {/*        <i className="fa fa-linkedin"/></a>*/}
-                        {/*    </li>*/}
-                        {/*    <li><a href="https://www.facebook.com/pages/JJ-Front-End-Web-Developer/1065969103428564"*/}
-                        {/*           target="_blank"><i className="fa fa-facebook"/></a></li>*/}
-                        {/*    <li><a href="https://jacekjeznach.com/feed/" target="_blank"><i className="fa fa-rss"/></a>*/}
-                        {/*    </li>*/}
-                        {/*</ul>*/}
-                        <a id="mobile-link" href=""><i className="fa fa-bars"/></a>
-                    </div>
-                    {children}
-                </main>
+                    </Menu>
+
+                    <main id="page-wrap">
+                        <div className={styles.Navbar}>
+
+
+                            {/*<a id="mobile-link" href=""><i className="fa fa-bars"/></a>*/}
+                        </div>
+                        {children}
+                    </main>
+                </div>
+
                 {/*<footer>*/}
                 {/*    © {new Date().getFullYear()}, Built with*/}
                 {/*    {` `}*/}

@@ -17,7 +17,7 @@ import React from "react";
 
 const ExpPage = () => (
     <Container id="skills">
-        <h2 className="text-center customHeadings">Biopic</h2>
+        <h2 className="text-center customHeadings">The Journey</h2>
         <Row noGutters={true}>
 
             <Col>
