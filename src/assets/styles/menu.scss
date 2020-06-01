@@ -1,3 +1,5 @@
+@import "variables";
+
 /* Position and sizing of burger button */
 .bm-burger-button {
   position: fixed;
@@ -58,6 +60,28 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Individual item */
 .bm-item {
   display: inline-block;
+  ul {
+    margin: 0;
+    li {
+      padding: 15px;
+      a {
+        text-decoration: none;
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -ms-transition: 0.5s;
+        -o-transition: 0.5s;
+        transition: 0.5s;
+        color: $light-color-white;
+        &:hover {
+          opacity: 0.6;
+        }
+        span {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
 }
 
 /* Styling of overlay */

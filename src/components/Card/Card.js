@@ -14,7 +14,7 @@ import { useWheelScroll } from "../utils/use-wheel-scroll";
 // a swipe-to dismiss action.
 const dismissDistance = 150;
 
-export const Card = memo(
+export const Card = (
     ({
          isSelected,
          id,
@@ -87,8 +87,8 @@ export const Card = memo(
                 {/*{!isSelected && <a href={id} className={`card-open-link`} />}*/}
             </li>
         );
-    },
-    (prev, next) => prev.isSelected === next.isSelected
+    }
+    // (prev, next) => prev.isSelected === next.isSelected
 );
 
 const Overlay = ({ isSelected }) => (

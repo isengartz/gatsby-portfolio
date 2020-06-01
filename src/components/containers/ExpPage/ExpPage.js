@@ -16,7 +16,7 @@ import Layout from "../../layout";
 import React from "react";
 
 const ExpPage = () => (
-    <Container id="skills">
+    <Container id="journey">
         <h2 className="text-center customHeadings">The Journey</h2>
         <Row noGutters={true}>
 
@@ -61,8 +61,7 @@ const ExpPage = () => (
                         <h3 className="vertical-timeline-element-title">Web Developer - Exnet Hellas</h3>
                         <h4 className="vertical-timeline-element-subtitle">Thessaloniki, Greece</h4>
                         <p className="timeline-paragraph">
-                            Creating websites with Joomla! CMS alongside with custom Joomla modules and
-                            components
+                           Main objective was creating Joomla! websites alongside with custom Joomla! modules, components and plugins.
                         </p>
                     </VerticalTimelineElement>
                     <VerticalTimelineElement
@@ -76,7 +75,7 @@ const ExpPage = () => (
                         <h3 className="vertical-timeline-element-title">FullStack Developer - Spiti360</h3>
                         <h4 className="vertical-timeline-element-subtitle">Thessaloniki, Greece</h4>
                         <p className="timeline-paragraph">
-                            Developing, optimizing and continuously upgrading Spit360 both backend and frontend
+                            Developing, optimizing, scaling and continuously upgrading Spiti360 both backend and frontend.
                         </p>
                     </VerticalTimelineElement>
                     <VerticalTimelineElement
@@ -87,11 +86,10 @@ const ExpPage = () => (
                         iconStyle={{background: '#d36135', color: '#fff'}}
                         icon={<FontAwesomeIcon icon={faUserAstronaut} style={{fontSize: '25px'}}/>}
                     >
-                        <h3 className="vertical-timeline-element-title">Web Developer - Mybusiness360</h3>
+                        <h3 className="vertical-timeline-element-title">FullStack Developer - Mybusiness360</h3>
                         <h4 className="vertical-timeline-element-subtitle">Thessaloniki, Greece</h4>
                         <p className="timeline-paragraph">
-                            Developing projects mostly with CMS Wordpress/Joomla/Opencart and some custom
-                            projects with Laravel
+                            Developing projects mostly with Wordpress/Joomla/Opencart and many custom projects with Laravel/jQuery.
                         </p>
                     </VerticalTimelineElement>
                     <VerticalTimelineElement
@@ -105,8 +103,7 @@ const ExpPage = () => (
                         <h3 className="vertical-timeline-element-title">FullStack Developer - ViewNvisit</h3>
                         <h4 className="vertical-timeline-element-subtitle">Geneva, Switzerland</h4>
                         <p className="timeline-paragraph">
-                            Developing Custom projects and more complex software. Mostly using Laravel/Symfony
-                            for backend and jQuery and some React for Frontend
+                            Developing Custom projects and more complex software, mostly using Laravel/Symfony for Backend and jQuery plus some React for Frontend.
                         </p>
                     </VerticalTimelineElement>
 

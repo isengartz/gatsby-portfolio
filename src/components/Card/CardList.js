@@ -1,29 +1,30 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import {Card} from "./Card";
 import cloneDeep from 'lodash/cloneDeep';
+
 const List = () => {
-    const [selectedCards, setSelectedCards] = useState(null);
+    const [selectedCard, setSelectedCard] = useState(null);
 
     const onCardClick = id => {
-        console.debug(selectedCards,id)
-        const newSelectedCards = cloneDeep(selectedCards);
-        if (newSelectedCards!==null ||newSelectedCards===id ){
-            setSelectedCards(null)
-        }else  {
-            setSelectedCards(id)
+        console.debug(selectedCard, id)
+                // if he clicks another item while an item is active
+        // or if he clicks the same item while active
+        // should just make it inactive
+        if (selectedCard !== null || selectedCard === id) {
+            setSelectedCard(null)
+        } else {
+            setSelectedCard(id)
         }
-
+        console.debug(selectedCard, id)
     }
 
     return (
         <ul className="card-list">
-
             {cardData.map(card => (
                 <Card
                     onClick={() => onCardClick(card.id)}
                     key={card.id}
-                    isSelected={selectedCards === card.id }
-                    history="history lul"
+                    isSelected={selectedCard === card.id}
                     {...card}
                 />
             ))}

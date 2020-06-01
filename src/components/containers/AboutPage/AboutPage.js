@@ -114,15 +114,15 @@ const AboutPage = () =>
                     <Col sm={4} xs={3}/>
                 </Row>
                 <Row noGutters={true}>
-                    <Col sm={12}>
+                    <Col md={2}/>
+
+                    <Col md={8} sm={12}>
                         <div className={styles.aboutParagraphContainer}>
                             <p className="aboutParagraph">Passionate Programmer and web security enthusiast.<br/>
-                                Started coding at 14 years old and I love building custom projects.<br/>
-                                I wanted to focus on Software but Web Dev caught my eye because of how many different
-                                things it has to offer.<br/>
-                                I like Backend way more than front but I need to do both in order to survive xD.<br/>
-                                I hate javascript but I like React, as it is more structured and it feels like a
-                                completely different thing.
+                                Started coding at 14 years old with mIRC scripting / Counter-Strike 1.6 Mods and I love building custom projects.<br/>
+                                I wanted to focus on Software Development or Penetration Testing but Web Dev caught my eye because of how many different things and technologies has to offer.<br/>
+                                I like Backend way more than Frontend but I need to do both in order to survive xD.<br/>
+                                I hate Javascript but I like React, as it is more structured and it feels like a completely different thing.
                             </p>
                             <p className="aboutParagraph">
                                 My hobies include snowboarding In winter, Gaming and learning new technologies,<br/>
@@ -133,6 +133,7 @@ const AboutPage = () =>
 
 
                     </Col>
+                    <Col md={2}/>
                     <Col>
                         {
 

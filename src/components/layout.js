@@ -37,27 +37,27 @@ const Layout = ({children}) => (
                             <ul>
                                 <li>
                                     <Scrollchor to="#home" className="home-link active">
-                                        <FontAwesomeIcon icon={faHome}/> Home
+                                        <FontAwesomeIcon style={{fontSize: "20px", width: "20px"}} icon={faHome}/> <span>Home</span>
                                     </Scrollchor>
                                 </li>
                                 <li>
                                     <Scrollchor to="#about" className="">
-                                        <FontAwesomeIcon icon={faUser}/> About
+                                        <FontAwesomeIcon style={{fontSize: "20px",width: "20px"}} icon={faUser}/> <span>About</span>
                                     </Scrollchor>
                                 </li>
                                 <li>
                                     <Scrollchor to="#journey" className="">
-                                        <FontAwesomeIcon icon={faRoute}/> The Journey
+                                        <FontAwesomeIcon style={{fontSize: "20px",width: "20px"}} icon={faRoute}/> <span>The Journey</span>
                                     </Scrollchor>
                                 </li>
                                 <li>
                                     <Scrollchor to="#projects" className="home-link active">
-                                        <FontAwesomeIcon icon={faFileCode}/> Projects
+                                        <FontAwesomeIcon style={{fontSize: "20px",width: "20px"}} icon={faFileCode}/> <span>Projects</span>
                                     </Scrollchor>
                                 </li>
                                 <li>
                                     <Scrollchor to="#contact" className="home-link active">
-                                        <FontAwesomeIcon icon={faAt}/> Contact
+                                        <FontAwesomeIcon style={{fontSize: "20px",width: "20px"}} icon={faAt}/> <span>Contact</span>
                                     </Scrollchor>
                                 </li>
                             </ul>
