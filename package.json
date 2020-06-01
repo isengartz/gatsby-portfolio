@@ -14,7 +14,7 @@
     "framer-motion": "^1.11.0",
     "gatsby": "^2.19.32",
     "gatsby-background-image": "^0.9.14",
-    "gatsby-cli": "^2.8.27",
+    "gatsby-cli": "^2.12.40",
     "gatsby-image": "^2.2.39",
     "gatsby-plugin-manifest": "^2.2.38",
     "gatsby-plugin-offline": "^2.2.10",

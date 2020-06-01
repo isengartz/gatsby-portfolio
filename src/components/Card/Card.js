@@ -52,16 +52,16 @@ export const Card = (
 
         // When this card is selected, attach a wheel event listener
         const containerRef = useRef(null);
-        useWheelScroll(
-            containerRef,
-            y,
-            constraints,
-            checkSwipeToDismiss,
-            isSelected
-        );
+        // useWheelScroll(
+        //     containerRef,
+        //     y,
+        //     constraints,
+        //     checkSwipeToDismiss,
+        //     isSelected
+        // );
 
         return (
-            <li onClick={onClick}  ref={containerRef} className={`card`}>
+            <li onClick={() => onClick()}  ref={containerRef} className={`card`}>
                 <Overlay  isSelected={isSelected} />
                 <div className={`card-content-container ${isSelected && "open"}`}>
                     <motion.div

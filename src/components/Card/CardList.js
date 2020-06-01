@@ -1,34 +1,60 @@
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect,useRef} from "react"
 import {Card} from "./Card";
 import cloneDeep from 'lodash/cloneDeep';
-
+import Row from "react-bootstrap/Row";
 const List = () => {
     const [selectedCard, setSelectedCard] = useState(null);
-
+    const ContainerRef = useRef(null);
+    const scrollToRef = (ref) => {
+        console.debug('[Ref]',ref.current);
+        window.scrollTo(0, ref.current.offsetTop)}
     const onCardClick = id => {
-        console.debug(selectedCard, id)
-                // if he clicks another item while an item is active
+        // console.debug(selectedCard, id)
+        //         // if he clicks another item while an item is active
+        // // or if he clicks the same item while active
+        // // should just make it inactive
+        // if (selectedCard !== null || selectedCard === id) {
+        //     setSelectedCard(null)
+        // } else {
+        //     setSelectedCard(id)
+        //
+        // }
+
+        console.log(selectedCard, id);
+        const newSelectedCard = cloneDeep(selectedCard);
+        // if he clicks another item while an item is active
         // or if he clicks the same item while active
         // should just make it inactive
-        if (selectedCard !== null || selectedCard === id) {
-            setSelectedCard(null)
-        } else {
+        if(newSelectedCard === null){
             setSelectedCard(id)
+            console.debug(ContainerRef.current);
+            scrollToRef(ContainerRef)
         }
-        console.debug(selectedCard, id)
+        else if(newSelectedCard === id){
+            setSelectedCard(null);
+        }
+        else{
+            setSelectedCard(null)
+
+        }
+        console.log(selectedCard, id)
+
     }
 
     return (
-        <ul className="card-list">
-            {cardData.map(card => (
-                <Card
-                    onClick={() => onCardClick(card.id)}
-                    key={card.id}
-                    isSelected={selectedCard === card.id}
-                    {...card}
-                />
-            ))}
-        </ul>
+        <Row ref={ContainerRef}>
+            <ul  className="card-list">
+                {cardData.map(card => (
+                    <Card
+                        onClick={() => onCardClick(card.id)}
+                        key={card.id}
+                        isSelected={selectedCard === card.id}
+                        {...card}
+                    />
+                ))}
+            </ul>
+        </Row>
+
     )
 }
 
