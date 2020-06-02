@@ -36,14 +36,13 @@ const IndexPage = ({isDarkMode, dispatch, data}) => {
             <div className="clearfix"/>
 
 
-            <AboutPage/>
+            {/*<AboutPage/>*/}
 
-            <ExpPage/>
-            {/*<SinTimeline/>*/}
+            {/*<ExpPage/>*/}
 
-            <ProjectsGrid/>
-
-            <BlogSection/>
+            {/*<ProjectsGrid/>*/}
+            {/**/}
+            {/*<BlogSection/>*/}
             <SvgFooter/>
 
         </Layout>
