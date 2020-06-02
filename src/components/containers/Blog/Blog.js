@@ -66,7 +66,7 @@ const BlogSection = () => {
         return () => clearInterval(intervalID);
     }, [started, seconds]);
 
-    // Timiline animaxtion to hide the div
+    // Timeline animation to hide the div
     useEffect(() => {
         if (animationStart) {
             const tl = new TimelineMax();

@@ -28,7 +28,7 @@ const Layout = ({children}) => (
             <>
                 <Header siteTitle={data.site.siteMetadata.title}/>
 
-                <div id="outer-container">
+
                     <Menu
                         pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }
                     >
@@ -73,7 +73,7 @@ const Layout = ({children}) => (
                         </div>
                         {children}
                     </main>
-                </div>
+
 
                 {/*<footer>*/}
                 {/*    © {new Date().getFullYear()}, Built with*/}

@@ -1,5 +1,5 @@
-import React from "react"
-import {graphql} from 'gatsby'
+import React,{useState,useEffect} from "react"
+import {graphql,withPrefix} from 'gatsby'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Container from "react-bootstrap/Container";
@@ -12,18 +12,24 @@ import AboutPage from "../components/containers/AboutPage/AboutPage";
 import ExpPage from "../components/containers/ExpPage/ExpPage";
 import ProjectsGrid from "../components/containers/Projects/ProjectsGrid";
 import BlogSection from "../components/containers/Blog/Blog";
-import SinTimeline from "../components/SinTimeline/sinTimeline"
-
+import Helmet from "react-helmet"
+import SvgFooter from "../components/layout/SvgFooter/SvgFooter";
 
 const IndexPage = ({isDarkMode, dispatch, data}) => {
-
+    const [isLoaded,setIsLoaded]= useState(false);
+    useEffect( ()=> {
+        setIsLoaded(true);
+    },[])
     return (
         <Layout>
+            {/*<Helmet>*/}
+            {/*    <script src={withPrefix('pace.js')} type="text/javascript" />*/}
+            {/*</Helmet>*/}
             <SEO title="Home" keywords={[`gatsby`, `application`, `react`]}/>
             <Container fluid={true} className="p-0 m-0" id="home">
                 <Row>
                     <Col>
-                        <SvgHeader/>
+                        <SvgHeader loaded={isLoaded}/>
                     </Col>
                 </Row>
             </Container>
@@ -38,6 +44,7 @@ const IndexPage = ({isDarkMode, dispatch, data}) => {
             <ProjectsGrid/>
 
             <BlogSection/>
+            <SvgFooter/>
 
         </Layout>
     )
