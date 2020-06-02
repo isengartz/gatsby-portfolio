@@ -1,49 +1,38 @@
-import React, {useState, useEffect,useRef} from "react"
+import React, {useState, useEffect, useRef} from "react"
 import {Card} from "./Card";
 import cloneDeep from 'lodash/cloneDeep';
 import Row from "react-bootstrap/Row";
+
 const List = () => {
     const [selectedCard, setSelectedCard] = useState(null);
     const ContainerRef = useRef(null);
     const scrollToRef = (ref) => {
-        console.debug('[Ref]',ref.current);
-        window.scrollTo(0, ref.current.offsetTop)}
+        console.debug('[Ref]', ref.current);
+        console.debug('[Ref] Position', ref.current.offsetTop);
+        // window.scrollTo(0, ref.current.offsetTop)
+        ref.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+        });
+    }
     const onCardClick = id => {
-        // console.debug(selectedCard, id)
-        //         // if he clicks another item while an item is active
-        // // or if he clicks the same item while active
-        // // should just make it inactive
-        // if (selectedCard !== null || selectedCard === id) {
-        //     setSelectedCard(null)
-        // } else {
-        //     setSelectedCard(id)
-        //
-        // }
-
-        console.log(selectedCard, id);
-        const newSelectedCard = cloneDeep(selectedCard);
+        console.debug(selectedCard, id)
         // if he clicks another item while an item is active
         // or if he clicks the same item while active
         // should just make it inactive
-        if(newSelectedCard === null){
+        if (selectedCard !== null || selectedCard === id) {
+            setSelectedCard(null)
+        } else {
             setSelectedCard(id)
-            console.debug(ContainerRef.current);
             scrollToRef(ContainerRef)
         }
-        else if(newSelectedCard === id){
-            setSelectedCard(null);
-        }
-        else{
-            setSelectedCard(null)
 
-        }
-        console.log(selectedCard, id)
 
     }
 
     return (
         <Row ref={ContainerRef}>
-            <ul  className="card-list">
+            <ul className="card-list">
                 {cardData.map(card => (
                     <Card
                         onClick={() => onCardClick(card.id)}

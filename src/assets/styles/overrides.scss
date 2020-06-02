@@ -138,7 +138,7 @@ li {
 }
 
 .card-content-container.open {
-  top: 0;
+  top: 10%;
   left: 0;
   right: 0;
   position: fixed;
@@ -240,6 +240,7 @@ p {
   .card {
     flex: 0 0 50%;
     max-width: 50%;
+    margin-left: 10px;
   }
 
   .card:nth-child(4n + 1),
@@ -265,5 +266,10 @@ p {
 
   .card-content-container.open {
     padding: 0;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .card-content-container {
+    width: 90%;
   }
 }

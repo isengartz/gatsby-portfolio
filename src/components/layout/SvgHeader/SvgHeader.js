@@ -41,7 +41,7 @@ const SvgHeader = () => {
             });
 
             bigSnowRef.current.forEach(snow =>{
-                TweenMax.to(snow, 10 + Math.random()*10, {y:'+=1200', autoAlpha:1, ease: Linear.easeNone, onComplete: doneFalling, onCompleteParams: [snow],yoyo:true },'+=0.5');
+                TweenMax.to(snow, 10 + Math.random()*10, {y:'+=1200', autoAlpha:1, ease: Linear.easeNone, onStart: doneFalling, onStartParams: [snow] },'+=0.5');
             });
 
             smallSnowRef.current.forEach(snow =>{
@@ -49,7 +49,7 @@ const SvgHeader = () => {
             });
 
             smallSnowRef.current.forEach(snow =>{
-                TweenMax.to(snow, 10 + Math.random()*10, {y:'+=1200', autoAlpha:1, ease: Linear.easeNone, onComplete: doneFalling, onCompleteParams: [snow],yoyo:true },'+=1');
+                TweenMax.to(snow, 10 + Math.random()*10, {y:'+=1200', autoAlpha:1, ease: Linear.easeNone, onStart: doneFalling, onStartParams: [snow] },'+=2');
             });
 
             function doneFalling(snowId) {
@@ -57,7 +57,7 @@ const SvgHeader = () => {
                 range = range - 400;
 
                 TweenMax.set(snowId, {y: -100, x: range, autoAlpha: 0.2, rotation: Math.random()*360});
-                TweenMax.to(snowId, 10 + Math.random()*10, {y:'+=1200', autoAlpha:1, ease: Linear.easeNone, onComplete: doneFalling, onCompleteParams: [snowId],yoyo:true });
+                TweenMax.to(snowId, 3 + Math.random()*10, {y:'+=1200', autoAlpha:1, ease: Linear.easeNone, onComplete: doneFalling, onCompleteParams: [snowId] });
             }
         }
 
@@ -66,7 +66,7 @@ const SvgHeader = () => {
         <div>
 
             <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
-                 style={{minHeight: "800px"}}
+                 style={{width: "100%", height:'auto', maxWidth:'100%', maxHeight:'100vh'}}
                  height="1000px" width="100%"
                  xmlSpace="preserve"
                  viewBox="0 0 720 503.999"
