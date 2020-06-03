@@ -41,19 +41,20 @@ const SvgFooter = () => {
             }, '+=0.5');
         });
 
-        // Moon
+        // Moon comes in
         tl.to(moon, 5, {x: 0, y: 0, autoAlpha: 1, ease: Bounce.easeOut})
-            .to(moonCircle1, 1, {visibility: "visible", delay: 1})
-            .to(moonCircle2, 1, {visibility: "visible"})
-            .to(moonCircle3, 1, {visibility: "visible"})
-            .to(moonCircle4, 1, {visibility: "visible"})
-            .to(moonCircle5, 1, {visibility: "visible"})
+            .to(moonCircle1, 1, {autoAlpha: 0.15, delay: 1})
+            .to(moonCircle2, 1, {autoAlpha: 0.04})
+            .to(moonCircle3, 1, {autoAlpha: 0.04})
+            .to(moonCircle4, 1, {autoAlpha: 0.04})
+            .to(moonCircle5, 1, {autoAlpha: 0.04})
 
-
+        // @todo: Move all this shit inside the loop function and just call the function instead
         let containerHeight = footerContainer.clientHeight;
         let randomX = Math.floor(Math.random() * 99) + 1;
         let randomPosNegX = randomX * (Math.floor(Math.random() * 2) === 1 ? 1 : -1);
         let randomDuration = Math.random() * (10 - 5 + 1) + 5
+
 
         // Rotate Stars
         TweenMax.set(starOne, {
@@ -90,7 +91,7 @@ const SvgFooter = () => {
             onCompleteParams: [starTwo]
         })
 
-
+        // Loop clouds
         function cloudDoneMoving(cloudId) {
             let randomXCloud = 50 * (Math.floor(Math.random() * 2) === 1 ? 1 : -1);
             let randomDelay = Math.random() * (15 - 5 + 1) + 5
@@ -126,6 +127,7 @@ const SvgFooter = () => {
 
         }
 
+        // Loop Snow
         function doneFalling(snowId) {
 
             let range = Math.random() * 800;
@@ -143,16 +145,16 @@ const SvgFooter = () => {
     }
 
     // Initialize SVG item positions
-    // hide snowflakes
     useEffect(() => {
         tl.set(moon, {y: '+=500', x: '+=300', autoAlpha: 0.5})
-            .set(moonCircle1, {visibility: "hidden"})
-            .set(moonCircle2, {visibility: "hidden"})
-            .set(moonCircle3, {visibility: "hidden"})
-            .set(moonCircle4, {visibility: "hidden"})
-            .set(moonCircle5, {visibility: "hidden"})
+            .set(moonCircle1, {autoAlpha: 0})
+            .set(moonCircle2, {autoAlpha: 0})
+            .set(moonCircle3, {autoAlpha: 0})
+            .set(moonCircle4, {autoAlpha: 0})
+            .set(moonCircle5, {autoAlpha: 0})
             .set(starOne, {y: '-=700'})
             .set(starTwo, {y: '-=700'})
+        // hide snowflakes
         snowRef.current.forEach(snow => {
             tlSnow.set(snow, {autoAlpha: 0, display: "block"});
         })
@@ -202,7 +204,7 @@ const SvgFooter = () => {
         <div ref={el => (footerContainer = el)}>
             <div ref={setIsVisible}/>
             <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                 style={{width: "100%", height: 'auto', maxWidth: '100%'}}
+                 style={{width: "100%", height: 'auto', maxWidth: '100%', maxHeight: '100vh'}}
                  height="1000px" width="100%"
                  xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                  viewBox="0 0 2850 1800" enableBackground="new 0 0 2850 1800" xmlSpace="preserve"
