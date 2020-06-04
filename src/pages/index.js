@@ -13,23 +13,22 @@ import ExpPage from "../components/containers/ExpPage/ExpPage";
 import ProjectsGrid from "../components/containers/Projects/ProjectsGrid";
 import BlogSection from "../components/containers/Blog/Blog";
 import Helmet from "react-helmet"
-import {SvgFooter} from "../components/layout/SvgFooter/SvgFooter";
+import SvgFooter from "../components/layout/SvgFooter/SvgFooter";
+import loadable from '@loadable/component'
 
+const FooterSvgLoadable = loadable( ()=> import('../components/layout/SvgFooter/SvgFooter'));
+const HeaderSvgLoadable = loadable( ()=> import('../components/layout/SvgHeader/SvgHeader'));
 const IndexPage = ({isDarkMode, dispatch, data}) => {
-    const [isLoaded,setIsLoaded]= useState(false);
-    useEffect( ()=> {
-        setIsLoaded(true);
-    },[])
+
     return (
         <Layout>
-            {/*<Helmet>*/}
-            {/*    <script src={withPrefix('pace.js')} type="text/javascript" />*/}
-            {/*</Helmet>*/}
+
             <SEO title="Home" keywords={[`gatsby`, `application`, `react`]}/>
             <Container fluid={true} className="p-0 m-0" id="home">
                 <Row>
                     <Col>
-                        <SvgHeader loaded={isLoaded}/>
+                        {/*<SvgHeader/>*/}
+                        <HeaderSvgLoadable/>
                     </Col>
                 </Row>
             </Container>
