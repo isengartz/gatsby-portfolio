@@ -6,7 +6,7 @@ import SvgHeaderStart from "./SvgParts/SvgHeaderStart";
 import SvgHeaderSecondPart from "./SvgParts/SvgHeaderSecondPart";
 import SvgHeaderEnd from "./SvgParts/SvgHeaderEnd";
 
-const SvgHeader = () => {
+export function SvgH() {
     let cloud2 = useRef(null);
     let cloud3 = useRef(null);
     let moon = useRef(null);
@@ -681,4 +681,4 @@ const SvgHeader = () => {
     );
 };
 
-export default SvgHeader;
+export const SvgHeader = React.memo(SvgH);

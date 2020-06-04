@@ -3,7 +3,7 @@ import {TweenMax, TimelineMax, Power3, Linear, Bounce} from "gsap/dist/gsap";
 import SvgFooterStart from "./SvgParts/SvgFooterStart";
 import SvgFooterEnd from "./SvgParts/SvgFooterEnd";
 
-const SvgFooter = () => {
+const SvgF= () => {
     const [isVisible, setIsVisible] = useState(null);
     const [started, setStarted] = useState(false);
     const visibleObserver = useRef(null);
@@ -536,4 +536,4 @@ const SvgFooter = () => {
     );
 };
 
-export default SvgFooter;
+export const SvgFooter = React.memo(SvgF);

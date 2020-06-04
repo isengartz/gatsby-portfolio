@@ -7,13 +7,13 @@ import Row from "react-bootstrap/Row";
 import styles from "../assets/styles/pages/index.module.scss"
 import Col from "react-bootstrap/Col";
 import 'react-vertical-timeline-component/style.min.css';
-import SvgHeader from '../components/layout/SvgHeader/SvgHeader'
+import {SvgHeader} from '../components/layout/SvgHeader/SvgHeader'
 import AboutPage from "../components/containers/AboutPage/AboutPage";
 import ExpPage from "../components/containers/ExpPage/ExpPage";
 import ProjectsGrid from "../components/containers/Projects/ProjectsGrid";
 import BlogSection from "../components/containers/Blog/Blog";
 import Helmet from "react-helmet"
-import SvgFooter from "../components/layout/SvgFooter/SvgFooter";
+import {SvgFooter} from "../components/layout/SvgFooter/SvgFooter";
 
 const IndexPage = ({isDarkMode, dispatch, data}) => {
     const [isLoaded,setIsLoaded]= useState(false);
