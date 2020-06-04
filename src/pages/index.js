@@ -28,7 +28,7 @@ const IndexPage = ({isDarkMode, dispatch, data}) => {
                 <Row>
                     <Col>
                         {/*<SvgHeader/>*/}
-                        <HeaderSvgLoadable/>
+                        {/*<HeaderSvgLoadable/>*/}
                     </Col>
                 </Row>
             </Container>
@@ -42,7 +42,7 @@ const IndexPage = ({isDarkMode, dispatch, data}) => {
             {/*<ProjectsGrid/>*/}
             {/**/}
             {/*<BlogSection/>*/}
-            <SvgFooter/>
+            <FooterSvgLoadable/>
 
         </Layout>
     )
