@@ -11,8 +11,9 @@ import ExpPage from "../components/containers/ExpPage/ExpPage";
 import ProjectsGrid from "../components/containers/Projects/ProjectsGrid";
 import BlogSection from "../components/containers/Blog/Blog";
 import loadable from '@loadable/component'
+import ContactForm from "../components/ContactForm/ContactForm";
 
-// const FooterSvgLoadable = loadable( ()=> import('../components/layout/SvgFooter/SvgFooter'));
+const FooterSvgLoadable = loadable( ()=> import('../components/layout/SvgFooter/SvgFooter'));
 const HeaderSvgLoadable = loadable( ()=> import('../components/layout/SvgHeader/SvgHeader'));
 const IndexPage = ({isDarkMode, dispatch, data}) => {
 
@@ -37,7 +38,8 @@ const IndexPage = ({isDarkMode, dispatch, data}) => {
             {/*<ProjectsGrid/>*/}
 
             {/*<BlogSection/>*/}
-            {/*<FooterSvgLoadable/>*/}
+            <FooterSvgLoadable/>
+            <ContactForm/>
 
         </Layout>
     )

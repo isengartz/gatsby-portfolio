@@ -1,0 +1,20 @@
+.FormContainer {
+  input {
+    width: 100%;
+    padding: 10px;
+  }
+  button {
+    width: 100%;
+    padding: 10px;
+  }
+  textarea {
+    width: 100%;
+    padding: 10px;
+  }
+}
+.Input {
+  background: transparent;
+}
+.Error {
+  border:1px solid red;
+}
