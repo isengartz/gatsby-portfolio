@@ -12,9 +12,10 @@ import ProjectsGrid from "../components/containers/Projects/ProjectsGrid";
 import BlogSection from "../components/containers/Blog/Blog";
 import loadable from '@loadable/component'
 import ContactForm from "../components/ContactForm/ContactForm";
-
-const FooterSvgLoadable = loadable( ()=> import('../components/layout/SvgFooter/SvgFooter'));
-const HeaderSvgLoadable = loadable( ()=> import('../components/layout/SvgHeader/SvgHeader'));
+import Skills from "../components/containers/Skills/Skills";
+import SvgHeader from "../components/layout/SvgHeader/SvgHeader"
+const FooterSvgLoadable = loadable(() => import('../components/layout/SvgFooter/SvgFooter'));
+// const HeaderSvgLoadable = loadable(() => import('../components/layout/SvgHeader/SvgHeader'));
 const IndexPage = ({isDarkMode, dispatch, data}) => {
 
     return (
@@ -24,22 +25,30 @@ const IndexPage = ({isDarkMode, dispatch, data}) => {
             <Container fluid={true} className="p-0 m-0" id="home">
                 <Row>
                     <Col>
-                        <HeaderSvgLoadable/>
+                        <SvgHeader/>
+                        {/*<HeaderSvgLoadable/>*/}
                     </Col>
                 </Row>
             </Container>
-            <div className="clearfix"/>
+
+            {/*<div style={{height:'100vh',background:'red'}}></div>*/}
 
 
             {/*<AboutPage/>*/}
 
             {/*<ExpPage/>*/}
+            <section>
 
-            {/*<ProjectsGrid/>*/}
+                    {/*<Skills/>*/}
+            </section>
 
-            {/*<BlogSection/>*/}
+            {/*<div style={{height:'100vh',background:'red'}}></div>*/}
+
+            <ProjectsGrid/>
+
+            <BlogSection/>
             <FooterSvgLoadable/>
-            <ContactForm/>
+            {/*<ContactForm/>*/}
 
         </Layout>
     )

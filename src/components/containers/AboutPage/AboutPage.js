@@ -92,7 +92,7 @@ const AboutPage = () =>
     return(
         <Fade cascade direction="top" triggerOnce>
             <Container id="about" className={styles.AboutPage}>
-                <h2 className="text-center customHeadings">About</h2>
+                <h2 className="text-center customHeadings">WHOAMI</h2>
                 <Row>
                     <Col sm={4} xs={3}/>
                     <Col sm={4} xs={6}>
