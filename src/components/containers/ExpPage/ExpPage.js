@@ -3,6 +3,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {VerticalTimeline, VerticalTimelineElement} from "react-vertical-timeline-component/dist-es6";
 import moment from "moment";
+import {cssConsts} from "../../utils/consts";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faBaby,
@@ -12,7 +13,7 @@ import {
     faUserNinja,
     faUserSecret
 } from "@fortawesome/free-solid-svg-icons";
-import Layout from "../../layout";
+
 import React from "react";
 
 const ExpPage = () => (
@@ -24,10 +25,10 @@ const ExpPage = () => (
                 <VerticalTimeline>
                     <VerticalTimelineElement
                         className="vertical-timeline-element--born"
-                        contentStyle={{background: '#d36135', color: '#fff'}}
-                        contentArrowStyle={{borderRight: '7px solid  #d36135'}}
+                        contentStyle={{background: cssConsts.primaryColor, color: cssConsts.lightColorWhite}}
+                        contentArrowStyle={{background: '7px solid ' + cssConsts.primaryColor}}
                         date={"1991 - present (" + moment(new Date()).diff(moment("19910505", "YYYYMMDD"), 'years') + " years)"}
-                        iconStyle={{background: '#d36135', color: '#fff'}}
+                        iconStyle={{background: cssConsts.primaryColor, color: cssConsts.lightColorWhite}}
                         icon={<FontAwesomeIcon icon={faBaby} style={{fontSize: '32px'}}/>}
                     >
                         <h3 className="vertical-timeline-element-title">Born</h3>
@@ -37,10 +38,10 @@ const ExpPage = () => (
                     </VerticalTimelineElement>
                     <VerticalTimelineElement
                         className="vertical-timeline-element--work"
-                        contentStyle={{background: '#d36135', color: '#fff'}}
-                        contentArrowStyle={{borderRight: '7px solid  #d36135'}}
+                        contentStyle={{background: cssConsts.primaryColor, color: cssConsts.lightColorWhite}}
+                        contentArrowStyle={{background: '7px solid ' + cssConsts.primaryColor}}
                         date={"2009 - 2014 (" + moment("2014", "YYYY").diff(moment("2009", "YYYY"), 'years') + " years)"}
-                        iconStyle={{background: '#d36135', color: '#fff'}}
+                        iconStyle={{background: cssConsts.primaryColor, color: cssConsts.lightColorWhite}}
                         icon={<FontAwesomeIcon icon={faUserGraduate} style={{fontSize: "30px"}}/>}
                     >
                         <h3 className="vertical-timeline-element-title">Graduation</h3>
@@ -52,10 +53,10 @@ const ExpPage = () => (
                     </VerticalTimelineElement>
                     <VerticalTimelineElement
                         className="vertical-timeline-element--work"
-                        contentStyle={{background: '#d36135', color: '#fff'}}
-                        contentArrowStyle={{borderRight: '7px solid  #d36135'}}
+                        contentStyle={{background: cssConsts.primaryColor, color: cssConsts.lightColorWhite}}
+                        contentArrowStyle={{background: '7px solid ' + cssConsts.primaryColor}}
                         date={"2014 - 2015 (" + moment("2015", "YYYY").diff(moment("2014", "YYYY"), 'years') + " year)"}
-                        iconStyle={{background: '#d36135', color: '#fff'}}
+                        iconStyle={{background: cssConsts.primaryColor, color: cssConsts.lightColorWhite}}
                         icon={<FontAwesomeIcon icon={faHiking} style={{fontSize: '25px'}}/>}
                     >
                         <h3 className="vertical-timeline-element-title">Web Developer - Exnet Hellas</h3>
@@ -66,10 +67,10 @@ const ExpPage = () => (
                     </VerticalTimelineElement>
                     <VerticalTimelineElement
                         className="vertical-timeline-element--work"
-                        contentStyle={{background: '#d36135', color: '#fff'}}
-                        contentArrowStyle={{borderRight: '7px solid  #d36135'}}
+                        contentStyle={{background: cssConsts.primaryColor, color: cssConsts.lightColorWhite}}
+                        contentArrowStyle={{background: '7px solid ' + cssConsts.primaryColor}}
                         date={"2015 - present (" + moment(new Date()).diff(moment("2015", "YYYY"), 'years') + " years)"}
-                        iconStyle={{background: '#d36135', color: '#fff'}}
+                        iconStyle={{background: cssConsts.primaryColor, color: cssConsts.lightColorWhite}}
                         icon={<FontAwesomeIcon icon={faUserSecret} style={{fontSize: '25px'}}/>}
                     >
                         <h3 className="vertical-timeline-element-title">FullStack Developer - Spiti360</h3>
@@ -80,10 +81,10 @@ const ExpPage = () => (
                     </VerticalTimelineElement>
                     <VerticalTimelineElement
                         className="vertical-timeline-element--work"
-                        contentStyle={{background: '#d36135', color: '#fff'}}
-                        contentArrowStyle={{borderRight: '7px solid  #d36135'}}
+                        contentStyle={{background: cssConsts.primaryColor, color: cssConsts.lightColorWhite}}
+                        contentArrowStyle={{background: '7px solid ' + cssConsts.primaryColor}}
                         date={"2015 - present (" + moment(new Date()).diff(moment("2015", "YYYY"), 'years') + " years)"}
-                        iconStyle={{background: '#d36135', color: '#fff'}}
+                        iconStyle={{background: cssConsts.primaryColor, color: cssConsts.lightColorWhite}}
                         icon={<FontAwesomeIcon icon={faUserAstronaut} style={{fontSize: '25px'}}/>}
                     >
                         <h3 className="vertical-timeline-element-title">FullStack Developer - Mybusiness360</h3>
@@ -94,10 +95,10 @@ const ExpPage = () => (
                     </VerticalTimelineElement>
                     <VerticalTimelineElement
                         className="vertical-timeline-element--work"
-                        contentStyle={{background: '#d36135', color: '#fff'}}
-                        contentArrowStyle={{borderRight: '7px solid  #d36135'}}
+                        contentStyle={{background: cssConsts.primaryColor, color: cssConsts.lightColorWhite}}
+                        contentArrowStyle={{background: '7px solid ' + cssConsts.primaryColor}}
                         date={"2016 - present (" + moment(new Date()).diff(moment("2016", "YYYY"), 'years') + " years)"}
-                        iconStyle={{background: '#d36135', color: '#fff'}}
+                        iconStyle={{background: cssConsts.primaryColor, color: cssConsts.lightColorWhite}}
                         icon={<FontAwesomeIcon icon={faUserNinja} style={{fontSize: '25px'}}/>}
                     >
                         <h3 className="vertical-timeline-element-title">FullStack Developer - ViewNvisit</h3>

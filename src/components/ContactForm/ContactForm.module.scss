@@ -1,16 +1,77 @@
 .FormContainer {
-  input {
-    width: 100%;
-    padding: 10px;
+  @include full-center;
+  width: 100%;
+
+  .FormContent {
+
+    //background: rgba($light-color-white,.2);
+    background-image: linear-gradient(
+                    105deg,
+                    rgba($color-white,.2) 0%,
+                    rgba($color-white,.2) 50%,
+                    rgba($color-white,.5) 50%
+    );
+    @include default-bShadow-w-bRadius;
+
+    form {
+      width: 100%;
+      padding: 6rem;
+
+
+    }
+    label {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-left: 2rem;
+      margin-top: .7rem;
+      display: block;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -ms-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s;
+      color: $light-color-white;
+    }
+    input,textarea {
+      width: 100%;
+      font-family: inherit;
+      font-size: 1.5rem;
+      padding: 2.5rem 2rem;
+      background-color: rgba($color-white,.2);
+      border-color: transparent;
+      border-bottom: 3px solid transparent ;
+      color: $color-white;
+
+      &::placeholder,&::-webkit-input-placeholder {
+        color: $color-light-black;
+      }
+      &:placeholder-shown + label {
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transform: translateY(-3rem);
+        -moz-transform: translateY(-3rem);
+        -ms-transform: translateY(-3rem);
+        -o-transform: translateY(-3rem);
+        transform: translateY(-3rem);
+      }
+      &:focus {
+        outline: none;
+        -webkit-box-shadow: $default-elements-box-shadow;
+        -moz-box-shadow: $default-elements-box-shadow;
+        box-shadow: $default-elements-box-shadow;
+        border-bottom: 3px solid $primary-color ;
+        &:invalid {
+          border-bottom: 3px solid $invalid-color ;
+        }
+      }
+    }
   }
+
   button {
     width: 100%;
     padding: 10px;
   }
-  textarea {
-    width: 100%;
-    padding: 10px;
-  }
+
 }
 .Input {
   background: transparent;

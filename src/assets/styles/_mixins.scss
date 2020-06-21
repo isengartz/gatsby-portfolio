@@ -1,0 +1,35 @@
+/**
+ * Adds a gradient background on item on hover
+ * Used for Menu Items
+ */
+@mixin item-gradient-hover-base($startColor,$endColor) {
+  background-image: linear-gradient(120deg,$startColor 0%, transparent 50%, $endColor 50% );
+  -webkit-background-size: 225%;
+  background-size: 225%;
+}
+@mixin item-gradient-hover-hover-state {
+  background-position: 100%;
+}
+
+/**
+ * Centers the element both vert/hor
+ */
+@mixin full-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  -o-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+@mixin default-bShadow-w-bRadius {
+  -webkit-box-shadow: $default-elements-box-shadow ;
+  -moz-box-shadow: $default-elements-box-shadow ;
+  box-shadow: $default-elements-box-shadow ;
+  -webkit-border-radius: .5rem;
+  -moz-border-radius: .5rem;
+  border-radius: .5rem;
+}

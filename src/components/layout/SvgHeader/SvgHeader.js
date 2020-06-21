@@ -667,13 +667,13 @@ import SvgHeaderEnd from "./SvgParts/SvgHeaderEnd";
                  </g>
              </svg>
 
-             {/*<Typist startDelay={3000} cursor={{ show: false, blink: true, element: '|', hideWhenDone: true, hideWhenDoneDelay: 1000}}  className={styles.headerTypist} >*/}
+             <Typist startDelay={3000} cursor={{ show: false, blink: true, element: '|', hideWhenDone: true, hideWhenDoneDelay: 1000}}  className={styles.headerTypist} >
 
-             {/*    <h2>Hello Lad, Im Thanasis</h2>*/}
-             {/*    <h2>Backend Developer</h2>*/}
-             {/*    <Typist.Backspace count={17} delay={200} />*/}
-             {/*    <h2>FullStack Developer from Greece ^.^</h2>*/}
-             {/*</Typist>*/}
+                 <h2>Hello Lad, Im Thanasis</h2>
+                 <h2>Backend Developer</h2>
+                 <Typist.Backspace count={17} delay={200} />
+                 <h2>FullStack Developer from Greece ^.^</h2>
+             </Typist>
 
          </div>
 

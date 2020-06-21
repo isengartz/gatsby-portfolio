@@ -1,5 +1,12 @@
+.skills-wrapper {
+ .skills-gallery:not(:last-child) {
+    margin-bottom: 5rem;
+  }
+}
 
-
+.skills-gallery {
+  overflow: hidden;
+}
 /*::selection {*/
 /*    background: #87cd33;*/
 /*    color: white;*/
@@ -33,7 +40,7 @@
 /*.jcc {justify-content: center}*/
 
 
-/*.demo-wrapper {*/
+/*.skills-wrapper {*/
 /*    !*overflow-x: hidden;*!*/
 /*}*/
 
@@ -41,11 +48,11 @@
 /*    display: flex;*/
 /*}*/
 
-/*.demo-gallery:not(.last) {*/
+/*.skills-gallery:not(.last) {*/
 /*    padding-bottom: 1rem;*/
 /*}*/
 
-/*.demo-text .text {*/
+/*.skills-text .text {*/
 /*    font-size: clamp(8rem, 15vw, 16rem);*/
 /*    line-height: 1;*/
 /*    font-weight: 900;*/

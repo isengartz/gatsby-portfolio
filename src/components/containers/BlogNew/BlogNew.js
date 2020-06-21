@@ -15,7 +15,7 @@ const BlogNew = () => {
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
-// You can use a ScrollTrigger in a tween or timeline
+
         gsap.to(containerRef, {
             height: '0',
             display: "none",

@@ -7,7 +7,13 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-sass`,
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        data: `@import "./src/assets/styles/variables";
+        @import "./src/assets/styles/mixins";`,
+      }
+    },
     {
       resolve: `sin-api-source-plugin`
     },

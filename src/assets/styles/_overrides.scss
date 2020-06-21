@@ -1,20 +1,26 @@
-@import "variables";
 .container,.container-fluid {
   &.home-container {
-    margin-left: 60px;
+    margin-left: 6rem;
     height: 100vh;
   }
 }
 .vertical-timeline-element-content {
   .timeline-paragraph {
     color: $light-color-white;
-    font-size: 0.8rem;
+    font-size: 1.6rem;
+  }
+}
+.vertical-timeline--two-columns {
+  .vertical-timeline-element-content {
+    .vertical-timeline-element-date {
+      font-size: 1.5rem;
+    }
   }
 }
 
 .top-tags {
   bottom: auto;
-  top: 20px;
+  top: 2rem;
 }
 
 .bottom-tags {
@@ -23,23 +29,7 @@ bottom:5%;
 .timeline-paragraph {
   font-family: "Open Sans";
 }
-.customHeadings {
-  font-family: 'Bangers', cursive;
-  margin: 20px 0;
-  padding: 20px 0;
-  margin-bottom: 1.45rem;
-  color: $color-white;
-  font-weight: bold;
-  text-rendering: optimizeLegibility;
-  font-size: 2.25rem;
-}
 
-.aboutParagraph {
-  color: $color-white;
-  font-family: "Open Sans";
-  font-size: 17px;
-  line-height: 25px;
-}
 
 .container {
 
@@ -54,50 +44,13 @@ bottom:5%;
   //}
 
 }
-.skillbar-title {
-  //background: #d36135 !important;
-  width: 111px !important;
-}
-.skillbar-title {
-  span {
-    padding: 0px 10px !important;
-  }
-}
 
+//.date {
+//  color: var(--secondary);
+//  font-size: 14px;
+//  text-transform: uppercase;
+//}
 
-
-.date {
-  color: var(--secondary);
-  font-size: 14px;
-  text-transform: uppercase;
-}
-
-header {
-  border-bottom: 1px solid var(--divider);
-  position: relative;
-}
-
-.avatar {
-  background: var(--divider);
-  border-radius: 50%;
-  position: absolute;
-  bottom: 12px;
-  right: 0;
-  overflow: hidden;
-}
-
-.avatar,
-.avatar img {
-  width: 40px;
-  height: 40px;
-}
-
-ul,
-li {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 
 .card-list {
   display: flex;
@@ -189,10 +142,6 @@ li {
   max-width: 300px;
 }
 
-h2 {
-  color: #fff;
-  margin: 8px 0;
-}
 
 .category {
   color: #fff;
@@ -228,12 +177,6 @@ h2 {
   padding: 460px 35px 35px 35px;
   max-width: 700px;
   width: 90vw;
-}
-
-p {
-  color: #9d9ca1;
-  font-size: 20px;
-  line-height: 28px;
 }
 
 @media only screen and (max-width: 800px) {

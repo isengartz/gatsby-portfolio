@@ -17,7 +17,7 @@ const ContactForm = () => {
             validator: {
                 IS_REQUIRED: true
             },
-            className: [styles.Input],
+            className: [styles.Input, 'form-control'],
             errors: {
                 isValid: false,
                 message: ''
@@ -29,7 +29,7 @@ const ContactForm = () => {
                 IS_REQUIRED: true,
                 IS_EMAIL: true
             },
-            className: [styles.Input],
+            className: [styles.Input, 'form-control'],
             errors: {
                 isValid: false,
                 message: ''
@@ -37,7 +37,10 @@ const ContactForm = () => {
         },
         message: {
             value: '',
-            className: [styles.Input],
+            validator : {
+
+            },
+            className: [styles.Input, 'form-control'],
             errors: {
                 isValid: false,
                 message: ''
@@ -45,7 +48,7 @@ const ContactForm = () => {
         }
 
     })
-
+    // I used html5 validation but created the JS validation method too for the lulz xD
     const onFormSubmit = e => {
 
         e.preventDefault();
@@ -69,7 +72,7 @@ const ContactForm = () => {
 
     }
 
-
+    // when an input change value
     const onFieldChange = e => {
         const newFields = _.cloneDeep(fields);
         let isValid = validateField(fields[e.target.name].validator, e.target.value);
@@ -82,9 +85,9 @@ const ContactForm = () => {
                 newFields[e.target.name].className = newFields[e.target.name].className.filter((item) => {
                     return item !== styles.Error;
                 })
-            }else {
+            } else {
                 // Add .Error if the input was valid and became invalid
-                if(!newFields[e.target.name].className.includes(styles.Error)){
+                if (!newFields[e.target.name].className.includes(styles.Error)) {
                     newFields[e.target.name].className.push(styles.Error);
                 }
             }
@@ -93,7 +96,7 @@ const ContactForm = () => {
         setFields(newFields);
     }
 
-
+    // validate a single field
     const validateField = (rules, value) => {
         let isValid = true;
 
@@ -111,38 +114,48 @@ const ContactForm = () => {
     return (
         <div className={styles.FormContainer}>
             <Container>
-                <form onSubmit={onFormSubmit}>
+                <div className={styles.FormContent}>
                     <Row>
-                        <Col md={3}/>
-                        <Col md={6}><input type="text" name="fullName" onChange={onFieldChange}
-                                           value={fields.fullName.value}
-                                           className={fields.fullName.className.join(" ")}
-                                           placeholder="Your FullName"/></Col>
-                        <Col md={3}/>
-                    </Row>
-                    <Row>
-                        <Col md={3}/>
-                        <Col md={6}><input type="text" name="email" onChange={onFieldChange} value={fields.email.value}
-                                           className={fields.email.className.join(" ")}
-                                           placeholder="Your Email"/></Col>
-                        <Col md={3}/>
-                    </Row>
-                    <Row>
-                        <Col md={3}/>
-                        <Col md={6}><textarea name="message" onChange={onFieldChange} value={fields.message.value}
-                                              className={inputClasses.join(" ")}
-                                              placeholder="Your Message"/></Col>
-                        <Col md={3}/>
-                    </Row>
-                    <Row>
-                        <Col md={4}/>
-                        <Col md={4}>
-                            <button type="submit">Submit</button>
-                        </Col>
+                        <Col md={6}>
+                            <Row>
+                                <form
+                                    // onSubmit={onFormSubmit}
+                                >
 
-                        <Col md={4}/>
+                                    <div className="form-group">
+                                        <input id="fullName" type="text" name="fullName" required onChange={onFieldChange}
+                                               value={fields.fullName.value}
+                                               className={fields.fullName.className.join(" ")}
+                                               placeholder="Your FullName"/>
+                                        <label className="input-label" htmlFor="fullName">Your FullName</label>
+                                    </div>
+                                    <div className="form-group">
+                                        <input id="email" type="email" name="email" required onChange={onFieldChange}
+                                               value={fields.email.value}
+                                               className={fields.email.className.join(" ")}
+                                               placeholder="Your Email"/>
+                                        <label htmlFor="email">Your Email</label>
+                                    </div>
+                                    <div className="form-group">
+                                        <textarea id="message" name="message" onChange={onFieldChange}
+                                                  value={fields.message.value}
+                                                  className={fields.message.className.join(" ")}
+                                                  placeholder="Your Message"/>
+                                        <label htmlFor="message">Your Message</label>
+                                    </div>
+                                    <div className="form-group">
+                                        <button type="submit">Submit</button>
+                                    </div>
+                                </form>
+                            </Row>
+                        </Col>
+                        <Col md={6}>
+                        </Col>
                     </Row>
-                </form>
+
+                </div>
+
+
             </Container>
 
         </div>

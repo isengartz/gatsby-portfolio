@@ -1,0 +1,19 @@
+p {
+  font-size: 1.6rem;
+}
+.customHeadings {
+  font-family: 'Bangers', cursive;
+  margin: 2rem 0;
+  padding: 2rem 0;
+  color: $color-white;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+  font-size: 4.25rem;
+}
+
+.aboutParagraph {
+  color: $color-white;
+  font-family: "Open Sans";
+  font-size: 1.6rem;
+  line-height: 2.5rem;
+}

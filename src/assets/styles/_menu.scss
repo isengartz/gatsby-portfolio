@@ -1,33 +1,31 @@
-@import "variables";
-
 /* Position and sizing of burger button */
 .bm-burger-button {
   position: fixed;
-  width: 36px;
-  height: 30px;
-  left: 36px;
-  top: 36px;
+  width: 3.6rem;
+  height: 3rem;
+  left: 3.6rem;
+  top: 3.6rem;
 }
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: #373a47;
+  background: $light-color-white;
 }
 
 /* Color/shape of burger icon bars on hover*/
 .bm-burger-bars-hover {
-  background: #a90000;
+  background: $primary-btn-color;
 }
 
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
-  height: 24px;
-  width: 24px;
+  height: 2.4rem;
+  width: 2.4rem;
 }
 
 /* Color/shape of close button cross */
 .bm-cross {
-  background: #bdc3c7;
+  background: $light-color-white;
 }
 
 /*
@@ -41,20 +39,20 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* General sidebar styles */
 .bm-menu {
-  background: #373a47;
-  padding: 2.5em 1.5em 0;
-  font-size: 1.15em;
+  background: $color-black;
+  padding: 2.5rem 1.5rem 0;
+  font-size: 1.15rem;
 }
 
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
-  fill: #373a47;
+  fill: $color-black;
 }
 
 /* Wrapper for item list */
 .bm-item-list {
   color: #b8b7ad;
-  padding: 0.8em;
+  padding: 0.8rem;
 }
 
 /* Individual item */
@@ -63,20 +61,25 @@ Note: Beware of modifying this element as it can break the animations - you shou
   ul {
     margin: 0;
     li {
-      padding: 15px;
+      //padding: 1.5rem;
       a {
+        padding: 1.5rem;
+        display: block;
         text-decoration: none;
-        -webkit-transition: 0.5s;
-        -moz-transition: 0.5s;
-        -ms-transition: 0.5s;
-        -o-transition: 0.5s;
-        transition: 0.5s;
+        -webkit-transition:all 0.5s;
+        -moz-transition:all 0.5s;
+        -ms-transition:all 0.5s;
+        -o-transition:all 0.5s;
+        transition:all 0.5s;
         color: $light-color-white;
+        @include item-gradient-hover-base(transparent,$light-color-white);
         &:hover {
-          opacity: 0.6;
+
+          color: $primary-color;
+          @include item-gradient-hover-hover-state;
         }
         span {
-          margin-left: 10px;
+          margin-left: 1rem;
         }
       }
     }

@@ -1,17 +1,13 @@
 import React from "react"
 import PropTypes from "prop-types"
 import {StaticQuery, graphql} from "gatsby"
-
-import Header from "./header"
 import '../assets/styles/imports.scss'
-import "./layout.css"
-import styles from "../assets/styles/layout.module.scss"
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faHome,faUser,faCog,faFileCode,faAt,faRoute} from '@fortawesome/free-solid-svg-icons'
+import {faHome,faUser,faFileCode,faAt,faRoute} from '@fortawesome/free-solid-svg-icons'
 import Scrollchor from 'react-scrollchor';
 import { bubble as Menu } from 'react-burger-menu'
 // import { slide as Menu } from 'react-burger-menu'
-import '../assets/styles/menu.scss'
+
 
 const Layout = ({children}) => (
     <StaticQuery
@@ -24,14 +20,9 @@ const Layout = ({children}) => (
         }
       }
     `}
-        render={data => (
+        render={ () => (
             <>
-                <Header siteTitle={data.site.siteMetadata.title}/>
-
-
-                    <Menu
-                        // pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }
-                    >
+                <Menu>
 
                         <nav className="en">
                             <ul>
@@ -66,20 +57,8 @@ const Layout = ({children}) => (
                     </Menu>
 
                     <main id="page-wrap">
-                        <div className={styles.Navbar}>
-
-
-                            {/*<a id="mobile-link" href=""><i className="fa fa-bars"/></a>*/}
-                        </div>
                         {children}
                     </main>
-
-
-                {/*<footer>*/}
-                {/*    © {new Date().getFullYear()}, Built with*/}
-                {/*    {` `}*/}
-                {/*    <a href="https://www.gatsbyjs.org">Gatsby</a>*/}
-                {/*</footer>*/}
 
             </>
         )}
