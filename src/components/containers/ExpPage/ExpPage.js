@@ -17,10 +17,9 @@ import {
 import React from "react";
 
 const ExpPage = () => (
-    <Container id="journey">
+    <Container className="mb-5" id="journey">
         <h2 className="text-center customHeadings">The Journey</h2>
         <Row noGutters={true}>
-
             <Col>
                 <VerticalTimeline>
                     <VerticalTimelineElement
@@ -111,8 +110,6 @@ const ExpPage = () => (
                 </VerticalTimeline>
             </Col>
         </Row>
-
-
     </Container>
 )
 

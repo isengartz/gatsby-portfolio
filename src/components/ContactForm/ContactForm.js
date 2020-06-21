@@ -121,6 +121,7 @@ const ContactForm = () => {
                                 <form
                                     // onSubmit={onFormSubmit}
                                 >
+                                    <div><h3 className="subheading color-white text-center">Contact Form</h3> </div>
 
                                     <div className="form-group">
                                         <input id="fullName" type="text" name="fullName" required onChange={onFieldChange}
@@ -144,12 +145,18 @@ const ContactForm = () => {
                                         <label htmlFor="message">Your Message</label>
                                     </div>
                                     <div className="form-group">
-                                        <button type="submit">Submit</button>
+                                        <button className="btn-sin btn-sin-primary" type="submit">Submit</button>
                                     </div>
                                 </form>
                             </Row>
                         </Col>
                         <Col md={6}>
+                            <div className={styles.RightContent}>
+                                <div><h3 className="subheading color-primary text-center">Contact Details</h3> </div>
+                                <div className={styles.Copyrights}>
+                                    <p>© 2020 All Rights, Lefts and Centers reserved. ( OR NOT ! ) xD</p>
+                                </div>
+                            </div>
                         </Col>
                     </Row>
 

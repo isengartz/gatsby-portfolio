@@ -1,0 +1,27 @@
+.Wrapper {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: $color-light-black;
+  padding: 2rem 3rem;
+  .Content {
+    color: $color-white;
+
+    .Content__Text {
+      color: $color-white;
+      float: left;
+      padding: 1.5rem 4rem;
+    }
+    .Content__Btns {
+      float: right;
+      text-align: right;
+      margin: 0 2rem;
+      .Btn__Decline {
+        margin: 0 2rem;
+      }
+      .Btn__Agree {
+        margin: 0 2rem;
+      }
+    }
+  }
+}

@@ -4,12 +4,11 @@
 
   .FormContent {
 
-    //background: rgba($light-color-white,.2);
     background-image: linear-gradient(
                     105deg,
-                    rgba($color-white,.2) 0%,
-                    rgba($color-white,.2) 50%,
-                    rgba($color-white,.5) 50%
+                    rgba($color-white, .2) 0%,
+                    rgba($color-white, .2) 50%,
+                    rgba($color-white, .5) 50%
     );
     @include default-bShadow-w-bRadius;
 
@@ -19,6 +18,7 @@
 
 
     }
+
     label {
       font-size: 1.2rem;
       font-weight: 700;
@@ -32,19 +32,21 @@
       transition: all 0.3s;
       color: $light-color-white;
     }
-    input,textarea {
+
+    input, textarea {
       width: 100%;
       font-family: inherit;
       font-size: 1.5rem;
       padding: 2.5rem 2rem;
-      background-color: rgba($color-white,.2);
+      background-color: rgba($color-white, .2);
       border-color: transparent;
-      border-bottom: 3px solid transparent ;
+      border-bottom: 3px solid transparent;
       color: $color-white;
 
-      &::placeholder,&::-webkit-input-placeholder {
+      &::placeholder, &::-webkit-input-placeholder {
         color: $color-light-black;
       }
+
       &:placeholder-shown + label {
         opacity: 0;
         visibility: hidden;
@@ -54,28 +56,39 @@
         -o-transform: translateY(-3rem);
         transform: translateY(-3rem);
       }
+
       &:focus {
         outline: none;
         -webkit-box-shadow: $default-elements-box-shadow;
         -moz-box-shadow: $default-elements-box-shadow;
         box-shadow: $default-elements-box-shadow;
-        border-bottom: 3px solid $primary-color ;
+        border-bottom: 3px solid $primary-color;
+
         &:invalid {
-          border-bottom: 3px solid $invalid-color ;
+          border-bottom: 3px solid $invalid-color;
         }
       }
     }
   }
 
-  button {
+  .RightContent {
+    position: relative;
     width: 100%;
-    padding: 10px;
+    height: 100%;
+    padding: 6rem;
+    .Copyrights {
+      position: absolute;
+      bottom: 2rem;
+      left: 25%;
+      color: orangered;
+    }
   }
-
 }
+
 .Input {
   background: transparent;
 }
+
 .Error {
-  border:1px solid red;
+  border: 1px solid red;
 }

@@ -7,7 +7,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import PopUp from "../../PopUp/popUp"
 import {useStaticQuery, graphql} from "gatsby"
-
+import SkillItem from "./SkillItem/skillItem";
+import {projectsItemPerPage} from "../../../components/utils/consts"
 const Skills = () => {
 
     // Grab Projects
@@ -22,12 +23,19 @@ const Skills = () => {
                         id
                         image
                         title
+                        featuredImg {
+                            childImageSharp {
+                                fluid {
+                                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
     `)
-    console.debug(allProject);
+
 
     // State
 
@@ -41,11 +49,12 @@ const Skills = () => {
     const projects = useRef([]);
 
 
-
+    // Creates the JSX from Projects Object and set the state var
     useEffect(() => {
         // find how many rows we gonna have
-        const itemsPerPage = 3;
+        const itemsPerPage = projectsItemPerPage;
         const rows = Math.ceil(allProject.edges.length / itemsPerPage);
+
         let html = [];
         for (let i = 0; i < rows; i++) {
             html.push(<div key={i} ref={el => {
@@ -56,12 +65,15 @@ const Skills = () => {
                 }} className="wrapper">
 
                     {
+                        // Render the inside Columns
                         renderItem(i, itemsPerPage)
                     }
 
                 </Row>
             </div>)
         }
+
+        // set the JSX to state
         setRenderedHtml(html);
         setIsRendered(true);
     }, [])
@@ -79,19 +91,27 @@ const Skills = () => {
 
             if (allProject.edges[j]) {
                 html.push(
-                    <Col data-id={j} onClick={onProjectClick} ref={el => {projects.current[i] = el }} key={j}>
-                        <img src={allProject.edges[j].node.image} width="100%" height="auto"/>
-                    </Col>
+                    <SkillItem
+                        onClick={onProjectClick}
+                        dataId={j}
+                        ref={el => {projects.current[i] = el }}
+                        key={j}
+                        image={allProject.edges[j].node.featuredImg.childImageSharp.fluid}
+                        title={allProject.edges[j].node.title}
+                    />
                 )
             }
         }
         return html;
     }
 
+    // When someone clicks a project
     const onProjectClick = (e) => {
         const id = e.currentTarget.dataset.id;
-        console.debug(e.currentTarget);
+
         let popUpContent = [];
+
+        // Create the JSX content of Popup
         popUpContent.push(
             <div key={id}>
                 <p>
@@ -102,13 +122,24 @@ const Skills = () => {
                 <img src={allProject.edges[id].node.image} />
             </div>
         )
+        // Set the JSX to state and show popup
         setPopUpContent(popUpContent);
         setPopUpIsActive(true);
+    }
+
+    const onPopUpChange = newState => {
+
+        setPopUpIsActive(newState);
     }
     // Gsap ScrollTrigger Stuff
     // Run only when the html is rendered
     useEffect(() => {
         if (isRendered) {
+
+            // Because the Html is rendered the same time as this useEffect runs
+            // It calculates the Height of the container before the elements gets inserted
+            // Added a hack with setTimeout need to figure this out tho
+            // @todo: Fix this completely shit hack
             const timer = setTimeout(() => {
                 gsap.registerPlugin(ScrollTrigger);
 
@@ -139,6 +170,7 @@ const Skills = () => {
             return () => clearTimeout(timer);
         }
     }, [isRendered]);
+
     return (
         <div className="skills-wrapper" id="projects">
             <Container>
@@ -147,16 +179,13 @@ const Skills = () => {
                         <h2 className="text-center customHeadings">PROJECTS</h2>
                     </Col>
                 </Row>
-
                 {
-                    // renderHtml()
                     renderedHtml
                 }
-
             </Container>
 
 
-            <PopUp isActive={popUpIsActive}>
+            <PopUp onChange={onPopUpChange} isActive={popUpIsActive}>
                 {
                     popUpContent
                 }

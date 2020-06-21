@@ -8,3 +8,6 @@ export const cssConsts = {
     primaryColor: '#00adb5',
     primaryBtnColor: '#eeeeee'
 };
+
+// Used to declare how many projects per row we will have at project section
+export const projectsItemPerPage = 3;

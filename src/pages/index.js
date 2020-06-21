@@ -11,6 +11,7 @@ import Skills from "../components/containers/Skills/Skills";
 import SvgHeader from "../components/layout/SvgHeader/SvgHeader"
 import svgImg from "../images/svg/footer.svg"
 import styles from "../assets/styles/layout.module.scss"
+import Gdpr from "../components/Gdpr/gdpr";
 const FooterSvgLoadable = loadable(() => import('../components/layout/SvgFooter/SvgFooter'));
 // const HeaderSvgLoadable = loadable(() => import('../components/layout/SvgHeader/SvgHeader'));
 const IndexPage = ({isDarkMode, dispatch, data}) => {
@@ -47,13 +48,21 @@ const IndexPage = ({isDarkMode, dispatch, data}) => {
 
             <footer>
                 <div className={styles.footerContainer}>
-                    {/*<FooterSvgLoadable/>*/}
-                    <div style={{height:'100vh',backgroundImage:`url(${svgImg})`,backgroundPosition:'center',backgroundSize:'cover'}}></div>
+                    <FooterSvgLoadable/>
+                    {/*<div style={{height:'100vh',backgroundImage:`url(${svgImg})`,backgroundPosition:'center',backgroundSize:'cover'}}></div>*/}
                     <ContactForm/>
                 </div>
 
             </footer>
 
+            <Gdpr
+                agreeText="I Agree"
+                declineText="I Agree ( in red )"
+                gdprText="This website DOESNT use a single cookie xD"
+                bothBtnClasses="btn-sin-normal"
+                agreeBtnClasses="btn-sin-normal__primary"
+                declineBtnClasses="btn-sin-normal__red"
+            />
 
         </Layout>
     )

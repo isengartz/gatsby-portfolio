@@ -1,19 +1,111 @@
 p {
-  font-size: 1.6rem;
+  font-size: $normal-font;
 }
 .customHeadings {
-  font-family: 'Bangers', cursive;
+  font-family: $headings-font, cursive;
   margin: 2rem 0;
   padding: 2rem 0;
   color: $color-white;
   font-weight: bold;
   text-rendering: optimizeLegibility;
-  font-size: 4.25rem;
+  font-size: $big-font;
 }
-
+.color-white {
+  color: $color-white;
+}
+.color-primary {
+  color: $primary-color;
+}
+.subheading {
+  font-family: $headings-font, cursive;
+  font-size: $medium-font;
+  padding: 2rem 1rem;
+}
 .aboutParagraph {
   color: $color-white;
-  font-family: "Open Sans";
-  font-size: 1.6rem;
+  font-family: $text-font;
+  font-size: $normal-font;
   line-height: 2.5rem;
+}
+
+.btn-sin-normal,.btn-sin-normal:link,.btn-sin-normal:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 10rem;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  position: relative;
+  font-size: $normal-font;
+  font-family:$button-font;
+
+  border: none;
+  cursor: pointer;
+}
+.btn-sin-normal__red {
+  color: $color-white;
+  background-color: $color-red;
+}
+.btn-sin-normal__primary {
+  color: $color-white;
+  background-color: $primary-color;
+}
+// for click to action
+.btn-sin,.btn-sin:link,.btn-sin:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 10rem;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  position: relative;
+  font-size: $normal-font;
+  font-family:$button-font;
+  letter-spacing: .5rem;
+  border: none;
+  cursor: pointer;
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    -webkit-transition: all .4s;
+    -moz-transition: all .4s;
+    -ms-transition: all .4s;
+    -o-transition: all .4s;
+    transition: all .4s;
+  }
+  &:hover {
+    outline: none;
+    -webkit-transform: translateY(-1px);
+    -moz-transform: translateY(-1px);
+    -ms-transform: translateY(-1px);
+    -o-transform: translateY(-1px);
+    transform: translateY(-1px);
+    -webkit-box-shadow: $btn-default-box-shadow;
+    -moz-box-shadow: $btn-default-box-shadow;
+    box-shadow: $btn-default-box-shadow;
+    &::after {
+      opacity: 0;
+      -webkit-transform: scaleX(1.4) scaleY(1.6);
+      -moz-transform: scaleX(1.4) scaleY(1.6);
+      -ms-transform: scaleX(1.4) scaleY(1.6);
+      -o-transform: scaleX(1.4) scaleY(1.6);
+      transform: scaleX(1.4) scaleY(1.6);
+    }
+  }
+}
+.btn-sin-primary {
+  background-color: $primary-color;
+  color: $color-white;
+  &::after {
+    background-color: $primary-color;
+  }
 }
