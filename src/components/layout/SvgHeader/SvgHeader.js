@@ -84,7 +84,7 @@ import SvgHeaderEnd from "./SvgParts/SvgHeaderEnd";
 
      }, []);
      return (
-         <div>
+         <div className={styles.ContentContainer}>
 
              <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
                   style={{width: "100%", height: 'auto', maxWidth: '100%', maxHeight: '100vh'}}

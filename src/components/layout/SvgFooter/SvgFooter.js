@@ -203,7 +203,7 @@ const SvgFooter = React.memo(function SvgFooter() {
 
     }, [started])
     return (
-        <div ref={el => (footerContainer = el)}>
+        <div className="position-relative" ref={el => (footerContainer = el)}>
             <div ref={setIsVisible}/>
             <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                  style={{width: "100%", height: 'auto', maxWidth: '100%', maxHeight: '100vh'}}

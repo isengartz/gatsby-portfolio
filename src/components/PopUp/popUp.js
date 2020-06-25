@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./popUp.module.scss"
 import PropTypes from 'prop-types';
+import Img from "gatsby-image"
 
 const PopUp = (props) => {
-    const {isActive, onChange} = props;
+    const {isActive, onChange, title, image, link, description, tags, device_image} = props;
     const [popUpIsActive, setPopUpIsActive] = useState(isActive);
 
     useEffect(() => {
@@ -27,7 +28,18 @@ const PopUp = (props) => {
             className={[styles.Popup, popUpIsActive ? styles.PopupActive : null].join(" ")}
         >
             <div className={styles.PopupContent}>
-                {props.children}
+                <div className={styles.PopupContent__ImageContainer}>
+                    {
+                        image ? <Img fluid={image}/> : null
+                    }
+
+                </div>
+                <div className={styles.PopupContent__ContentContainer}>
+                    {
+                        description
+                    }
+                </div>
+
             </div>
         </div>
     );

@@ -20,6 +20,10 @@ p {
   font-family: $headings-font, cursive;
   font-size: $medium-font;
   padding: 2rem 1rem;
+  @include media-q(phone) {
+    padding: 0.5rem;
+    font-size: $medium-font-mob;
+  }
 }
 .aboutParagraph {
   color: $color-white;
@@ -107,5 +111,11 @@ p {
   color: $color-white;
   &::after {
     background-color: $primary-color;
+  }
+}
+.btn-mob-center {
+  @include media-q(phone) {
+    text-align: center;
+    margin: 0 auto;
   }
 }

@@ -30,6 +30,10 @@ const Skills = () => {
                                 }
                             }
                         }
+                        tags {
+                            id
+                            title
+                        }
                     }
                 }
             }
@@ -42,7 +46,14 @@ const Skills = () => {
 
     const [isRendered, setIsRendered] = useState(false);
     const [renderedHtml, setRenderedHtml] = useState([]);
-    const [popUpContent,setPopUpContent] = useState([]);
+    const [popUpContent,setPopUpContent] = useState({
+        image: null,
+        description: null,
+        link: null,
+        title: null,
+        tags: [],
+        device_image: null
+    });
     const [popUpIsActive,setPopUpIsActive] = useState(false);
     const sections = useRef([]);
     const wrappers = useRef([]);
@@ -123,7 +134,14 @@ const Skills = () => {
             </div>
         )
         // Set the JSX to state and show popup
-        setPopUpContent(popUpContent);
+        setPopUpContent({
+            image:allProject.edges[id].node.featuredImg.childImageSharp.fluid,
+            link:`/projects/${allProject.edges[id].node.slug}`,
+            description: allProject.edges[id].description,
+            title: allProject.edges[id].node.title,
+            tags: allProject.edges[id].node.tags,
+            device_image: allProject.edges[id].device_image
+        });
         setPopUpIsActive(true);
     }
 
@@ -185,11 +203,19 @@ const Skills = () => {
             </Container>
 
 
-            <PopUp onChange={onPopUpChange} isActive={popUpIsActive}>
-                {
-                    popUpContent
-                }
-            </PopUp>
+            <PopUp
+                onChange={onPopUpChange}
+                isActive={popUpIsActive}
+                image={popUpContent.image}
+                title={popUpContent.title}
+                description={popUpContent.title}
+                device_image={popUpContent.title}
+                tags={popUpContent.title}
+                link={popUpContent.title}
+
+
+            />
+
         </div>
     );
 };

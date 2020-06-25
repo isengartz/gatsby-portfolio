@@ -15,7 +15,9 @@
     form {
       width: 100%;
       padding: 6rem;
-
+      @include media-q(phone) {
+        padding: 1.25rem;
+      }
 
     }
 
@@ -34,7 +36,7 @@
     }
 
     input, textarea {
-      width: 100%;
+      width: 90%;
       font-family: inherit;
       font-size: 1.5rem;
       padding: 2.5rem 2rem;
@@ -42,9 +44,13 @@
       border-color: transparent;
       border-bottom: 3px solid transparent;
       color: $color-white;
+      margin: 0 auto;
 
+      @include media-q(phone) {
+        padding: 1rem 2rem;
+      }
       &::placeholder, &::-webkit-input-placeholder {
-        color: $color-light-black;
+        color: $color-white;
       }
 
       &:placeholder-shown + label {
@@ -76,6 +82,9 @@
     width: 100%;
     height: 100%;
     padding: 6rem;
+    @include media-q(phone) {
+      display:none;
+    }
     .Copyrights {
       position: absolute;
       bottom: 2rem;

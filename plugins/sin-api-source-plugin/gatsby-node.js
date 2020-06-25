@@ -36,6 +36,13 @@ exports.sourceNodes = async ({actions, createNodeId, createContentDigest, getCac
                 description: `${project.description}`,
                 image: `${project.image}`,
                 device_image: `${project.device_image}`,
+                slug: `${project.slug}`,
+                tags: project.tags.map(tag => {
+                    return {
+                        id: tag.id,
+                        title: tag.title
+                    }
+                }),
                 parent: null,
                 children: [],
                 internal: {
