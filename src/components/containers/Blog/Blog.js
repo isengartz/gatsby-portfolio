@@ -34,7 +34,7 @@ const BlogSection = () => {
             }
         }
     `)
-    console.debug(allFile);
+
 
     // subscribe the observer
     useEffect(() => {
@@ -65,21 +65,21 @@ const BlogSection = () => {
 
 
     // If element is visible start observing
-    // useEffect(() => {
-    //     // if it hasn't run already once. Subscribe the observer
-    //     if (shouldRender) {
-    //         const observer = visibleObserver.current;
-    //         if (isVisible) {
-    //             observer.observe(isVisible);
-    //         }
-    //         return () => {
-    //             if (isVisible) {
-    //                 observer.unobserve(isVisible);
-    //             }
-    //         };
-    //     }
-    //
-    // }, [isVisible]);
+    useEffect(() => {
+        // if it hasn't run already once. Subscribe the observer
+        if (shouldRender) {
+            const observer = visibleObserver.current;
+            if (isVisible) {
+                observer.observe(isVisible);
+            }
+            return () => {
+                if (isVisible) {
+                    observer.unobserve(isVisible);
+                }
+            };
+        }
+
+    }, [isVisible]);
 
 
     useEffect(() => {
