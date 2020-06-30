@@ -12,7 +12,7 @@ import SvgHeader from "../components/layout/SvgHeader/SvgHeader"
 import svgImg from "../images/svg/footer.svg"
 import styles from "../assets/styles/layout.module.scss"
 import Gdpr from "../components/Gdpr/gdpr";
-const FooterSvgLoadable = loadable(() => import('../components/layout/SvgFooter/SvgFooter'));
+// const FooterSvgLoadable = loadable(() => import('../components/layout/SvgFooter/SvgFooter'));
 // const HeaderSvgLoadable = loadable(() => import('../components/layout/SvgHeader/SvgHeader'));
 const IndexPage = ({isDarkMode, dispatch, data}) => {
 
@@ -48,9 +48,9 @@ const IndexPage = ({isDarkMode, dispatch, data}) => {
 
             <footer>
                 <div className={styles.footerContainer}>
-                    <FooterSvgLoadable/>
+                    {/*<FooterSvgLoadable/>*/}
                     {/*<div style={{height:'100vh',backgroundImage:`url(${svgImg})`,backgroundPosition:'center',backgroundSize:'cover'}}></div>*/}
-                    <ContactForm/>
+                    {/*<ContactForm/>*/}
                 </div>
 
             </footer>

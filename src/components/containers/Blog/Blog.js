@@ -6,7 +6,9 @@ import Col from "react-bootstrap/Col";
 import GlitchClip from 'react-glitch-effect/core/Clip';
 import GlitchText from 'react-glitch-effect/core/Text';
 import {TimelineMax, Power2} from "gsap/dist/gsap";
-
+import {useStaticQuery, graphql} from "gatsby"
+import BlogItem from "../../../components/BlogItem/blogItem"
+import EmptySpace from "../../typography/EmptySpace/emptySpace";
 const BlogSection = () => {
     const [shouldRender, setShouldRender] = useState(true)
     const [isVisible, setIsVisible] = useState(null);
@@ -17,11 +19,28 @@ const BlogSection = () => {
     const visibleObserver = useRef(null);
     let blogContainer = useRef(null);
 
+    const {allFile} = useStaticQuery(graphql`
+        query blogImages {
+            allFile(filter: {relativeDirectory: {eq: "blog"}}) {
+                edges {
+                    node {
+                        childImageSharp {
+                            fluid {
+                              ...GatsbyImageSharpFluid_withWebp_noBase64
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    `)
+    console.debug(allFile);
+
     // subscribe the observer
     useEffect(() => {
         // Dont wanna run it every time and blaze your balls
         // So if it already rune once dont render it again
-
+        localStorage.removeItem('blogHaveRendered');
         if (!localStorage.getItem('blogHaveRendered')) {
             // Callback function for observer
             const callback = (entries, obs) => {
@@ -43,22 +62,24 @@ const BlogSection = () => {
 
     }, [])
 
-    // If element is visible start observing
-    useEffect(() => {
-        // if it hasn't run already once. Subscribe the observer
-        if (shouldRender) {
-            const observer = visibleObserver.current;
-            if (isVisible) {
-                observer.observe(isVisible);
-            }
-            return () => {
-                if (isVisible) {
-                    observer.unobserve(isVisible);
-                }
-            };
-        }
 
-    }, [isVisible]);
+
+    // If element is visible start observing
+    // useEffect(() => {
+    //     // if it hasn't run already once. Subscribe the observer
+    //     if (shouldRender) {
+    //         const observer = visibleObserver.current;
+    //         if (isVisible) {
+    //             observer.observe(isVisible);
+    //         }
+    //         return () => {
+    //             if (isVisible) {
+    //                 observer.unobserve(isVisible);
+    //             }
+    //         };
+    //     }
+    //
+    // }, [isVisible]);
 
 
     useEffect(() => {
@@ -97,26 +118,49 @@ const BlogSection = () => {
         <Fragment>
             {
                 shouldRender ? <GlitchClip disabled={glitchIsDisabled}>
-                    <Container ref={el => (blogContainer = el)} className={styles.BlogContainer} id="blog" fluid>
-                        <Row>
-                            <Col md={12}>
-                                <h2 ref={setIsVisible} className="text-center customHeadings">Blog</h2>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col md={12}>
-                                <GlitchText disabled={glitchIsDisabled} component="h4" className="text-center">
-                                    Did you actually think I Blog? LOL xD
-                                </GlitchText>
-                                <GlitchText color1="rgba(77, 171, 245, .5)" color2="rgba(245, 0, 87, .3)"
-                                            disabled={glitchIsDisabled} component="h4" className="text-center">
-                                    Just Wait For it
-                                </GlitchText>
+                    <div ref={el => (blogContainer = el)} className={styles.BlogContainer} id="blog">
+                        <Container >
+                            <Row>
+                                <Col md={12}>
+                                    <h2 ref={setIsVisible} className="text-center customHeadings">Blog</h2>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col md={12}>
+                                    <GlitchText disabled={glitchIsDisabled} component="h4" className="text-center">
+                                        Did you actually think I Blog? LOL xD
+                                    </GlitchText>
+                                    <GlitchText color1="rgba(77, 171, 245, .5)" color2="rgba(245, 0, 87, .3)"
+                                                disabled={glitchIsDisabled} component="h4" className="text-center">
+                                        Just Wait For it
+                                    </GlitchText>
 
-                                <p className="text-center">{glitchIsDisabled ? seconds : null}</p>
-                            </Col>
-                        </Row>
-                    </Container>
+                                    <p className="text-center">{glitchIsDisabled ? seconds : null}</p>
+                                </Col>
+                            </Row>
+                            <EmptySpace space={30}/>
+                            <Row className="mt-5">
+                                <Col>
+                                    <BlogItem description="asdasddsa asdasdasdasd asdasdasdasdasd"
+                                              title="Fake Blog Item"
+                                              image={allFile.edges[0].node.childImageSharp.fluid} />
+                                </Col>
+                                <Col>
+                                    <BlogItem description="asdasddsa asdasdasdasd asdasdasdasdasd"
+                                              title="Fake Blog Item"
+                                              image={allFile.edges[1].node.childImageSharp.fluid} />
+                                </Col>
+                                <Col>
+                                    <BlogItem description="asdasddsa asdasdasdasd asdasdasdasdasd"
+                                              title="Fake Blog Item"
+                                              image={allFile.edges[0].node.childImageSharp.fluid} />
+                                </Col>
+                            </Row>
+                        </Container>
+
+
+                    </div>
+
                 </GlitchClip> : null
             }
 

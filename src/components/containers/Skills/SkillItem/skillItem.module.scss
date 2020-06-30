@@ -2,6 +2,18 @@
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+
+  
+  &:hover {
+    .Text__Title {
+      -webkit-transform: skew(-20deg);
+      -moz-transform: skew(-20deg);
+      -ms-transform: skew(-20deg);
+      -o-transform: skew(-20deg);
+      transform: skew(-20deg);
+    }
+
+  }
   
   .ContentContainer {
     -webkit-border-radius: 5px;
@@ -64,6 +76,11 @@
 
     .TextContainer__Text {
       .Text__Title {
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        -ms-transition: all .5s;
+        -o-transition: all .5s;
+        transition: all .5s;
         font-family: $headings-font;
         color: $color-white;
         font-size: $medium-font;

@@ -11,7 +11,7 @@ const SkillItem = React.forwardRef((props, ref) => {
         dataId,
         title
     } = props;
-    console.debug(props);
+
     return (
         <Col data-id={dataId} onClick={onClick} className={styles.Wrapper} ref={ref}>
             <div className={styles.ContentContainer}>
