@@ -1,14 +1,17 @@
-import React, {useEffect, useState, useRef, Fragment} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import styles from "./Blog.module.scss"
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import GlitchClip from 'react-glitch-effect/core/Clip';
 import GlitchText from 'react-glitch-effect/core/Text';
-import {TimelineMax, Power2} from "gsap/dist/gsap";
+import {TimelineMax, Power2, Cubic} from "gsap/dist/gsap";
+import gsap from 'gsap';
 import {useStaticQuery, graphql} from "gatsby"
 import BlogItem from "../../../components/BlogItem/blogItem"
 import EmptySpace from "../../typography/EmptySpace/emptySpace";
+
+
 const BlogSection = () => {
     const [shouldRender, setShouldRender] = useState(true)
     const [isVisible, setIsVisible] = useState(null);
@@ -18,6 +21,7 @@ const BlogSection = () => {
     const [glitchIsDisabled, setGlitchIsDisabled] = useState(true);
     const visibleObserver = useRef(null);
     let blogContainer = useRef(null);
+    const items = useRef([]);
 
     const {allFile} = useStaticQuery(graphql`
         query blogImages {
@@ -26,7 +30,7 @@ const BlogSection = () => {
                     node {
                         childImageSharp {
                             fluid {
-                              ...GatsbyImageSharpFluid_withWebp_noBase64
+                                ...GatsbyImageSharpFluid_withWebp_noBase64
                             }
                         }
                     }
@@ -49,7 +53,7 @@ const BlogSection = () => {
                 if (firstEntry.isIntersecting) {
                     // we need to track it for 1 time so we disconnect it after
                     obs.disconnect();
-                    setStarted(true);
+                    // setStarted(true);
                     // startGlitchingAndFading();
                 }
             };
@@ -61,7 +65,6 @@ const BlogSection = () => {
 
 
     }, [])
-
 
 
     // If element is visible start observing
@@ -103,7 +106,12 @@ const BlogSection = () => {
         if (animationStart) {
             const tl = new TimelineMax();
             tl.to(blogContainer, 10, {autoAlpha: 0, ease: Power2.easeOut})
-                .to(blogContainer, 7, {height: '0px', display: "none", ease: Power2.easeOut,onComplete:localStorage.setItem('blogHaveRendered','true')}, "-=5")
+                .to(blogContainer, 7, {
+                    height: '0px',
+                    display: "none",
+                    ease: Power2.easeOut,
+                    onComplete: localStorage.setItem('blogHaveRendered', 'true')
+                }, "-=5")
             // when the animation finished set the localStorage so it wont run again after a page reload
         }
     }, [animationStart]);
@@ -114,12 +122,31 @@ const BlogSection = () => {
         setAnimationStart(true);
     }
 
+
+    // Animate BlogItem
+    const handleBlogItemClick = (event, ref) => {
+
+        // Wanted to animate it outside of Window
+        // It works but the effect sucks
+        // Keep it just in case
+
+      // const windowWidth = window.innerWidth ;
+      // const itemPos = ref.getBoundingClientRect();
+      // const scrollTo = itemPos.x < (windowWidth/2) ? windowWidth * -1 : windowWidth;
+        gsap.to(ref, {
+            // x:scrollTo,
+            duration: 3,
+            autoAlpha: 0,
+            rotate:360,
+            scale:0.1
+        })
+    }
     return (
-        <Fragment>
+        <div>
             {
                 shouldRender ? <GlitchClip disabled={glitchIsDisabled}>
                     <div ref={el => (blogContainer = el)} className={styles.BlogContainer} id="blog">
-                        <Container >
+                        <Container>
                             <Row>
                                 <Col md={12}>
                                     <h2 ref={setIsVisible} className="text-center customHeadings">Blog</h2>
@@ -141,19 +168,32 @@ const BlogSection = () => {
                             <EmptySpace space={30}/>
                             <Row className="mt-5">
                                 <Col>
-                                    <BlogItem description="asdasddsa asdasdasdasd asdasdasdasdasd"
+                                    <BlogItem ref={el => {
+                                        items.current[0] = el;
+                                    }}
+                                              onClick={e => handleBlogItemClick(e, items.current[0])}
+                                              description="asdasddsa asdasdasdasd asdasdasdasdasd"
                                               title="Fake Blog Item"
-                                              image={allFile.edges[0].node.childImageSharp.fluid} />
+                                              image={allFile.edges[0].node.childImageSharp.fluid}/>
                                 </Col>
                                 <Col>
-                                    <BlogItem description="asdasddsa asdasdasdasd asdasdasdasdasd"
-                                              title="Fake Blog Item"
-                                              image={allFile.edges[1].node.childImageSharp.fluid} />
+                                    <BlogItem
+                                        ref={el => {
+                                            items.current[1] = el;
+                                        }}
+                                        onClick={e => handleBlogItemClick(e, items.current[1])}
+                                        description="asdasddsa asdasdasdasd asdasdasdasdasd"
+                                        title="Fake Blog Item"
+                                        image={allFile.edges[1].node.childImageSharp.fluid}/>
                                 </Col>
                                 <Col>
-                                    <BlogItem description="asdasddsa asdasdasdasd asdasdasdasdasd"
+                                    <BlogItem ref={el => {
+                                        items.current[2] = el;
+                                    }}
+                                              onClick={e => handleBlogItemClick(e, items.current[2])}
+                                              description="asdasddsa asdasdasdasd asdasdasdasdasd"
                                               title="Fake Blog Item"
-                                              image={allFile.edges[0].node.childImageSharp.fluid} />
+                                              image={allFile.edges[0].node.childImageSharp.fluid}/>
                                 </Col>
                             </Row>
                         </Container>
@@ -164,7 +204,7 @@ const BlogSection = () => {
                 </GlitchClip> : null
             }
 
-        </Fragment>
+        </div>
 
 
     )

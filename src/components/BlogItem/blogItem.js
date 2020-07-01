@@ -4,11 +4,11 @@ import Img from "gatsby-image";
 import PropTypes from 'prop-types';
 
 
-const blogItem = (props) => {
+const blogItem = React.forwardRef((props,ref) => {
 
-    const {image, title, description} = props;
+    const {image, title, description,onClick} = props;
     return (
-        <div className={styles.BlogItemWrapper}>
+        <div ref={ref} onClick={onClick} className={styles.BlogItemWrapper}>
             <div className={styles.BlogItemImageWrapper}>
                 <div className={styles.BlogItemImage}>
                     {
@@ -28,10 +28,11 @@ const blogItem = (props) => {
 
         </div>
     );
-};
+});
 blogItem.propTypes = {
     image: PropTypes.object,
     description: PropTypes.string,
-    title: PropTypes.string
+    title: PropTypes.string,
+    onClick: PropTypes.func
 }
 export default blogItem;
