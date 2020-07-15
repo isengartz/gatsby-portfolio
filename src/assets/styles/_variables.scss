@@ -4,7 +4,7 @@ $color-black: #000;
 $body-color: #1d1d1d;
 $light-color-white: #fff;
 $primary-color: #d36135;
-$primary-btn-color: #B95;
+$primary-btn-color: #b95;
 $light-icon-color: #fff;
 
 // LOL COLORS
@@ -15,7 +15,6 @@ $light-color-white: #d8e9ef;
 $primary-color: #e85a71;
 $primary-btn-color: #e85a71;
 $light-icon-color: #fff;
-
 
 // COLOR HUNT
 
@@ -34,10 +33,10 @@ $color-red: red;
 
 $timeline-bg-color: rgba(233, 33, 99, 1);
 $timeline-box-shadow-px: 0px 0px 0px 3px;
-$timeline-box-shadow-color: rgba(233, 33, 99, .2);
+$timeline-box-shadow-color: rgba(233, 33, 99, 0.2);
 
-$default-elements-box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
-$btn-default-box-shadow: 0 0.5rem 1rem rgba($color-black, .2);
+$default-elements-box-shadow: 0 1.5rem 4rem rgba($color-black, 0.2);
+$btn-default-box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
 
 // Fonts
 
@@ -53,6 +52,10 @@ $menu-font: 2rem;
 $normal-font: 1.6rem;
 
 $big-font-mob: 2rem;
-$medium-font-mob:1.25rem;
+$medium-font-mob: 1.25rem;
 
+// Font Weights
 
+$font-weight-base: 400;
+$font-weight-bold: 600;
+$font-weight-bolder: 800;

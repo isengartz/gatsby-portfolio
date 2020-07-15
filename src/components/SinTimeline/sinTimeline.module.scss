@@ -1,4 +1,4 @@
-@import "../../assets/styles/variables";
+@import '../../assets/styles/variables';
 .Timeline {
   position: relative;
   margin: 50px auto;
@@ -29,8 +29,7 @@
     padding: 5px;
     margin: 5px;
     display: block;
-    color:$light-color-white;
-
+    color: $light-color-white;
   }
 }
 .TimelineContainer {
@@ -49,7 +48,7 @@
   }
 
   p {
-    margin: 10px 0 0 0 ;
+    margin: 10px 0 0 0;
     padding: 0;
   }
 }
@@ -79,7 +78,6 @@
     -webkit-box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
     -moz-box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
     box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
-
   }
   .TimelineDate {
     position: absolute;
@@ -92,7 +90,7 @@
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
-    -webkit-box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color ;
+    -webkit-box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
     -moz-box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
     box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
     h4 {
@@ -100,7 +98,6 @@
       padding: 0;
     }
   }
-
 }
 .TimelineOrientationRight {
   float: right;
@@ -128,7 +125,6 @@
     -webkit-box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
     -moz-box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
     box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
-
   }
   .TimelineDate {
     position: absolute;
@@ -141,7 +137,7 @@
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
-    -webkit-box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color ;
+    -webkit-box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
     -moz-box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
     box-shadow: $timeline-box-shadow-px $timeline-box-shadow-color;
     h4 {
@@ -163,36 +159,36 @@
     &:before {
       left: 20px;
     }
-      ul {
-        li {
-           &:nth-child(even),&:nth-child(odd) {
-
-           }
-        }
-
-        .TimelineOrientationLeft, .TimelineOrientationRight {
-          width: 100%;
-          text-align: left;
-          padding-left: 50px;
-          padding-bottom: 50px;
-          .Icon {
-            position: absolute;
-            top: -15px;
-            width: 25px;
-            height: 25px;
-            left: 11.5px;
-          }
-          &:before {
-            top: -18px;
-            left: 6px;
-          }
-          .TimelineDate {
-            top: -30px;
-            left: 50px;
-            right: inherit;
-          }
+    ul {
+      li {
+        &:nth-child(even),
+        &:nth-child(odd) {
         }
       }
 
+      .TimelineOrientationLeft,
+      .TimelineOrientationRight {
+        width: 100%;
+        text-align: left;
+        padding-left: 50px;
+        padding-bottom: 50px;
+        .Icon {
+          position: absolute;
+          top: -15px;
+          width: 25px;
+          height: 25px;
+          left: 11.5px;
+        }
+        &:before {
+          top: -18px;
+          left: 6px;
+        }
+        .TimelineDate {
+          top: -30px;
+          left: 50px;
+          right: inherit;
+        }
+      }
+    }
   }
 }

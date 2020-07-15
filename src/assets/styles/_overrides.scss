@@ -1,8 +1,19 @@
-.container,.container-fluid {
+.container,
+.container-fluid {
   &.home-container {
     margin-left: 6rem;
     height: 100vh;
   }
+}
+
+// Timeline
+
+.vertical-timeline-element-title {
+  font-weight: $font-weight-bolder;
+}
+.vertical-timeline-element-subtitle {
+  font-weight: $font-weight-bold;
+  font-style: italic;
 }
 .vertical-timeline-element-content {
   .timeline-paragraph {
@@ -24,15 +35,13 @@
 }
 
 .bottom-tags {
-bottom:5%;
+  bottom: 5%;
 }
 .timeline-paragraph {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
 }
 
-
 .container {
-
   @media screen and (min-width: 1500px) {
     max-width: 1400px;
   }
@@ -42,7 +51,6 @@ bottom:5%;
   //@media screen and (min-width: 1900px) {
   //  max-width: 1700px;
   //}
-
 }
 
 //.date {
@@ -50,7 +58,6 @@ bottom:5%;
 //  font-size: 14px;
 //  text-transform: uppercase;
 //}
-
 
 .card-list {
   display: flex;
@@ -141,7 +148,6 @@ bottom:5%;
   left: 0;
   max-width: 300px;
 }
-
 
 .category {
   color: #fff;

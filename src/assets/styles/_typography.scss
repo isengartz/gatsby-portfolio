@@ -32,17 +32,19 @@ p {
   line-height: 2.5rem;
 }
 
-.btn-sin-normal,.btn-sin-normal:link,.btn-sin-normal:visited {
+.btn-sin-normal,
+.btn-sin-normal:link,
+.btn-sin-normal:visited {
   text-transform: uppercase;
   text-decoration: none;
   padding: 1.5rem 4rem;
   display: inline-block;
   border-radius: 10rem;
-  -webkit-transition: all .2s;
-  transition: all .2s;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
   position: relative;
   font-size: $normal-font;
-  font-family:$button-font;
+  font-family: $button-font;
 
   border: none;
   cursor: pointer;
@@ -56,22 +58,24 @@ p {
   background-color: $primary-color;
 }
 // for click to action
-.btn-sin,.btn-sin:link,.btn-sin:visited {
+.btn-sin,
+.btn-sin:link,
+.btn-sin:visited {
   text-transform: uppercase;
   text-decoration: none;
   padding: 1.5rem 4rem;
   display: inline-block;
   border-radius: 10rem;
-  -webkit-transition: all .2s;
-  transition: all .2s;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
   position: relative;
   font-size: $normal-font;
-  font-family:$button-font;
-  letter-spacing: .5rem;
+  font-family: $button-font;
+  letter-spacing: 0.5rem;
   border: none;
   cursor: pointer;
   &::after {
-    content: "";
+    content: '';
     display: inline-block;
     height: 100%;
     width: 100%;
@@ -80,11 +84,11 @@ p {
     top: 0;
     left: 0;
     z-index: -1;
-    -webkit-transition: all .4s;
-    -moz-transition: all .4s;
-    -ms-transition: all .4s;
-    -o-transition: all .4s;
-    transition: all .4s;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
   }
   &:hover {
     outline: none;

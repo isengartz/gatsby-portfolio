@@ -1,8 +1,29 @@
 .BlogContainer {
   height: 100vh;
   background: #4d4d4e;
-
 }
 h4 {
-  color:#fff;
+  color: #fff;
+}
+.CountDownTimer {
+  font-size: 1.6rem;
+  color: $color-white;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+
+  &.CountDownThree {
+    font-size: 2rem;
+    color: $color-red;
+  }
+  &.CountDownTwo {
+    font-size: 2rem;
+    color: $color-red;
+  }
+  &.CountDownOne {
+    font-size: 2.2rem;
+    color: $color-red;
+  }
 }

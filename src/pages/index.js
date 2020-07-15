@@ -1,71 +1,62 @@
-import React from "react"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import AboutPage from "../components/containers/AboutPage/AboutPage";
-import ExpPage from "../components/containers/ExpPage/ExpPage";
-import ProjectsGrid from "../components/containers/Projects/ProjectsGrid";
-import BlogSection from "../components/containers/Blog/Blog";
-import loadable from '@loadable/component'
-import ContactForm from "../components/ContactForm/ContactForm";
-import Skills from "../components/containers/Skills/Skills";
-import SvgHeader from "../components/layout/SvgHeader/SvgHeader"
-import svgImg from "../images/svg/footer.svg"
-import styles from "../assets/styles/layout.module.scss"
-import Gdpr from "../components/Gdpr/gdpr";
+import React from 'react';
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import AboutPage from '../components/containers/AboutPage/AboutPage';
+import ExpPage from '../components/containers/ExpPage/ExpPage';
+import ProjectsGrid from '../components/containers/Projects/ProjectsGrid';
+import BlogSection from '../components/containers/Blog/Blog';
+import loadable from '@loadable/component';
+import ContactForm from '../components/ContactForm/ContactForm';
+import Skills from '../components/containers/Skills/Skills';
+import SvgHeader from '../components/layout/SvgHeader/SvgHeader';
+import svgImg from '../images/svg/footer.svg';
+import styles from '../assets/styles/layout.module.scss';
+import Gdpr from '../components/Gdpr/gdpr';
 // const FooterSvgLoadable = loadable(() => import('../components/layout/SvgFooter/SvgFooter'));
 // const HeaderSvgLoadable = loadable(() => import('../components/layout/SvgHeader/SvgHeader'));
 const IndexPage = () => {
+  return (
+    <Layout>
+      <SEO
+        title="Sin Gatsby Portfolio"
+        keywords={[`gatsby`, `application`, `react`]}
+      />
 
-    return (
-        <Layout>
+      <section id="home">
+        <SvgHeader />
+      </section>
 
-            <SEO title="Sin Gatsby Portfolio" keywords={[`gatsby`, `application`, `react`]}/>
+      {/*<HeaderSvgLoadable/>*/}
 
-            <section id="home">
-                <SvgHeader/>
-            </section>
+      {/*<div style={{height:'100vh',background:'red'}}></div>*/}
 
-            {/*<HeaderSvgLoadable/>*/}
+      <AboutPage />
 
+      <ExpPage />
+      <section>{/*<Skills/>*/}</section>
 
-            {/*<div style={{height:'100vh',background:'red'}}></div>*/}
+      <ProjectsGrid />
 
+      <BlogSection />
 
-            <AboutPage/>
+      <footer>
+        <div className={styles.footerContainer}>
+          {/*<FooterSvgLoadable/>*/}
+          {/*<div style={{height:'100vh',backgroundImage:`url(${svgImg})`,backgroundPosition:'center',backgroundSize:'cover'}}></div>*/}
+          {/*<ContactForm/>*/}
+        </div>
+      </footer>
 
-            <ExpPage/>
-            <section>
+      <Gdpr
+        agreeText="I Agree"
+        declineText="I Agree ( in red )"
+        gdprText="This website DOESNT use a single cookie xD"
+        bothBtnClasses="btn-sin-normal"
+        agreeBtnClasses="btn-sin-normal__primary"
+        declineBtnClasses="btn-sin-normal__red"
+      />
+    </Layout>
+  );
+};
 
-                <Skills/>
-            </section>
-
-
-
-            {/*<ProjectsGrid/>*/}
-
-            <BlogSection/>
-
-
-            <footer>
-                <div className={styles.footerContainer}>
-                    {/*<FooterSvgLoadable/>*/}
-                    {/*<div style={{height:'100vh',backgroundImage:`url(${svgImg})`,backgroundPosition:'center',backgroundSize:'cover'}}></div>*/}
-                    {/*<ContactForm/>*/}
-                </div>
-
-            </footer>
-
-            <Gdpr
-                agreeText="I Agree"
-                declineText="I Agree ( in red )"
-                gdprText="This website DOESNT use a single cookie xD"
-                bothBtnClasses="btn-sin-normal"
-                agreeBtnClasses="btn-sin-normal__primary"
-                declineBtnClasses="btn-sin-normal__red"
-            />
-
-        </Layout>
-    )
-}
-
-export default IndexPage
+export default IndexPage;

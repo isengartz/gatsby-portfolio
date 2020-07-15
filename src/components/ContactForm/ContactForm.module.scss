@@ -3,12 +3,11 @@
   width: 100%;
 
   .FormContent {
-
     background-image: linear-gradient(
-                    105deg,
-                    rgba($color-white, .2) 0%,
-                    rgba($color-white, .2) 50%,
-                    rgba($color-white, .5) 50%
+      105deg,
+      rgba($color-white, 0.2) 0%,
+      rgba($color-white, 0.2) 50%,
+      rgba($color-white, 0.5) 50%
     );
     @include default-bShadow-w-bRadius;
 
@@ -18,14 +17,13 @@
       @include media-q(phone) {
         padding: 1.25rem;
       }
-
     }
 
     label {
       font-size: 1.2rem;
       font-weight: 700;
       margin-left: 2rem;
-      margin-top: .7rem;
+      margin-top: 0.7rem;
       display: block;
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
@@ -35,12 +33,13 @@
       color: $light-color-white;
     }
 
-    input, textarea {
+    input,
+    textarea {
       width: 90%;
       font-family: inherit;
       font-size: 1.5rem;
       padding: 2.5rem 2rem;
-      background-color: rgba($color-white, .2);
+      background-color: rgba($color-white, 0.2);
       border-color: transparent;
       border-bottom: 3px solid transparent;
       color: $color-white;
@@ -49,7 +48,8 @@
       @include media-q(phone) {
         padding: 1rem 2rem;
       }
-      &::placeholder, &::-webkit-input-placeholder {
+      &::placeholder,
+      &::-webkit-input-placeholder {
         color: $color-white;
       }
 
@@ -83,7 +83,7 @@
     height: 100%;
     padding: 6rem;
     @include media-q(phone) {
-      display:none;
+      display: none;
     }
     .Copyrights {
       position: absolute;

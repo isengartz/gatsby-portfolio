@@ -51,7 +51,7 @@ module.exports = {
     // ...
     require.resolve(`../my-plugin`),
   ],
-}
+};
 ```
 
 The line `require.resolve('../my-plugin')` is what accesses the plugin based on its filepath on your computer, and adds it as a plugin when Gatsby runs.

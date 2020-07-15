@@ -3,7 +3,6 @@
   -moz-border-radius: 5px;
   border-radius: 5px;
 
-  
   &:hover {
     .Text__Title {
       -webkit-transform: skew(-20deg);
@@ -12,9 +11,8 @@
       -o-transform: skew(-20deg);
       transform: skew(-20deg);
     }
-
   }
-  
+
   .ContentContainer {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -28,7 +26,7 @@
     &:hover {
       cursor: pointer;
       .ContentOverlay {
-        background-color: rgba(0,0,0,0.5);
+        background-color: rgba(0, 0, 0, 0.5);
       }
       .Image {
         filter: blur(2px) hue-rotate(90deg);
@@ -45,14 +43,13 @@
       height: 100%;
       top: 0;
       left: 0;
-      background-color: rgba(0,0,0,0.2);
+      background-color: rgba(0, 0, 0, 0.2);
       z-index: 2;
       -webkit-transition: all 0.5s;
       -moz-transition: all 0.5s;
       -ms-transition: all 0.5s;
       -o-transition: all 0.5s;
       transition: all 0.5s;
-
     }
     .ImageContainer {
       overflow: hidden;
@@ -62,7 +59,6 @@
         -ms-transition: all 0.5s;
         -o-transition: all 0.5s;
         transition: all 0.5s;
-
       }
     }
 
@@ -76,16 +72,15 @@
 
     .TextContainer__Text {
       .Text__Title {
-        -webkit-transition: all .5s;
-        -moz-transition: all .5s;
-        -ms-transition: all .5s;
-        -o-transition: all .5s;
-        transition: all .5s;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
         font-family: $headings-font;
         color: $color-white;
         font-size: $medium-font;
       }
     }
   }
-
 }

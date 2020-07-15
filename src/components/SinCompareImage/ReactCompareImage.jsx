@@ -52,7 +52,6 @@ const defaultProps = {
   sliderLineWidth: 2,
   sliderPositionPercentage: 0.5,
   vertical: false,
-  
 };
 
 function ReactCompareImage(props) {
@@ -79,14 +78,13 @@ function ReactCompareImage(props) {
     sliderLineWidth,
     sliderPositionPercentage,
     vertical,
-
   } = props;
 
   const horizontal = !vertical;
 
   // 0 to 1
   const [sliderPosition, setSliderPosition] = useState(
-    sliderPositionPercentage,
+    sliderPositionPercentage
   );
   const [containerWidth, setContainerWidth] = useState(0);
   const [containerHeight, setContainerHeight] = useState(0);
@@ -148,7 +146,7 @@ function ReactCompareImage(props) {
   const allImagesLoaded = rightImgLoaded && leftImgLoaded;
 
   useEffect(() => {
-    const handleSliding = event => {
+    const handleSliding = (event) => {
       const e = event || window.event;
 
       // Calc cursor position from the:
@@ -193,7 +191,7 @@ function ReactCompareImage(props) {
       }
     };
 
-    const startSliding = e => {
+    const startSliding = (e) => {
       setIsSliding(true);
 
       // Prevent default behavior other than mobile scrolling

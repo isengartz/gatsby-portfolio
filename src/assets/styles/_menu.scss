@@ -67,13 +67,13 @@ Note: Beware of modifying this element as it can break the animations - you shou
         padding: 1.5rem;
         display: block;
         text-decoration: none;
-        -webkit-transition:all 0.5s;
-        -moz-transition:all 0.5s;
-        -ms-transition:all 0.5s;
-        -o-transition:all 0.5s;
-        transition:all 0.5s;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
         color: $light-color-white;
-        @include item-gradient-hover-base(transparent,$light-color-white);
+        @include item-gradient-hover-base(transparent, $light-color-white);
 
         &:hover {
           color: $primary-color;
@@ -85,7 +85,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
       }
     }
   }
-
 }
 
 /* Styling of overlay */
