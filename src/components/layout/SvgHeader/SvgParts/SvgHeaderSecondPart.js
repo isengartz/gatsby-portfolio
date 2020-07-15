@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 const SvgHeaderSecondPart = () => {
   return (
-    <Fragment>
+    <>
       <g id="Layer_8">
         <linearGradient
           id="SVGID_2_"
@@ -44,7 +44,7 @@ const SvgHeaderSecondPart = () => {
 		C603.491,462.486,688.098,402.46,720,430.854v73.145H240.793H0.514L0,449.575C0,449.575,12.494,443.458,31.477,435.701z"
         />
       </g>
-    </Fragment>
+    </>
   );
 };
 

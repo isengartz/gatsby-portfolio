@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Col from 'react-bootstrap/Col';
-import styles from './skillItem.module.scss';
 import Img from 'gatsby-image';
+import styles from './skillItem.module.scss';
 
+// eslint-disable-next-line react/display-name
 const SkillItem = React.forwardRef((props, ref) => {
   const { image, onClick, dataId, title } = props;
 
@@ -30,6 +31,7 @@ const SkillItem = React.forwardRef((props, ref) => {
 });
 
 SkillItem.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types,react/require-default-props
   image: PropTypes.object,
   onClick: PropTypes.func.isRequired,
   dataId: PropTypes.number.isRequired,

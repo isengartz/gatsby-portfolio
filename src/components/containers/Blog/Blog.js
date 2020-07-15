@@ -1,14 +1,16 @@
 import React, { useEffect, useState, useRef } from 'react';
-import styles from './Blog.module.scss';
+import { useStaticQuery, graphql } from 'gatsby';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import GlitchClip from 'react-glitch-effect/core/Clip';
 import GlitchText from 'react-glitch-effect/core/Text';
-import { TimelineMax, Power2, Cubic } from 'gsap/dist/gsap';
+// eslint-disable-next-line import/no-duplicates
 import gsap from 'gsap';
-import { useStaticQuery, graphql } from 'gatsby';
-import BlogItem from '../../../components/BlogItem/blogItem';
+// eslint-disable-next-line import/no-duplicates
+import { TimelineMax, Power2 } from 'gsap/dist/gsap';
+import BlogItem from '../../BlogItem/blogItem';
+import styles from './Blog.module.scss';
 import EmptySpace from '../../typography/EmptySpace/emptySpace';
 
 const BlogSection = () => {
@@ -51,7 +53,7 @@ const BlogSection = () => {
     if (!localStorage.getItem('blogHaveRendered')) {
       // Callback function for observer
       const callback = (entries, obs) => {
-        let firstEntry = entries[0];
+        const firstEntry = entries[0];
         // if the section is visible
         if (firstEntry.isIntersecting) {
           // we need to track it for 1 time so we disconnect it after
@@ -120,8 +122,8 @@ const BlogSection = () => {
   }, [animationStart]);
 
   // Change classes based on the seconds remaining
-  const secondsHandler = (seconds) => {
-    switch (seconds) {
+  const secondsHandler = (secs) => {
+    switch (secs) {
       case 3:
         setCountDownRefClasses([...countDownRefClasses, styles.CountDownThree]);
         break;
@@ -132,7 +134,7 @@ const BlogSection = () => {
         setCountDownRefClasses([...countDownRefClasses, styles.CountDownOne]);
         break;
       default:
-        return;
+        break;
     }
   };
 
@@ -164,7 +166,9 @@ const BlogSection = () => {
       {shouldRender ? (
         <GlitchClip disabled={glitchIsDisabled}>
           <div
-            ref={(el) => (blogContainer = el)}
+            ref={(el) => {
+              blogContainer = el;
+            }}
             className={styles.BlogContainer}
             id="blog"
           >
@@ -196,7 +200,10 @@ const BlogSection = () => {
                   </GlitchText>
 
                   <p
-                    ref={(el) => (countDownRef = el)}
+                    ref={(el) => {
+                      // eslint-disable-next-line no-unused-vars
+                      countDownRef = el;
+                    }}
                     className={countDownRefClasses.join(' ')}
                   >
                     {glitchIsDisabled ? seconds : null}

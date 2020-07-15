@@ -1,7 +1,13 @@
 import React from 'react';
 import styles from './PrimaryButton.module.scss';
-const PrimaryButton = (props) => {
-  return <button className={styles.Button}>{props.children}</button>;
+
+// eslint-disable-next-line react/prop-types
+const PrimaryButton = ({ children }) => {
+  return (
+    <button type="button" className={styles.Button}>
+      {children}
+    </button>
+  );
 };
 
 export default PrimaryButton;

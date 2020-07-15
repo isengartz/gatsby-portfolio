@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import styles from './popUp.module.scss';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
+import styles from './popUp.module.scss';
 
 const PopUp = (props) => {
   const {

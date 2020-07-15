@@ -2,6 +2,12 @@
   "env": {
     "es6": true
   },
+  "globals": {
+    "localStorage": true,
+    "fetch": true,
+    "IntersectionObserver": true,
+    "window": true
+  },
   "extends": ["airbnb", "plugin:prettier/recommended", "prettier", "plugin:react/recommended"],
   "plugins": ["prettier", "prefer-object-spread","eslint-plugin-import"],
   "parser": "babel-eslint",
@@ -27,6 +33,22 @@
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
     "prefer-destructuring": ["error", { "object": true, "array": false }],
-    "no-unused-vars": ["error", { "argsIgnorePattern": "req|res|next|val" }]
+    "no-unused-vars": ["error", { "argsIgnorePattern": "req|res|next|val" }],
+    "no-use-before-define": ["error", { "variables": false }],
+    "react/display-name": [
+      "error",
+      {
+        "ignoreTranspilerName": false
+      }
+    ],
+
+    "react/prop-types": [
+      "error",
+      {
+        "ignore": [],
+        "customValidators": [],
+        "skipUndeclared": false
+      }
+    ]
   }
 }

@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 const SvgHeaderEnd = () => {
   return (
-    <Fragment>
+    <>
       <g id="Layer_3">
         <g>
           <g>
@@ -1517,7 +1517,7 @@ const SvgHeaderEnd = () => {
           </g>
         </g>
       </g>
-    </Fragment>
+    </>
   );
 };
 

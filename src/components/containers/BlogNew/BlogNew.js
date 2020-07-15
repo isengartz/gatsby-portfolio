@@ -1,15 +1,9 @@
-import React, { useRef, useState, useEffect } from 'react';
-import styles from './BlogNew.module.scss';
+import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+import styles from './BlogNew.module.scss';
 
 const BlogNew = () => {
-  let boxRef = useRef([]);
   let containerRef = useRef(null);
   let triggerRef = useRef(null);
   useEffect(() => {
@@ -43,6 +37,7 @@ const BlogNew = () => {
         <div style={{ height: '25%' }} />
         <div
           ref={(el) => {
+            // eslint-disable-next-line no-unused-vars
             triggerRef = el;
           }}
           className={styles.FullCenter}

@@ -1,18 +1,19 @@
+/* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
-import styles from './sinTimeline.module.scss';
+import moment from 'moment';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/esm/Col';
-import SinTimelineItem from './sinTimelineItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBaby,
   faHiking,
   faUserGraduate,
-  faUserNinja,
   faUserSecret,
 } from '@fortawesome/free-solid-svg-icons';
-import moment from 'moment';
+
+import SinTimelineItem from './sinTimelineItem';
+import styles from './sinTimeline.module.scss';
 
 const sinTimeline = () => {
   return (
@@ -22,11 +23,10 @@ const sinTimeline = () => {
           <ul>
             <SinTimelineItem
               id="1"
-              dateText={
-                '1991 - present (' +
-                moment(new Date()).diff(moment('1991', 'YYYY'), 'years') +
-                ' years)'
-              }
+              dateText={`1991 - present ${moment(new Date()).diff(
+                moment('1991', 'YYYY'),
+                'years'
+              )}  years)`}
               titleText="Born"
               jobTitleText="Larisa Greece"
               orientation="left"
@@ -37,11 +37,11 @@ const sinTimeline = () => {
             />
             <SinTimelineItem
               id="2"
-              dateText={
-                '2009 - 2014 (' +
-                moment('2014', 'YYYY').diff(moment('2009', 'YYYY'), 'years') +
-                ' years)'
-              }
+              dateText={`2009 - 2014 (
+                ${moment('2014', 'YYYY').diff(
+                  moment('2009', 'YYYY'),
+                  'years'
+                )} years)`}
               titleText="Graduation"
               jobTitleText="Computer Science & Telecommunications"
               orientation="right"
@@ -55,11 +55,10 @@ const sinTimeline = () => {
             />
             <SinTimelineItem
               id="3"
-              dateText={
-                '2014 - 2015 (' +
-                moment('2015', 'YYYY').diff(moment('2014', 'YYYY'), 'years') +
-                ' year)'
-              }
+              dateText={`2014 - 2015 (${moment('2015', 'YYYY').diff(
+                moment('2014', 'YYYY'),
+                'years'
+              )} year)`}
               titleText="Exnet"
               jobTitleText="Web Developer"
               orientation="left"
@@ -70,11 +69,10 @@ const sinTimeline = () => {
             />
             <SinTimelineItem
               id="4"
-              dateText={
-                '2015 - present (' +
-                moment(new Date()).diff(moment('2015', 'YYYY'), 'years') +
-                ' years)'
-              }
+              dateText={`2015 - present (${moment(new Date()).diff(
+                moment('2015', 'YYYY'),
+                'years'
+              )} years)`}
               titleText="Spiti360"
               jobTitleText="FullStack Developer"
               orientation="right"

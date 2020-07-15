@@ -1,7 +1,7 @@
 import React from 'react';
 
 const popUpProjectContent = () => {
-  return <div></div>;
+  return <div />;
 };
 
 export default popUpProjectContent;

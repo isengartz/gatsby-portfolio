@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './gdpr.module.scss';
 
@@ -29,19 +29,20 @@ const Gdpr = (props) => {
   }, []);
 
   // On any btn click set localStorage and hide the component
-  const onBtnClick = (e) => {
+  const onBtnClick = () => {
     localStorage.setItem('gdpr', 'true');
     setShouldRender(false);
   };
 
   return (
-    <Fragment>
+    <>
       {shouldRender ? (
         <div className={styles.Wrapper}>
           <div className={styles.Content}>
             <div className={styles.Content__Text}>{gdprText}</div>
             <div className={styles.Content__Btns}>
               <button
+                type="button"
                 onClick={onBtnClick}
                 className={[
                   styles.Btn__Decline,
@@ -52,6 +53,7 @@ const Gdpr = (props) => {
                 {agreeText}
               </button>
               <button
+                type="button"
                 onClick={onBtnClick}
                 className={[
                   styles.Btn__Agree,
@@ -65,7 +67,7 @@ const Gdpr = (props) => {
           </div>
         </div>
       ) : null}
-    </Fragment>
+    </>
   );
 };
 Gdpr.propTypes = {
@@ -75,5 +77,10 @@ Gdpr.propTypes = {
   bothBtnClasses: PropTypes.string,
   agreeBtnClasses: PropTypes.string,
   declineBtnClasses: PropTypes.string,
+};
+Gdpr.defaultProps = {
+  bothBtnClasses: '',
+  agreeBtnClasses: '',
+  declineBtnClasses: '',
 };
 export default Gdpr;

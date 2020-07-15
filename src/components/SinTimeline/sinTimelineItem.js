@@ -1,9 +1,11 @@
+/* eslint-disable no-shadow,no-unused-vars */
 import React from 'react';
-import styles from './sinTimeline.module.scss';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+import styles from './sinTimeline.module.scss';
 
 // @todo: one day finish this shit and refactor
+// eslint-disable-next-line no-unused-vars
 const ContainerItem = styled.li`
     color:#000;
     &:before {
@@ -99,7 +101,7 @@ const sinTimelineItem = (props) => {
             )
       }
     >
-      <span className={styles.Icon}> {icon ?? null}</span>
+      <span className={styles.Icon}>{icon ?? null}</span>
 
       <div className={styles.TimelineItem}>
         <h3>{titleText}</h3>
@@ -120,6 +122,7 @@ sinTimelineItem.propTypes = {
   jobTitleText: PropTypes.string,
   descriptionText: PropTypes.string,
   dateText: PropTypes.string,
+  // eslint-disable-next-line react/require-default-props
   orientation: PropTypes.oneOf(['left', 'right']).isRequired,
   icon: PropTypes.node,
   iconSize: PropTypes.number,
@@ -135,6 +138,7 @@ sinTimelineItem.defaultProps = {
   jobTitleText: '',
   descriptionText: '',
   dateText: '',
+  // eslint-disable-next-line react/default-props-match-prop-types
   orientation: 'left',
   icon: null,
   iconLeft: null,

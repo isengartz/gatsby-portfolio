@@ -35,7 +35,7 @@ const Layout = ({ children }) => (
                   <FontAwesomeIcon
                     style={{ fontSize: '20px', width: '20px' }}
                     icon={faHome}
-                  />{' '}
+                  />
                   <span>Home</span>
                 </Scrollchor>
               </li>
@@ -44,7 +44,7 @@ const Layout = ({ children }) => (
                   <FontAwesomeIcon
                     style={{ fontSize: '20px', width: '20px' }}
                     icon={faUser}
-                  />{' '}
+                  />
                   <span>About</span>
                 </Scrollchor>
               </li>
@@ -53,7 +53,7 @@ const Layout = ({ children }) => (
                   <FontAwesomeIcon
                     style={{ fontSize: '20px', width: '20px' }}
                     icon={faRoute}
-                  />{' '}
+                  />
                   <span>The Journey</span>
                 </Scrollchor>
               </li>
@@ -62,7 +62,7 @@ const Layout = ({ children }) => (
                   <FontAwesomeIcon
                     style={{ fontSize: '20px', width: '20px' }}
                     icon={faFileCode}
-                  />{' '}
+                  />
                   <span>Projects</span>
                 </Scrollchor>
               </li>
@@ -71,7 +71,7 @@ const Layout = ({ children }) => (
                   <FontAwesomeIcon
                     style={{ fontSize: '20px', width: '20px' }}
                     icon={faAt}
-                  />{' '}
+                  />
                   <span>Contact</span>
                 </Scrollchor>
               </li>

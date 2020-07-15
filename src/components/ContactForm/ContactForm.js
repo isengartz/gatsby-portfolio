@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import styles from './ContactForm.module.scss';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import _ from 'lodash';
+import styles from './ContactForm.module.scss';
+// import PropTypes from 'prop-types';
 
 const ContactForm = () => {
-  const IS_EMAIL = 'isEmail';
-  const IS_REQUIRED = 'isRequired';
-  const inputClasses = [styles.Input];
   const [shouldValidate, setShouldValidate] = useState(false);
   const [fields, setFields] = useState({
     fullName: {
@@ -46,6 +43,7 @@ const ContactForm = () => {
     },
   });
   // I used html5 validation but created the JS validation method too for the lulz xD
+  // eslint-disable-next-line no-unused-vars
   const onFormSubmit = (e) => {
     e.preventDefault();
     const newState = _.cloneDeep(fields);
@@ -58,6 +56,7 @@ const ContactForm = () => {
         // add class .Error for invalid Inputs
         if (fields[key].errors.isValid === false) {
           newState[key].className.push(styles.Error);
+          // eslint-disable-next-line no-unused-vars
           formIsValid = false;
         }
       }
@@ -69,7 +68,7 @@ const ContactForm = () => {
   // when an input change value
   const onFieldChange = (e) => {
     const newFields = _.cloneDeep(fields);
-    let isValid = validateField(
+    const isValid = validateField(
       fields[e.target.name].validator,
       e.target.value
     );
@@ -86,6 +85,7 @@ const ContactForm = () => {
         });
       } else {
         // Add .Error if the input was valid and became invalid
+        // eslint-disable-next-line no-lonely-if
         if (!newFields[e.target.name].className.includes(styles.Error)) {
           newFields[e.target.name].className.push(styles.Error);
         }
@@ -116,13 +116,11 @@ const ContactForm = () => {
           <Row>
             <Col md={6}>
               <Row>
-                <form
-                // onSubmit={onFormSubmit}
-                >
+                <form>
                   <div>
                     <h3 className="subheading color-white text-center">
                       Contact Form
-                    </h3>{' '}
+                    </h3>
                   </div>
 
                   <div className="form-group">
@@ -136,6 +134,7 @@ const ContactForm = () => {
                       className={fields.fullName.className.join(' ')}
                       placeholder="Your FullName"
                     />
+                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                     <label className="input-label" htmlFor="fullName">
                       Your FullName
                     </label>
@@ -151,6 +150,7 @@ const ContactForm = () => {
                       className={fields.email.className.join(' ')}
                       placeholder="Your Email"
                     />
+                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                     <label htmlFor="email">Your Email</label>
                   </div>
                   <div className="form-group">
@@ -162,6 +162,7 @@ const ContactForm = () => {
                       className={fields.message.className.join(' ')}
                       placeholder="Your Message"
                     />
+                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                     <label htmlFor="message">Your Message</label>
                   </div>
                   <div className="form-group btn-mob-center">
@@ -177,7 +178,7 @@ const ContactForm = () => {
                 <div>
                   <h3 className="subheading color-primary text-center">
                     Contact Details
-                  </h3>{' '}
+                  </h3>
                 </div>
                 <div className={styles.Copyrights}>
                   <p>

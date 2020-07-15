@@ -11,8 +11,8 @@ const SvgHeader = React.memo(function SvgHeader() {
   let cloud3 = useRef(null);
   let moon = useRef(null);
   let moonLight = useRef(null);
-  let bigSnowRef = useRef([]);
-  let smallSnowRef = useRef([]);
+  const bigSnowRef = useRef([]);
+  const smallSnowRef = useRef([]);
 
   useEffect(() => {
     const tl = new TimelineMax();
@@ -25,26 +25,24 @@ const SvgHeader = React.memo(function SvgHeader() {
       tlSnow.set(snow, { autoAlpha: 0, display: 'block' });
     });
 
-    // initialize elements positions
-    tl.set(cloud2, { x: '-=260', display: 'block' })
-      .set(cloud3, { x: '+=260', display: 'block' })
-      .set(moon, { y: '+=260' })
-      .set(moon, { autoAlpha: 1 })
-      .set(moonLight, { autoAlpha: 0, display: 'block' })
-      .to(moon, 5, { y: '-=260', display: 'block', ease: Power2.easeOut })
-      .to(moonLight, 5, { autoAlpha: 1, ease: Power2.easeOut }, '-=3')
-      .to(cloud2, 2.5, { x: '+=260', display: 'block', autoAlpha: 0.05 }, '-=3')
-      .to(
-        cloud3,
-        2.5,
-        {
-          x: '-=260',
-          display: 'block',
-          autoAlpha: 0.03,
-          onComplete: startLoops,
-        },
-        '-=3'
-      );
+    function doneFalling(snowId) {
+      let range = Math.random() * 800;
+      range -= 400;
+
+      TweenMax.set(snowId, {
+        y: -100,
+        x: range,
+        autoAlpha: 0.2,
+        rotation: Math.random() * 360,
+      });
+      TweenMax.to(snowId, 3 + Math.random() * 10, {
+        y: '+=1200',
+        autoAlpha: 1,
+        ease: Linear.easeNone,
+        onComplete: doneFalling,
+        onCompleteParams: [snowId],
+      });
+    }
 
     // start snowflake looping
     function startLoops() {
@@ -85,26 +83,28 @@ const SvgHeader = React.memo(function SvgHeader() {
           '+=2'
         );
       });
-
-      function doneFalling(snowId) {
-        let range = Math.random() * 800;
-        range = range - 400;
-
-        TweenMax.set(snowId, {
-          y: -100,
-          x: range,
-          autoAlpha: 0.2,
-          rotation: Math.random() * 360,
-        });
-        TweenMax.to(snowId, 3 + Math.random() * 10, {
-          y: '+=1200',
-          autoAlpha: 1,
-          ease: Linear.easeNone,
-          onComplete: doneFalling,
-          onCompleteParams: [snowId],
-        });
-      }
     }
+
+    // initialize elements positions
+    tl.set(cloud2, { x: '-=260', display: 'block' })
+      .set(cloud3, { x: '+=260', display: 'block' })
+      .set(moon, { y: '+=260' })
+      .set(moon, { autoAlpha: 1 })
+      .set(moonLight, { autoAlpha: 0, display: 'block' })
+      .to(moon, 5, { y: '-=260', display: 'block', ease: Power2.easeOut })
+      .to(moonLight, 5, { autoAlpha: 1, ease: Power2.easeOut }, '-=3')
+      .to(cloud2, 2.5, { x: '+=260', display: 'block', autoAlpha: 0.05 }, '-=3')
+      .to(
+        cloud3,
+        2.5,
+        {
+          x: '-=260',
+          display: 'block',
+          autoAlpha: 0.03,
+          onComplete: startLoops,
+        },
+        '-=3'
+      );
   }, []);
   return (
     <div className={styles.ContentContainer}>
@@ -127,11 +127,19 @@ const SvgHeader = React.memo(function SvgHeader() {
         <g
           id="Layer_1"
           style={{ display: 'none' }}
-          ref={(el) => (moonLight = el)}
+          ref={(el) => {
+            moonLight = el;
+          }}
         >
           <SvgHeaderStart />
         </g>
-        <g id="Layer_7" style={{ display: 'none' }} ref={(el) => (moon = el)}>
+        <g
+          id="Layer_7"
+          style={{ display: 'none' }}
+          ref={(el) => {
+            moon = el;
+          }}
+        >
           <circle fill="#F4D6BC" cx="653.985" cy="364.586" r="39.089" />
         </g>
         <SvgHeaderSecondPart />
@@ -957,7 +965,9 @@ const SvgHeader = React.memo(function SvgHeader() {
             <path
               style={{ display: 'none' }}
               id="cloud2"
-              ref={(el) => (cloud2 = el)}
+              ref={(el) => {
+                cloud2 = el;
+              }}
               opacity="0.05"
               fill="#FFFFFF"
               d="M128.412,160.094c-6.78,0-6.78,0-6.78,0s-0.042-0.108-0.126-0.29
@@ -985,7 +995,9 @@ const SvgHeader = React.memo(function SvgHeader() {
               style={{ display: 'none' }}
               opacity="0.03"
               id="cloud3"
-              ref={(el) => (cloud3 = el)}
+              ref={(el) => {
+                cloud3 = el;
+              }}
               fill="#FFFFFF"
               d="M718.051,143.076c-9.53,0-9.53,0-9.53,0s-0.058-0.108-0.176-0.29
 			c-0.928-1.414-5.692-7.546-18.091-6.27c-7.414,0.76-12.973,2.135-12.973,2.135s-1.202-13.04-21.18-11.135

@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import React, { useEffect, useRef, useState } from 'react';
 import { TweenMax, TimelineMax, Power3, Linear, Bounce } from 'gsap/dist/gsap';
 import SvgFooterStart from './SvgParts/SvgFooterStart';
@@ -10,7 +11,7 @@ const SvgFooter = React.memo(function SvgFooter() {
   let footerContainer = useRef(null);
 
   // Initialization of vars
-  let snowRef = useRef([]);
+  const snowRef = useRef([]);
   let starOne = useRef(null);
   let starTwo = useRef(null);
   let smallCloud = useRef(null);
@@ -24,6 +25,65 @@ const SvgFooter = React.memo(function SvgFooter() {
 
   const tlSnow = new TimelineMax();
   const tl = new TimelineMax();
+
+  // Loop clouds
+  function cloudDoneMoving(cloudId) {
+    const randomXCloud = 50 * (Math.floor(Math.random() * 2) === 1 ? 1 : -1);
+    const randomDelay = Math.random() * (15 - 5 + 1) + 5;
+    const cloudRandomDuration = Math.floor(Math.random() * 5) + 1;
+    TweenMax.to(cloudId, cloudRandomDuration, {
+      delay: randomDelay,
+      xPercent: randomXCloud,
+      ease: Linear.easeInOut,
+      onComplete: cloudDoneMoving,
+      onCompleteParams: [cloudId],
+    });
+  }
+
+  // Loop stars
+  function starDoneFalling(starId) {
+    const containerHeight = footerContainer.clientHeight;
+    const randomX = Math.floor(Math.random() * 99) + 1;
+    const randomPosNegX =
+      randomX * (Math.floor(Math.random() * 2) === 1 ? 1 : -1);
+    const randomDuration = Math.random() * (10 - 5 + 1) + 5;
+    const randomDelay = Math.random() * (15 - 5 + 1) + 5;
+
+    TweenMax.set(starId, { transformOrigin: 'right center', rotation: -30 });
+    TweenMax.fromTo(
+      starId,
+      { xPercent: randomPosNegX, y: '-750', ease: Power3.easeIn },
+      {
+        delay: randomDelay,
+        xPercent: -300,
+        y: containerHeight,
+        duration: randomDuration,
+        ease: Power3.easeInOut,
+        onComplete: starDoneFalling,
+        onCompleteParams: [starId],
+      }
+    );
+  }
+
+  // Loop Snow
+  function doneFalling(snowId) {
+    let range = Math.random() * 800;
+    range -= 400;
+
+    TweenMax.set(snowId, {
+      y: -100,
+      x: range,
+      autoAlpha: 0.5,
+      rotation: Math.random() * 360,
+    });
+    TweenMax.to(snowId, 3 + Math.random() * 10, {
+      y: '+=1200',
+      autoAlpha: 1,
+      ease: Linear.easeNone,
+      onComplete: doneFalling,
+      onCompleteParams: [snowId],
+    });
+  }
 
   // Start the basic animations
   function startLoops() {
@@ -56,11 +116,11 @@ const SvgFooter = React.memo(function SvgFooter() {
       .to(moonCircle5, 1, { autoAlpha: 0.04 });
 
     // @todo: Move all this shit inside the loop function and just call the function instead
-    let containerHeight = footerContainer.clientHeight;
-    let randomX = Math.floor(Math.random() * 99) + 1;
-    let randomPosNegX =
+    const containerHeight = footerContainer.clientHeight;
+    const randomX = Math.floor(Math.random() * 99) + 1;
+    const randomPosNegX =
       randomX * (Math.floor(Math.random() * 2) === 1 ? 1 : -1);
-    let randomDuration = Math.random() * (10 - 5 + 1) + 5;
+    const randomDuration = Math.random() * (10 - 5 + 1) + 5;
 
     // Rotate Stars
     TweenMax.set(starOne, {
@@ -105,65 +165,6 @@ const SvgFooter = React.memo(function SvgFooter() {
         onCompleteParams: [starTwo],
       }
     );
-
-    // Loop clouds
-    function cloudDoneMoving(cloudId) {
-      let randomXCloud = 50 * (Math.floor(Math.random() * 2) === 1 ? 1 : -1);
-      let randomDelay = Math.random() * (15 - 5 + 1) + 5;
-      let cloudRandomDuration = Math.floor(Math.random() * 5) + 1;
-      TweenMax.to(cloudId, cloudRandomDuration, {
-        delay: randomDelay,
-        xPercent: randomXCloud,
-        ease: Linear.easeInOut,
-        onComplete: cloudDoneMoving,
-        onCompleteParams: [cloudId],
-      });
-    }
-
-    // Loop stars
-    function starDoneFalling(starId) {
-      let containerHeight = footerContainer.clientHeight;
-      let randomX = Math.floor(Math.random() * 99) + 1;
-      let randomPosNegX =
-        randomX * (Math.floor(Math.random() * 2) === 1 ? 1 : -1);
-      let randomDuration = Math.random() * (10 - 5 + 1) + 5;
-      let randomDelay = Math.random() * (15 - 5 + 1) + 5;
-
-      TweenMax.set(starId, { transformOrigin: 'right center', rotation: -30 });
-      TweenMax.fromTo(
-        starId,
-        { xPercent: randomPosNegX, y: '-750', ease: Power3.easeIn },
-        {
-          delay: randomDelay,
-          xPercent: -300,
-          y: containerHeight,
-          duration: randomDuration,
-          ease: Power3.easeInOut,
-          onComplete: starDoneFalling,
-          onCompleteParams: [starId],
-        }
-      );
-    }
-
-    // Loop Snow
-    function doneFalling(snowId) {
-      let range = Math.random() * 800;
-      range = range - 400;
-
-      TweenMax.set(snowId, {
-        y: -100,
-        x: range,
-        autoAlpha: 0.5,
-        rotation: Math.random() * 360,
-      });
-      TweenMax.to(snowId, 3 + Math.random() * 10, {
-        y: '+=1200',
-        autoAlpha: 1,
-        ease: Linear.easeNone,
-        onComplete: doneFalling,
-        onCompleteParams: [snowId],
-      });
-    }
   }
 
   // Initialize SVG item positions
@@ -186,7 +187,7 @@ const SvgFooter = React.memo(function SvgFooter() {
   useEffect(() => {
     // Callback function for observer
     const callback = (entries, obs) => {
-      let firstEntry = entries[0];
+      const firstEntry = entries[0];
       // if the section is visible
       if (firstEntry.isIntersecting) {
         // we need to track it for 1 time so we disconnect it after
@@ -220,7 +221,12 @@ const SvgFooter = React.memo(function SvgFooter() {
     }
   }, [started]);
   return (
-    <div className="position-relative" ref={(el) => (footerContainer = el)}>
+    <div
+      className="position-relative"
+      ref={(el) => {
+        footerContainer = el;
+      }}
+    >
       <div ref={setIsVisible} />
       <svg
         id="Layer_1"
@@ -778,7 +784,9 @@ const SvgFooter = React.memo(function SvgFooter() {
         </g>
 
         <path
-          ref={(el) => (starOne = el)}
+          ref={(el) => {
+            starOne = el;
+          }}
           opacity="0.4"
           fill="#FFFFFF"
           d="M974.154,16.297l661.932-1.994c0.277,0,0.5,0.223,0.502,0.499
@@ -786,7 +794,9 @@ const SvgFooter = React.memo(function SvgFooter() {
 	C974.1,16.298,974.141,16.297,974.154,16.297z"
         />
         <path
-          ref={(el) => (starTwo = el)}
+          ref={(el) => {
+            starTwo = el;
+          }}
           opacity="0.4"
           fill="#FFFFFF"
           d="M1706.355,14.057l980.234-9.53c0.276-0.002,0.503,0.219,0.506,0.496

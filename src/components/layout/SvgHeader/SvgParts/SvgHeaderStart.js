@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 const SvgHeaderStart = () => {
   return (
-    <Fragment>
+    <>
       <radialGradient
         id="SVGID_1_"
         cx="319.5029"
@@ -24,7 +24,7 @@ const SvgHeaderStart = () => {
         <stop offset="0.7855" stopColor="#090923" />
       </radialGradient>
       <rect fill="url(#SVGID_1_)" width="720" height="503.999" />
-    </Fragment>
+    </>
   );
 };
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-wrap-multilines */
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -169,12 +170,12 @@ const ExpPage = () => (
               background: cssConsts.primaryColor,
               color: cssConsts.lightColorWhite,
             }}
-            icon={( // test
+            icon={
               <FontAwesomeIcon
                 icon={faUserAstronaut}
                 style={{ fontSize: '25px' }}
               />
-            )}
+            }
           >
             <h3 className="vertical-timeline-element-title">
               FullStack Developer - Mybusiness360 (360Group)

@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 const SvgFooterEnd = () => {
   return (
-    <Fragment>
+    <>
       <g>
         <polygon
           fill="#48337A"
@@ -1678,7 +1678,7 @@ const SvgFooterEnd = () => {
           </g>
         </g>
       </g>
-    </Fragment>
+    </>
   );
 };
 

@@ -23,6 +23,7 @@ const propTypes = {
   rightImageCss: PropTypes.object, // eslint-disable-line
   rightImageLabel: PropTypes.string,
   skeleton: PropTypes.element,
+  // eslint-disable-next-line react/forbid-prop-types
   containerStyle: PropTypes.object,
   containerClass: PropTypes.string,
   sliderLineColor: PropTypes.string,
@@ -123,6 +124,7 @@ function ReactCompareImage(props) {
     // consider the case where loading image is completed immediately
     // due to the cache etc.
     const alreadyDone = leftImageRef.current.complete;
+    // eslint-disable-next-line no-unused-expressions
     alreadyDone && setLeftImgLoaded(true);
 
     return () => {
@@ -135,6 +137,7 @@ function ReactCompareImage(props) {
     // consider the case where loading image is completed immediately
     // due to the cache etc.
     const alreadyDone = rightImageRef.current.complete;
+    // eslint-disable-next-line no-unused-expressions
     alreadyDone && setRightImgLoaded(true);
 
     return () => {
@@ -179,12 +182,14 @@ function ReactCompareImage(props) {
       if (pos < minPos) pos = minPos;
       if (pos > maxPos) pos = maxPos;
 
+      // eslint-disable-next-line no-unused-expressions
       horizontal
         ? setSliderPosition(pos / containerWidth)
         : setSliderPosition(pos / containerHeight);
 
       // If there's a callback function, invoke it everytime the slider changes
       if (onSliderPositionChange) {
+        // eslint-disable-next-line no-unused-expressions
         horizontal
           ? onSliderPositionChange(pos / containerWidth)
           : onSliderPositionChange(pos / containerHeight);

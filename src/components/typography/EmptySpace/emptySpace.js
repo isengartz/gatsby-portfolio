@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 const EmptySpace = ({ space }) => {
-  return <div style={{ padding: `${space}px 0` }}></div>;
+  return <div style={{ padding: `${space}px 0` }} />;
 };
 
 EmptySpace.defaultProps = {
