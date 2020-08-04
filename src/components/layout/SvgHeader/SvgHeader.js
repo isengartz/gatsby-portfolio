@@ -107,6 +107,9 @@ const SvgHeader = React.memo(function SvgHeader() {
       );
   }, []);
   return (
+    // Unfortunately I cant import svg as media cause I need to set the refs
+    // Best thing I could do is to break the elements that doesnt use a ref in small parts
+    // And import them inside the main svg body
     <div className={styles.ContentContainer}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -1048,10 +1051,10 @@ const SvgHeader = React.memo(function SvgHeader() {
         }}
         className={styles.headerTypist}
       >
-        <h2>Hello Lad, Im Thanasis</h2>
-        <h2>Backend Developer</h2>
+        <h1>Hello Lad, Im Thanasis</h1>
+        <h1>Backend Developer</h1>
         <Typist.Backspace count={17} delay={200} />
-        <h2>FullStack Developer from Greece ^.^</h2>
+        <h1>FullStack Developer from Greece ^.^</h1>
       </Typist>
     </div>
   );

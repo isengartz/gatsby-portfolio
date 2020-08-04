@@ -7,13 +7,14 @@ import ExpPage from '../components/containers/ExpPage/ExpPage';
 import ProjectsGrid from '../components/containers/Projects/ProjectsGrid';
 import BlogSection from '../components/containers/Blog/Blog';
 import ContactForm from '../components/ContactForm/ContactForm';
-import Skills from '../components/containers/Skills/Skills';
 import Layout from '../components/layout';
 import SvgHeader from '../components/layout/SvgHeader/SvgHeader';
-import svgImg from '../images/svg/footer.svg';
 import styles from '../assets/styles/layout.module.scss';
 import Gdpr from '../components/Gdpr/gdpr';
-// const FooterSvgLoadable = loadable(() => import('../components/layout/SvgFooter/SvgFooter'));
+
+const FooterSvgLoadable = loadable(() =>
+  import('../components/layout/SvgFooter/SvgFooter')
+);
 // const HeaderSvgLoadable = loadable(() => import('../components/layout/SvgHeader/SvgHeader'));
 const IndexPage = () => {
   return (
@@ -42,9 +43,8 @@ const IndexPage = () => {
 
       <footer>
         <div className={styles.footerContainer}>
-          {/*<FooterSvgLoadable/>*/}
-          {/*<div style={{height:'100vh',backgroundImage:`url(${svgImg})`,backgroundPosition:'center',backgroundSize:'cover'}}></div>*/}
-          {/*<ContactForm/>*/}
+          <FooterSvgLoadable />
+          <ContactForm />
         </div>
       </footer>
 

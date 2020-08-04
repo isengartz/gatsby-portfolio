@@ -16,7 +16,7 @@ const Gdpr = (props) => {
 
   // Check if we should render the GDPR component
   useEffect(() => {
-    // localStorage.removeItem('gdpr');
+    localStorage.removeItem('gdpr');
     const haveRendered = localStorage.getItem('gdpr');
 
     // Show it after 1.5 sec

@@ -9,8 +9,23 @@
       rgba($color-white, 0.2) 50%,
       rgba($color-white, 0.5) 50%
     );
+    @include media-q(tab-port) {
+      background-image: unset;
+      background-color: rgba($color-white, 0.5);
+    }
+    @include media-q(phone) {
+      background-image: unset;
+      background-color: rgba($color-white, 0.5);
+    }
     @include default-bShadow-w-bRadius;
-
+    .LeftContent {
+      @include media-q(tab-port) {
+        display: none;
+      }
+      @include media-q(phone) {
+        display: none;
+      }
+    }
     form {
       width: 100%;
       padding: 6rem;
@@ -22,7 +37,7 @@
     label {
       font-size: 1.2rem;
       font-weight: 700;
-      margin-left: 2rem;
+      margin-left: 4rem;
       margin-top: 0.7rem;
       display: block;
       -webkit-transition: all 0.3s;
@@ -76,22 +91,52 @@
       }
     }
   }
-
-  .RightContent {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    padding: 6rem;
-    @include media-q(phone) {
-      display: none;
+  .RightContentContainer {
+    @include media-q(tab-port) {
+      width: 100%;
+      max-width: 100%;
+      flex:unset;
     }
-    .Copyrights {
-      position: absolute;
-      bottom: 2rem;
-      left: 25%;
-      color: orangered;
+    @include media-q(mobile) {
+      width: 100%;
+      max-width: 100%;
+      flex:unset;
+    }
+    .RightContent {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 6rem;
+
+
+      .List {
+        @include media-q(tab-port-higher) {
+          @include full-center;
+        }
+
+        svg {
+          font-size: 2rem;
+        }
+        a {
+          margin-left: 1rem;
+          font-size: 2rem;
+          color: $primary-color;
+        }
+      }
+      .Copyrights {
+        @include media-q(tab-port-higher) {
+         @include center-bottom;
+        }
+        @include media-q(tab-port) {
+          margin-top: 2rem;
+        }
+        width: 100%;
+        text-align: center;
+        color: orangered;
+      }
     }
   }
+
 }
 
 .Input {

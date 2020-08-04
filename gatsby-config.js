@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `An overkill Project`,
+    description: `An overkill portfolio project to show my skills`,
+    author: `@isengartz`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -47,8 +47,5 @@ module.exports = {
         precachePages: [`/`],
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.app/offline
-    // 'gatsby-plugin-offline',
   ],
 };

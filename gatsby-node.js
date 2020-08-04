@@ -5,6 +5,7 @@
  */
 const path = require(`path`);
 
+// Create a Page for every Project Entity
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const result = await graphql(`

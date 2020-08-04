@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { TweenMax, TimelineMax, Power3, Linear, Bounce } from 'gsap/dist/gsap';
 import SvgFooterStart from './SvgParts/SvgFooterStart';
 import SvgFooterEnd from './SvgParts/SvgFooterEnd';
+import styles from './SvgFooter.module.scss';
 
 const SvgFooter = React.memo(function SvgFooter() {
   const [isVisible, setIsVisible] = useState(null);
@@ -42,27 +43,29 @@ const SvgFooter = React.memo(function SvgFooter() {
 
   // Loop stars
   function starDoneFalling(starId) {
-    const containerHeight = footerContainer.clientHeight;
-    const randomX = Math.floor(Math.random() * 99) + 1;
-    const randomPosNegX =
-      randomX * (Math.floor(Math.random() * 2) === 1 ? 1 : -1);
-    const randomDuration = Math.random() * (10 - 5 + 1) + 5;
-    const randomDelay = Math.random() * (15 - 5 + 1) + 5;
+    if (footerContainer && footerContainer.clientHeight) {
+      const containerHeight = footerContainer.clientHeight;
+      const randomX = Math.floor(Math.random() * 99) + 1;
+      const randomPosNegX =
+        randomX * (Math.floor(Math.random() * 2) === 1 ? 1 : -1);
+      const randomDuration = Math.random() * (10 - 5 + 1) + 5;
+      const randomDelay = Math.random() * (15 - 5 + 1) + 5;
 
-    TweenMax.set(starId, { transformOrigin: 'right center', rotation: -30 });
-    TweenMax.fromTo(
-      starId,
-      { xPercent: randomPosNegX, y: '-750', ease: Power3.easeIn },
-      {
-        delay: randomDelay,
-        xPercent: -300,
-        y: containerHeight,
-        duration: randomDuration,
-        ease: Power3.easeInOut,
-        onComplete: starDoneFalling,
-        onCompleteParams: [starId],
-      }
-    );
+      TweenMax.set(starId, { transformOrigin: 'right center', rotation: -30 });
+      TweenMax.fromTo(
+        starId,
+        { xPercent: randomPosNegX, y: '-750', ease: Power3.easeIn },
+        {
+          delay: randomDelay,
+          xPercent: -300,
+          y: containerHeight,
+          duration: randomDuration,
+          ease: Power3.easeInOut,
+          onComplete: starDoneFalling,
+          onCompleteParams: [starId],
+        }
+      );
+    }
   }
 
   // Loop Snow
@@ -116,55 +119,57 @@ const SvgFooter = React.memo(function SvgFooter() {
       .to(moonCircle5, 1, { autoAlpha: 0.04 });
 
     // @todo: Move all this shit inside the loop function and just call the function instead
-    const containerHeight = footerContainer.clientHeight;
-    const randomX = Math.floor(Math.random() * 99) + 1;
-    const randomPosNegX =
-      randomX * (Math.floor(Math.random() * 2) === 1 ? 1 : -1);
-    const randomDuration = Math.random() * (10 - 5 + 1) + 5;
+    if (footerContainer && footerContainer.clientHeight) {
+      const containerHeight = footerContainer.clientHeight;
+      const randomX = Math.floor(Math.random() * 99) + 1;
+      const randomPosNegX =
+        randomX * (Math.floor(Math.random() * 2) === 1 ? 1 : -1);
+      const randomDuration = Math.random() * (10 - 5 + 1) + 5;
 
-    // Rotate Stars
-    TweenMax.set(starOne, {
-      transformOrigin: 'right center',
-      rotation: -30,
-      onComplete: cloudDoneMoving,
-      onCompleteParams: [smallCloud],
-    });
+      // Rotate Stars
+      TweenMax.set(starOne, {
+        transformOrigin: 'right center',
+        rotation: -30,
+        onComplete: cloudDoneMoving,
+        onCompleteParams: [smallCloud],
+      });
 
-    TweenMax.set(starTwo, {
-      transformOrigin: 'right center',
-      rotation: -30,
-      onComplete: cloudDoneMoving,
-      onCompleteParams: [bigCloud],
-    });
+      TweenMax.set(starTwo, {
+        transformOrigin: 'right center',
+        rotation: -30,
+        onComplete: cloudDoneMoving,
+        onCompleteParams: [bigCloud],
+      });
 
-    // StarOne Drop
-    TweenMax.fromTo(
-      starOne,
-      { xPercent: randomPosNegX, y: '-750', ease: Power3.easeIn },
-      {
-        xPercent: -300,
-        y: containerHeight,
-        duration: randomDuration,
-        ease: Power3.easeInOut,
-        onComplete: starDoneFalling,
-        onCompleteParams: [starOne],
-      }
-    );
+      // StarOne Drop
+      TweenMax.fromTo(
+        starOne,
+        { xPercent: randomPosNegX, y: '-750', ease: Power3.easeIn },
+        {
+          xPercent: -300,
+          y: containerHeight,
+          duration: randomDuration,
+          ease: Power3.easeInOut,
+          onComplete: starDoneFalling,
+          onCompleteParams: [starOne],
+        }
+      );
 
-    // StarTwo Drop
-    TweenMax.fromTo(
-      starTwo,
-      { xPercent: randomX, y: '-750', ease: Power3.easeIn },
-      {
-        delay: 10,
-        xPercent: -300,
-        y: containerHeight,
-        duration: randomDuration,
-        ease: Power3.easeInOut,
-        onComplete: starDoneFalling,
-        onCompleteParams: [starTwo],
-      }
-    );
+      // StarTwo Drop
+      TweenMax.fromTo(
+        starTwo,
+        { xPercent: randomX, y: '-750', ease: Power3.easeIn },
+        {
+          delay: 10,
+          xPercent: -300,
+          y: containerHeight,
+          duration: randomDuration,
+          ease: Power3.easeInOut,
+          onComplete: starDoneFalling,
+          onCompleteParams: [starTwo],
+        }
+      );
+    }
   }
 
   // Initialize SVG item positions
@@ -191,7 +196,6 @@ const SvgFooter = React.memo(function SvgFooter() {
       // if the section is visible
       if (firstEntry.isIntersecting) {
         // we need to track it for 1 time so we disconnect it after
-        console.log('observing');
         obs.disconnect();
         setStarted(true);
         // startGlitchingAndFading();
@@ -214,12 +218,14 @@ const SvgFooter = React.memo(function SvgFooter() {
       }
     };
   }, [isVisible]);
+
   useEffect(() => {
     if (started) {
       // start snowflake looping
       setTimeout(() => startLoops(), 1500);
     }
   }, [started]);
+
   return (
     <div
       className="position-relative"
@@ -231,12 +237,13 @@ const SvgFooter = React.memo(function SvgFooter() {
       <svg
         id="Layer_1"
         xmlns="http://www.w3.org/2000/svg"
-        style={{
-          width: '100%',
-          height: 'auto',
-          maxWidth: '100%',
-          maxHeight: '100vh',
-        }}
+        // style={{
+        //   width: '100%',
+        //   height: 'auto',
+        //   maxWidth: '100%',
+        //   maxHeight: '100vh',
+        // }}
+        className={styles.Svg}
         height="1000px"
         width="100%"
         xmlnsXlink="http://www.w3.org/1999/xlink"

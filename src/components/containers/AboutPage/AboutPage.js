@@ -102,11 +102,6 @@ const AboutPage = () => {
             </div>
           </Col>
           <Col md={2} />
-          <Col>
-            {
-              // mount ? <SkillBar skills={SKILLS} colors={colors}/> : null
-            }
-          </Col>
         </Row>
       </Container>
     </Fade>

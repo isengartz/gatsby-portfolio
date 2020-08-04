@@ -11,16 +11,27 @@
       color: $color-white;
       float: left;
       padding: 1.5rem 4rem;
+      @include media-q(phone) {
+        padding: 1.5rem 1rem;
+      }
     }
     .Content__Btns {
       float: right;
       text-align: right;
-      margin: 0 2rem;
+
       .Btn__Decline {
         margin: 0 2rem;
+        @include media-q(phone) {
+          margin: 0 0.5rem;
+          font-size: 1rem;
+        }
       }
       .Btn__Agree {
         margin: 0 2rem;
+        @include media-q(phone) {
+          margin: 0 0.5rem;
+          font-size: 1rem;
+        }
       }
     }
   }

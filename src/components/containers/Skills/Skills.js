@@ -40,6 +40,7 @@ const Skills = () => {
     }
   `);
 
+  // const allProjects = [];
   // State
 
   const [isRendered, setIsRendered] = useState(false);

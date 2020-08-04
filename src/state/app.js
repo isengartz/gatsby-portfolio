@@ -1,17 +1,28 @@
 const initialState = {
-  isDarkMode: false,
+  isBlogRendered: false,
+  isGDPRClicked: false,
 };
 
-const TOOGLE_DARKMODE = 'TOGGLE_DARKMODE';
-export const toggleDarkMode = (isDarkMode) => ({
-  type: TOOGLE_DARKMODE,
-  isDarkMode,
+// Action Types
+const TOGGLE_BLOG_RENDER = 'TOGGLE_BLOG_RENDER';
+const TOGGLE_GDPR_RENDER = 'TOGGLE_GDPR_RENDER';
+
+export const toggleBlog = (shouldRender) => ({
+  type: TOGGLE_BLOG_RENDER,
+  shouldRender,
+});
+
+export const toggleGDPR = (shouldRender) => ({
+  type: TOGGLE_GDPR_RENDER,
+  shouldRender,
 });
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case TOOGLE_DARKMODE:
-      return { ...state, isDarkMode: action.isDarkMode };
+    case TOGGLE_BLOG_RENDER:
+      return { ...state, shouldRender: action.shouldRender };
+    case TOGGLE_GDPR_RENDER:
+      return { ...state, shouldRender: action.shouldRender };
     default:
       return state;
   }

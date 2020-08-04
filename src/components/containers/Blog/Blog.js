@@ -48,7 +48,7 @@ const BlogSection = () => {
   // subscribe the observer
   useEffect(() => {
     // Dont wanna run it every time and blaze your balls
-    // So if it already rune once dont render it again
+    // So if it run once dont render it again
     localStorage.removeItem('blogHaveRendered');
     if (!localStorage.getItem('blogHaveRendered')) {
       // Callback function for observer

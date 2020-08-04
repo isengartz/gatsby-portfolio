@@ -6,6 +6,7 @@
   "author": "Kontokostas Thanasis <kontokostas.thanasis@gmail.com>",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
+    "@fortawesome/free-brands-svg-icons": "^5.14.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
     "@fortawesome/react-fontawesome": "^0.1.11",
     "@loadable/component": "^5.13.1",

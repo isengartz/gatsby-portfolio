@@ -1,0 +1,12 @@
+.Svg {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 100vh;
+  @include media-q(tab-port) {
+    height: 100vh;
+  }
+  @include media-q(phone) {
+    height: 100vh;
+  }
+}

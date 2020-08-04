@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import _ from 'lodash';
 import styles from './ContactForm.module.scss';
-// import PropTypes from 'prop-types';
 
 const ContactForm = () => {
   const [shouldValidate, setShouldValidate] = useState(false);
@@ -114,7 +116,7 @@ const ContactForm = () => {
       <Container>
         <div className={styles.FormContent}>
           <Row>
-            <Col md={6}>
+            <Col className={styles.LeftContent} md={6}>
               <Row>
                 <form>
                   <div>
@@ -173,12 +175,40 @@ const ContactForm = () => {
                 </form>
               </Row>
             </Col>
-            <Col md={6}>
+            <Col className={styles.RightContentContainer} md={6}>
               <div className={styles.RightContent}>
                 <div>
                   <h3 className="subheading color-primary text-center">
                     Contact Details
                   </h3>
+                </div>
+                <div>
+                  <ul className={styles.List}>
+                    <li>
+                      <FontAwesomeIcon icon={faEnvelope} />
+                      <a href="mailto:kontokostas.thanasis@gmail.com">Email</a>
+                    </li>
+                    <li>
+                      <FontAwesomeIcon icon={faLinkedin} />
+                      <a
+                        target="_blank"
+                        rel="noreferrer"
+                        href="https://www.linkedin.com/in/thanasis-kontokostas-208125b5/"
+                      >
+                        Linkedin
+                      </a>
+                    </li>
+                    <li>
+                      <FontAwesomeIcon icon={faGithub} />
+                      <a
+                        target="_blank"
+                        rel="noreferrer"
+                        href="https://github.com/isengartz"
+                      >
+                        Github
+                      </a>
+                    </li>
+                  </ul>
                 </div>
                 <div className={styles.Copyrights}>
                   <p>
