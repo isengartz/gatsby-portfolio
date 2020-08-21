@@ -18,16 +18,15 @@
   }
   .PopupContent {
     @include full-center;
-
     width: 75%;
     background-color: $color-white;
     box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
     border-radius: 3px;
-    display: table;
     overflow: hidden;
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.25);
     transition: all 0.5s 0.2s;
+    visibility: hidden;
   }
 }
 .PopupActive {
@@ -40,15 +39,8 @@
     -ms-transform: translate(-50%, -50%) scale(1);
     -o-transform: translate(-50%, -50%) scale(1);
     transform: translate(-50%, -50%) scale(1);
-    height: 100%;
-    .PopupContent__ImageContainer {
-      img,
-      picture {
-        max-height: 50%;
-      }
-    }
-    .PopupContent__ContentContainer {
-      max-height: 50%;
-    }
+    height: 90%;
+    visibility: visible;
+
   }
 }

@@ -34,7 +34,6 @@ exports.sourceNodes = async ({
     .get(`${process.env.EXPRESS_API_URL}/blogs`, expressApiHeaders)
     .catch((e) => console.log(e));
 
-  console.log(blogs);
   // eslint-disable-next-line no-restricted-syntax
   for (const blog of blogs) {
     try {
@@ -45,13 +44,7 @@ exports.sourceNodes = async ({
         description: `${blog.description}`,
         shortDescription: `${blog.shortDescription}`,
         image: `${blog.image}`,
-        hasPopup: `${blog.hasPopup}`,
-        // tags: blog.tags.map((tag) => {
-        //   return {
-        //     id: tag.id,
-        //     title: tag.title,
-        //   };
-        // }),
+        slug: `${blog.slug}`,
         parent: null,
         children: [],
         internal: {
@@ -59,6 +52,17 @@ exports.sourceNodes = async ({
           contentDigest: createContentDigest(blog),
         },
       };
+
+      // // Download the external images so they will get optimized by gatsby
+      // eslint-disable-next-line no-await-in-loop
+      const imageNode = await createRemoteFileNode({
+        url: blog.featuredImage,
+        parentNodeId: node.id,
+        getCache,
+        createNode,
+        createNodeId,
+      });
+      node.featuredImg___NODE = imageNode.id;
       createNode(node);
     } catch (e) {
       console.warn('error creating node Blog', e);
@@ -68,6 +72,7 @@ exports.sourceNodes = async ({
   // eslint-disable-next-line no-restricted-syntax
   for (const project of data.data) {
     try {
+      console.debug(project);
       const node = {
         id: createNodeId(`Sin-Project-${project.id}`),
         project_id: `${project.id}`,
@@ -76,6 +81,8 @@ exports.sourceNodes = async ({
         image: `${project.image}`,
         device_image: `${project.device_image}`,
         slug: `${project.slug}`,
+        link: project.link || null,
+        sorting: project.sorting,
         tags: project.tags.map((tag) => {
           return {
             id: tag.id,

@@ -30,15 +30,9 @@ const IndexPage = () => {
 
       {/*<HeaderSvgLoadable/>*/}
 
-      {/*<div style={{height:'100vh',background:'red'}}></div>*/}
-
       <AboutPage />
-
       <ExpPage />
-      <section>{/*<Skills/>*/}</section>
-
       <ProjectsGrid />
-
       <BlogSection />
 
       <footer>

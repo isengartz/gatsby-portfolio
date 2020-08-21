@@ -143,7 +143,7 @@ const ExpPage = () => (
             }
           >
             <h3 className="vertical-timeline-element-title">
-              FullStack Developer - Spiti360 (360Group)
+              Lead Developer - Spiti360 (360Group)
             </h3>
             <h4 className="vertical-timeline-element-subtitle">
               Thessaloniki, Greece

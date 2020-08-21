@@ -6,7 +6,7 @@ import styles from './skillItem.module.scss';
 
 // eslint-disable-next-line react/display-name
 const SkillItem = React.forwardRef((props, ref) => {
-  const { image, onClick, dataId, title } = props;
+  const { image, onClick, dataId, title, ribbon } = props;
 
   return (
     <Col
@@ -17,6 +17,12 @@ const SkillItem = React.forwardRef((props, ref) => {
     >
       <div className={styles.ContentContainer}>
         <div className={styles.ContentOverlay} />
+        {ribbon ? (
+          <div className={styles.ribbon3}>
+            <span>ribbon</span>
+          </div>
+        ) : null}
+
         <div className={styles.ImageContainer}>
           <Img className={styles.Image} fluid={image} />
         </div>
@@ -30,11 +36,16 @@ const SkillItem = React.forwardRef((props, ref) => {
   );
 });
 
+SkillItem.defaultProps = {
+  ribbon: '',
+};
+
 SkillItem.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types,react/require-default-props
   image: PropTypes.object,
   onClick: PropTypes.func.isRequired,
   dataId: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
+  ribbon: PropTypes.string,
 };
 export default SkillItem;

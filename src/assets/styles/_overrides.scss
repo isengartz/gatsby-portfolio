@@ -6,6 +6,17 @@
   }
 }
 
+// Project Page Overrides
+#project-page {
+  ul {
+      margin:2rem;
+    li {
+      list-style-type: circle;
+      padding: 1rem 0;
+    }
+  }
+}
+
 // Timeline
 
 .vertical-timeline-element-title {
@@ -178,11 +189,26 @@
 
   transform: translateX(-50%);
 }
-
+.iframe-container {
+  overflow: hidden;
+  padding-top: 62.5%;
+  position: relative;
+  iframe {
+    border: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
 .content-container {
   padding: 460px 35px 35px 35px;
   max-width: 700px;
   width: 90vw;
+}
+.w-100 {
+  width: 100%;
 }
 
 @media only screen and (max-width: 800px) {

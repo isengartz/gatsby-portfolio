@@ -29,6 +29,7 @@
     "gatsby-transformer-sharp": "^2.5.11",
     "gsap": "^3.4.0",
     "highlight.js": "^10.1.1",
+    "html-react-parser": "^0.13.0",
     "lodash": "^4.17.19",
     "moment": "^2.27.0",
     "node-sass": "^4.14.1",
@@ -52,6 +53,7 @@
     "react-typist": "^2.0.5",
     "react-vertical-timeline-component": "^3.0.2",
     "redux": "^4.0.5",
+    "redux-persist": "^6.0.0",
     "styled-components": "^5.1.1"
   },
   "keywords": [

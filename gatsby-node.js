@@ -29,7 +29,8 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `);
-  result.data.allProject.edges.forEach(({ node }) => {
+
+  result.data.allProject.edges.forEach(({ node }, index) => {
     createPage({
       path: `project/${node.slug}`,
       component: path.resolve(`./src/templates/project.js`),
@@ -38,6 +39,17 @@ exports.createPages = async ({ graphql, actions }) => {
         // in page queries as GraphQL variables.
         slug: node.slug,
         project_id: node.project_id,
+        technologyIcons:
+          node.tags != null ? node.tags.map((tag) => tag.title) : [],
+
+        prev:
+          index === 0
+            ? null
+            : result.data.allProject.edges[index - 1].node.slug, // If the Loop Index isnt 0
+        next:
+          index === result.data.allProject.edges.length - 1
+            ? null
+            : result.data.allProject.edges[index + 1].node.slug, // If loop Index isn't eq to the length of Array
       },
     });
   });

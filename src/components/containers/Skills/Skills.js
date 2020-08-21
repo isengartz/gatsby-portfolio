@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Container from 'react-bootstrap/Container';
@@ -15,7 +15,7 @@ const Skills = () => {
   // language=GraphQL
   const { allProject } = useStaticQuery(graphql`
     query projects {
-      allProject {
+      allProject(sort: { fields: sorting, order: ASC }) {
         edges {
           node {
             description
@@ -23,6 +23,9 @@ const Skills = () => {
             id
             image
             title
+            slug
+            link
+            sorting
             featuredImg {
               childImageSharp {
                 fluid {
@@ -40,7 +43,6 @@ const Skills = () => {
     }
   `);
 
-  // const allProjects = [];
   // State
 
   const [isRendered, setIsRendered] = useState(false);
@@ -62,31 +64,43 @@ const Skills = () => {
     setPopUpIsActive(newState);
   };
 
-  // When someone clicks a project
-  const onProjectClick = (e) => {
-    const { id } = e.currentTarget.dataset;
-    const popUpC = [];
+  // I need to add this to Project API
+  // @todo: Add a field to define if a project will show on a popup or not
+  const projectsThatHasPopUp = ['3d-virtual-tour'];
 
-    // Create the JSX content of Popup
-    popUpC.push(
-      <div key={id}>
-        <p>{allProject.edges[id].node.title}</p>
-        <img
-          alt={allProject.edges[id].node.title}
-          src={allProject.edges[id].node.image}
-        />
-      </div>
-    );
-    // Set the JSX to state and show popup
-    setPopUpContent({
-      image: allProject.edges[id].node.featuredImg.childImageSharp.fluid,
-      link: `/projects/${allProject.edges[id].node.slug}`,
-      description: allProject.edges[id].description,
-      title: allProject.edges[id].node.title,
-      tags: allProject.edges[id].node.tags,
-      device_image: allProject.edges[id].device_image,
-    });
-    setPopUpIsActive(true);
+  // When someone clicks a project
+  // I was going to use a popup for every project
+  // But I found out that the text is too big for some of them
+  // I will split them and either redirect to the page or open the popUp
+  const onProjectClick = (e, slug) => {
+    if (!projectsThatHasPopUp.includes(slug)) {
+      // eslint-disable-next-line no-console
+      navigate(`/project/${slug}`);
+    } else {
+      const { id } = e.currentTarget.dataset;
+      const popUpC = [];
+
+      // Create the JSX content of Popup
+      popUpC.push(
+        <div key={id}>
+          <p>{allProject.edges[id].node.title}</p>
+          <img
+            alt={allProject.edges[id].node.title}
+            src={allProject.edges[id].node.image}
+          />
+        </div>
+      );
+      // Set the JSX to state and show popup
+      setPopUpContent({
+        // image: allProject.edges[id].node.featuredImg.childImageSharp.fluid,
+        link: allProject.edges[id].node.link,
+        description: allProject.edges[id].description,
+        title: allProject.edges[id].node.title,
+        tags: allProject.edges[id].node.tags,
+        device_image: allProject.edges[id].device_image,
+      });
+      setPopUpIsActive(true);
+    }
   };
 
   // Renders a single Row item
@@ -102,7 +116,7 @@ const Skills = () => {
       if (allProject.edges[j]) {
         html.push(
           <SkillItem
-            onClick={onProjectClick}
+            onClick={(e) => onProjectClick(e, allProject.edges[j].node.slug)}
             dataId={j}
             ref={(el) => {
               projects.current[i] = el;
@@ -110,6 +124,7 @@ const Skills = () => {
             key={j}
             image={allProject.edges[j].node.featuredImg.childImageSharp.fluid}
             title={allProject.edges[j].node.title}
+            // ribbon="PopUp Item"
           />
         );
       }
@@ -185,7 +200,7 @@ const Skills = () => {
                 scrub: 1,
                 start: 'top center',
                 end: `bottom ${height}px`,
-                markers: true,
+                // markers: true,
               },
             }
           );
@@ -209,13 +224,17 @@ const Skills = () => {
       <PopUp
         onChange={onPopUpChange}
         isActive={popUpIsActive}
-        image={popUpContent.image}
-        title={popUpContent.title}
-        description={popUpContent.title}
-        device_image={popUpContent.title}
-        tags={popUpContent.title}
-        link={popUpContent.title}
-      />
+        // image={popUpContent.image}
+        // title={popUpContent.title}
+        // description={popUpContent.title}
+        // device_image={popUpContent.title}
+        // tags={popUpContent.title}
+        // link={popUpContent.title}
+      >
+        <div className="iframe-container">
+          <iframe title={popUpContent.title} src={popUpContent.link} />
+        </div>
+      </PopUp>
     </div>
   );
 };

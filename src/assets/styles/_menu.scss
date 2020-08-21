@@ -12,6 +12,15 @@
   background: $light-color-white;
 }
 
+// For Project Page
+.project-page {
+ + div {
+    .bm-burger-bars {
+      background: $primary-color !important;
+    }
+  }
+}
+
 /* Color/shape of burger icon bars on hover*/
 .bm-burger-bars-hover {
   background: $primary-btn-color;

@@ -29,14 +29,21 @@ const BlogSection = () => {
   ]);
   const items = useRef([]);
 
-  const { allFile } = useStaticQuery(graphql`
-    query blogImages {
-      allFile(filter: { relativeDirectory: { eq: "blog" } }) {
+  const { allBlog } = useStaticQuery(graphql`
+    {
+      allBlog {
         edges {
           node {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid_withWebp_noBase64
+            blog_id
+            id
+            slug
+            title
+            shortDescription
+            featuredImg {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid_withWebp_noBase64
+                }
               }
             }
           }
@@ -212,39 +219,44 @@ const BlogSection = () => {
               </Row>
               <EmptySpace space={30} />
               <Row className="mt-5">
-                <Col>
-                  <BlogItem
-                    ref={(el) => {
-                      items.current[0] = el;
-                    }}
-                    onClick={(e) => handleBlogItemClick(e, items.current[0])}
-                    description="asdasddsa asdasdasdasd asdasdasdasdasd"
-                    title="Fake Blog Item"
-                    image={allFile.edges[0].node.childImageSharp.fluid}
-                  />
-                </Col>
-                <Col>
-                  <BlogItem
-                    ref={(el) => {
-                      items.current[1] = el;
-                    }}
-                    onClick={(e) => handleBlogItemClick(e, items.current[1])}
-                    description="asdasddsa asdasdasdasd asdasdasdasdasd"
-                    title="Fake Blog Item"
-                    image={allFile.edges[1].node.childImageSharp.fluid}
-                  />
-                </Col>
-                <Col>
-                  <BlogItem
-                    ref={(el) => {
-                      items.current[2] = el;
-                    }}
-                    onClick={(e) => handleBlogItemClick(e, items.current[2])}
-                    description="asdasddsa asdasdasdasd asdasdasdasdasd"
-                    title="Fake Blog Item"
-                    image={allFile.edges[0].node.childImageSharp.fluid}
-                  />
-                </Col>
+                {allBlog.edges.map((blog, index) => (
+                  <Col key={blog.node.blog_id}>
+                    <BlogItem
+                      ref={(el) => {
+                        items.current[index] = el;
+                      }}
+                      onClick={(e) =>
+                        handleBlogItemClick(e, items.current[index])
+                      }
+                      description={blog.node.shortDescription}
+                      title={blog.node.title}
+                      image={blog.node.featuredImg.childImageSharp.fluid}
+                    />
+                  </Col>
+                ))}
+
+                {/*<Col>*/}
+                {/*  <BlogItem*/}
+                {/*    ref={(el) => {*/}
+                {/*      items.current[1] = el;*/}
+                {/*    }}*/}
+                {/*    onClick={(e) => handleBlogItemClick(e, items.current[1])}*/}
+                {/*    description="asdasddsa asdasdasdasd asdasdasdasdasd"*/}
+                {/*    title="Fake Blog Item"*/}
+                {/*    image={allFile.edges[1].node.childImageSharp.fluid}*/}
+                {/*  />*/}
+                {/*</Col>*/}
+                {/*<Col>*/}
+                {/*  <BlogItem*/}
+                {/*    ref={(el) => {*/}
+                {/*      items.current[2] = el;*/}
+                {/*    }}*/}
+                {/*    onClick={(e) => handleBlogItemClick(e, items.current[2])}*/}
+                {/*    description="asdasddsa asdasdasdasd asdasdasdasdasd"*/}
+                {/*    title="Fake Blog Item"*/}
+                {/*    image={allFile.edges[0].node.childImageSharp.fluid}*/}
+                {/*  />*/}
+                {/*</Col>*/}
               </Row>
             </Container>
           </div>

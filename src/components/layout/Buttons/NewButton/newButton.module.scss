@@ -1,0 +1,20 @@
+.ButtonWrapper {
+  padding: 2rem 2.5rem;
+  -webkit-border-radius: 5rem;
+  -moz-border-radius: 5rem;
+  border-radius: 5rem;
+  background:$color-white;
+  border:2px solid $primary-color;
+  color: $primary-color;
+  display: block;
+  &:hover {
+    color: $primary-color;
+  }
+  &.ButtonInverse {
+    color: $color-white;
+    background: $primary-color;
+    &:hover {
+      color: $color-white;
+    }
+  }
+}

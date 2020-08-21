@@ -2,11 +2,15 @@ html {
   font-size: 62.5%;
 }
 body {
-  background: $body-color;
+
   font-size: 1.6rem;
   overflow-x: hidden;
 }
-
+main {
+  &#home-page {
+    background: $body-color;
+  }
+}
 ul,
 li {
   list-style: none;

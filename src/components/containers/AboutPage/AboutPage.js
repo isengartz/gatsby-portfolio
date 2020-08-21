@@ -71,13 +71,13 @@ const AboutPage = () => {
           <Col md={8} sm={12}>
             <div className={styles.aboutParagraphContainer}>
               <p className="aboutParagraph">
-                Passionate Programmer and web security enthusiast.
+                Passionate Programmer and Web Security enthusiast.
                 <br />
                 Started coding at 14 years old with mIRC scripting /
                 Counter-Strike 1.6 Mods and I love building custom projects.
                 <br />
-                I wanted to focus on Software Development or Penetration Testing
-                but Web Dev caught my eye
+                I wanted to focus on Penetration Testing but Web Dev caught my
+                eye
                 <br />
                 because of how many different things and technologies you have
                 to learn.
@@ -93,10 +93,11 @@ const AboutPage = () => {
                 more wrong in my life ^^ .
               </p>
               <p className="aboutParagraph">
-                My hobbies include snowboarding in winter, gaming and learning
-                new technologies,
+                My hobbies include snowboarding in winter, gaming, watching
+                anime / reading manga
                 <br />
-                frameworks or programming languages
+                and learning new technologies, frameworks or programming
+                languages
                 <br />
               </p>
             </div>

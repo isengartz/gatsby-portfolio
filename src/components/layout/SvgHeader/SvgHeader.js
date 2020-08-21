@@ -26,22 +26,26 @@ const SvgHeader = React.memo(function SvgHeader() {
     });
 
     function doneFalling(snowId) {
-      let range = Math.random() * 800;
-      range -= 400;
+      // Need to add the check cause it loops forever
+      // And if you change page it will still try to loop xD
+      if (snowId) {
+        let range = Math.random() * 800;
+        range -= 400;
 
-      TweenMax.set(snowId, {
-        y: -100,
-        x: range,
-        autoAlpha: 0.2,
-        rotation: Math.random() * 360,
-      });
-      TweenMax.to(snowId, 3 + Math.random() * 10, {
-        y: '+=1200',
-        autoAlpha: 1,
-        ease: Linear.easeNone,
-        onComplete: doneFalling,
-        onCompleteParams: [snowId],
-      });
+        TweenMax.set(snowId, {
+          y: -100,
+          x: range,
+          autoAlpha: 0.2,
+          rotation: Math.random() * 360,
+        });
+        TweenMax.to(snowId, 3 + Math.random() * 10, {
+          y: '+=1200',
+          autoAlpha: 1,
+          ease: Linear.easeNone,
+          onComplete: doneFalling,
+          onCompleteParams: [snowId],
+        });
+      }
     }
 
     // start snowflake looping
