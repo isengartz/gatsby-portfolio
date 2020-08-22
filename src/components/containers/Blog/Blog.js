@@ -12,21 +12,25 @@ import { TimelineMax, Power2 } from 'gsap/dist/gsap';
 import BlogItem from '../../BlogItem/blogItem';
 import styles from './Blog.module.scss';
 import EmptySpace from '../../typography/EmptySpace/emptySpace';
+import SvgAnimal from '../BlogNew/SvgAnimal/svgAnimal';
 
 const BlogSection = () => {
   const [shouldRender, setShouldRender] = useState(true);
   const [isVisible, setIsVisible] = useState(null);
+  const [shouldRenderAnimal, setShouldRenderAnimal] = useState(false);
   const [seconds, setSeconds] = useState(5);
   const [started, setStarted] = useState(false);
   const [animationStart, setAnimationStart] = useState(false);
   const [glitchIsDisabled, setGlitchIsDisabled] = useState(true);
-  const visibleObserver = useRef(null);
-  let blogContainer = useRef(null);
-  let countDownRef = useRef(null);
+  const [animalClicked, setAnimalClicked] = useState(false);
   const [countDownRefClasses, setCountDownRefClasses] = useState([
     'text-center',
     styles.CountDownTimer,
   ]);
+  const visibleObserver = useRef(null);
+  let blogContainer = useRef(null);
+  let countDownRef = useRef(null);
+
   const items = useRef([]);
 
   const { allBlog } = useStaticQuery(graphql`
@@ -56,7 +60,7 @@ const BlogSection = () => {
   useEffect(() => {
     // Dont wanna run it every time and blaze your balls
     // So if it run once dont render it again
-    localStorage.removeItem('blogHaveRendered');
+    // localStorage.removeItem('blogHaveRendered');
     if (!localStorage.getItem('blogHaveRendered')) {
       // Callback function for observer
       const callback = (entries, obs) => {
@@ -120,13 +124,18 @@ const BlogSection = () => {
           height: '0px',
           display: 'none',
           ease: Power2.easeOut,
-          onComplete: localStorage.setItem('blogHaveRendered', 'true'),
+          onComplete: onHideFinish,
         },
         '-=5'
       );
       // when the animation finished set the localStorage so it wont run again after a page reload
     }
   }, [animationStart]);
+
+  const onHideFinish = () => {
+    localStorage.setItem('blogHaveRendered', 'true');
+    setShouldRenderAnimal(true);
+  };
 
   // Change classes based on the seconds remaining
   const secondsHandler = (secs) => {
@@ -168,6 +177,30 @@ const BlogSection = () => {
       scale: 0.1,
     });
   };
+
+  const reShowBlog = () => {
+    localStorage.removeItem('blogHaveRendered');
+    setAnimalClicked(true);
+    const tl2 = new TimelineMax();
+    tl2
+      .to(blogContainer, 7, {
+        height: '100vh',
+        display: 'block',
+        ease: Power2.easeOut,
+      })
+      .to(
+        blogContainer,
+        10,
+        {
+          autoAlpha: 1,
+          ease: Power2.easeOut,
+        },
+        '-=7'
+      );
+
+    setGlitchIsDisabled(true);
+  };
+
   return (
     <div>
       {shouldRender ? (
@@ -189,22 +222,26 @@ const BlogSection = () => {
               </Row>
               <Row>
                 <Col md={12}>
-                  <GlitchText
-                    disabled={glitchIsDisabled}
-                    component="h4"
-                    className="text-center"
-                  >
-                    Did you actually think I Blog? LOL xD
-                  </GlitchText>
-                  <GlitchText
-                    color1="rgba(77, 171, 245, .5)"
-                    color2="rgba(245, 0, 87, .3)"
-                    disabled={glitchIsDisabled}
-                    component="h4"
-                    className="text-center"
-                  >
-                    Just Wait For it
-                  </GlitchText>
+                  {!animalClicked ? (
+                    <>
+                      <GlitchText
+                        disabled={glitchIsDisabled}
+                        component="h4"
+                        className="text-center"
+                      >
+                        Did you actually think I Blog? LOL xD
+                      </GlitchText>
+                      <GlitchText
+                        color1="rgba(77, 171, 245, .5)"
+                        color2="rgba(245, 0, 87, .3)"
+                        disabled={glitchIsDisabled}
+                        component="h4"
+                        className="text-center"
+                      >
+                        Just Wait For it
+                      </GlitchText>
+                    </>
+                  ) : null}
 
                   <p
                     ref={(el) => {
@@ -213,7 +250,7 @@ const BlogSection = () => {
                     }}
                     className={countDownRefClasses.join(' ')}
                   >
-                    {glitchIsDisabled ? seconds : null}
+                    {glitchIsDisabled && !animalClicked ? seconds : null}
                   </p>
                 </Col>
               </Row>
@@ -234,34 +271,13 @@ const BlogSection = () => {
                     />
                   </Col>
                 ))}
-
-                {/*<Col>*/}
-                {/*  <BlogItem*/}
-                {/*    ref={(el) => {*/}
-                {/*      items.current[1] = el;*/}
-                {/*    }}*/}
-                {/*    onClick={(e) => handleBlogItemClick(e, items.current[1])}*/}
-                {/*    description="asdasddsa asdasdasdasd asdasdasdasdasd"*/}
-                {/*    title="Fake Blog Item"*/}
-                {/*    image={allFile.edges[1].node.childImageSharp.fluid}*/}
-                {/*  />*/}
-                {/*</Col>*/}
-                {/*<Col>*/}
-                {/*  <BlogItem*/}
-                {/*    ref={(el) => {*/}
-                {/*      items.current[2] = el;*/}
-                {/*    }}*/}
-                {/*    onClick={(e) => handleBlogItemClick(e, items.current[2])}*/}
-                {/*    description="asdasddsa asdasdasdasd asdasdasdasdasd"*/}
-                {/*    title="Fake Blog Item"*/}
-                {/*    image={allFile.edges[0].node.childImageSharp.fluid}*/}
-                {/*  />*/}
-                {/*</Col>*/}
               </Row>
             </Container>
           </div>
         </GlitchClip>
       ) : null}
+
+      <SvgAnimal isVisible={shouldRenderAnimal} onClick={reShowBlog} />
     </div>
   );
 };

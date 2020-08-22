@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { toggleGDPR } from '../../state/app';
@@ -16,40 +16,35 @@ const Gdpr = (props) => {
     isGDPRClicked,
   } = props;
 
-  // Refactored it with Redux. Leaving it just in case.
-
-  // const [shouldRender, setShouldRender] = useState(false);
+  const [shouldRender, setShouldRender] = useState(false);
 
   // Check if we should render the GDPR component
-  // useEffect(() => {
-  //   localStorage.removeItem('gdpr');
-  //   const haveRendered = localStorage.getItem('gdpr');
-  //
-  //   // Show it after 1.5 sec
-  //   if (!haveRendered) {
-  //     const timer = setTimeout(() => {
-  //       setShouldRender(true);
-  //     }, 1500);
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, []);
+  useEffect(() => {
+    // Show it after 1.5 sec
+    if (!isGDPRClicked) {
+      const timer = setTimeout(() => {
+        setShouldRender(true);
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [isGDPRClicked]);
 
-  // On any btn click set localStorage and hide the component
-  // const onBtnClick = () => {
-  //   localStorage.setItem('gdpr', 'true');
-  //   setShouldRender(false);
-  // };
+  // Hide it and set the Redux state to clicked
+  const onGdprBtnClick = () => {
+    setShouldRender(false);
+    dispatch(toggleGDPR(!isGDPRClicked));
+  };
 
   return (
     <>
-      {!isGDPRClicked ? (
+      {shouldRender ? (
         <div className={styles.Wrapper}>
           <div className={styles.Content}>
             <div className={styles.Content__Text}>{gdprText}</div>
             <div className={styles.Content__Btns}>
               <button
                 type="button"
-                onClick={() => dispatch(toggleGDPR(!isGDPRClicked))}
+                onClick={onGdprBtnClick}
                 className={[
                   styles.Btn__Decline,
                   bothBtnClasses,
@@ -60,7 +55,7 @@ const Gdpr = (props) => {
               </button>
               <button
                 type="button"
-                onClick={() => dispatch(toggleGDPR(!isGDPRClicked))}
+                onClick={onGdprBtnClick}
                 className={[
                   styles.Btn__Agree,
                   bothBtnClasses,

@@ -189,6 +189,34 @@
 
   transform: translateX(-50%);
 }
+
+.bubble
+{
+  position: absolute;
+  width: 25rem;
+  height: 12rem;
+  padding: 1rem;
+  background: #906464;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  border-radius: 1rem;
+  display: inline-block;
+  right: 150px;
+  bottom: 50px;
+  &::after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 2rem 0 2rem 2.5rem;
+    border-color: transparent #906464;
+    display: block;
+    width: 0;
+    z-index: 1;
+    right: -24px;
+    top: 40px;
+  }
+}
+
 .iframe-container {
   overflow: hidden;
   padding-top: 62.5%;

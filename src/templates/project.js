@@ -108,7 +108,7 @@ export const pageQuery = graphql`
         node {
           name
           childImageSharp {
-            fixed(width: 150) {
+            fixed(width: 100) {
               ...GatsbyImageSharpFixed_withWebp_tracedSVG
             }
           }

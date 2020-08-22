@@ -29,7 +29,6 @@ const IndexPage = () => {
       </section>
 
       {/*<HeaderSvgLoadable/>*/}
-
       <AboutPage />
       <ExpPage />
       <ProjectsGrid />
