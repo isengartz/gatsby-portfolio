@@ -84,10 +84,10 @@ Note: Beware of modifying this element as it can break the animations - you shou
         -o-transition: all 0.5s;
         transition: all 0.5s;
         color: $light-color-white;
-        @include item-gradient-hover-base(transparent, $light-color-white);
+        @include item-gradient-hover-base(transparent, $primary-color);
 
         &:hover {
-          color: $primary-color;
+          color: $light-color-white;
           @include item-gradient-hover-hover-state;
         }
         span {

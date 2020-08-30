@@ -2,10 +2,10 @@
 // So we declare the css colors as a variable here too
 export const cssConsts = {
   colorWhite: '#eeeeee',
-  colorBlack: '#222831',
+  colorBlack: '#2B343D',
   colorLightBlack: '#393e46',
   lightColorWhite: '#eeeeee',
-  primaryColor: '#00adb5',
+  primaryColor: '#EE4539',
   primaryBtnColor: '#eeeeee',
 };
 

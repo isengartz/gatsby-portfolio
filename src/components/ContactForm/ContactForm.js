@@ -168,7 +168,10 @@ const ContactForm = () => {
                     <label htmlFor="message">Your Message</label>
                   </div>
                   <div className="form-group btn-mob-center">
-                    <button className="btn-sin btn-sin-primary" type="submit">
+                    <button
+                      className="btn-sin btn-sin-primary ml-5"
+                      type="submit"
+                    >
                       Submit
                     </button>
                   </div>

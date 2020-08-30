@@ -1,9 +1,9 @@
 .BlogContainer {
   height: 100vh;
-  background: #4d4d4e;
+  background: $color-light-black;
 }
 h4 {
-  color: #fff;
+  color: $color-white;
 }
 .CountDownTimer {
   font-size: 1.6rem;
@@ -16,14 +16,14 @@ h4 {
 
   &.CountDownThree {
     font-size: 2rem;
-    color: $color-red;
+    color: $primary-color;
   }
   &.CountDownTwo {
     font-size: 2rem;
-    color: $color-red;
+    color: $primary-color;
   }
   &.CountDownOne {
     font-size: 2.2rem;
-    color: $color-red;
+    color: $primary-color;
   }
 }

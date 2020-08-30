@@ -8,6 +8,9 @@
 
 // Project Page Overrides
 #project-page {
+  .customHeadings {
+    color: $primary-color;
+  }
   ul {
       margin:2rem;
     li {

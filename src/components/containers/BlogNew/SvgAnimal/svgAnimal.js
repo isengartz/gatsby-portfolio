@@ -13,8 +13,6 @@ const SvgAnimal = ({ onClick, isVisible }) => {
   let animal = useRef(null);
   let leftEye = useRef(null);
   let rightEye = useRef(null);
-  let leftEar = useRef(null);
-  let rightEar = useRef(null);
   let leftHand = useRef(null);
   let bubble = useRef(null);
 
@@ -112,11 +110,13 @@ const SvgAnimal = ({ onClick, isVisible }) => {
     TweenMax.to(bubble, {
       autoAlpha: 0,
       duration: 1.5,
+      delay: 2,
     });
     TweenMax.to(animal, {
       duration: 1,
       autoAlpha: 0,
       x: '+=300',
+      delay: 2,
     });
     // Add it to localStorage so we wont rerender it
     localStorage.setItem('hideAnimal', 'true');
@@ -248,9 +248,6 @@ const SvgAnimal = ({ onClick, isVisible }) => {
 		c-5.43-6.806-4.26-8.597-14.973-7.366C26.131,66.562,35.636,65.27,29.012,69.282z"
           />
           <path
-            ref={(el) => {
-              leftEar = el;
-            }}
             id="XMLID_585_"
             fillRule="evenodd"
             clipRule="evenodd"
@@ -267,9 +264,6 @@ const SvgAnimal = ({ onClick, isVisible }) => {
 		c0.188-4.734-2.86-11.774-8.527-11.313C34.886,4.909,31.079,7.139,31.379,7.563z"
           />
           <path
-            ref={(el) => {
-              rightEar = el;
-            }}
             id="XMLID_583_"
             fillRule="evenodd"
             clipRule="evenodd"
