@@ -52,9 +52,10 @@ $btn-default-box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
 
 // Fonts
 
-$headings-font: 'Bangers';
-$text-font: 'Open Sans';
-$button-font: 'Bangers';
+$headings-font: 'Bangers', sans-serif;
+$text-font: 'Open Sans', sans-serif;
+$button-font: 'Bangers', sans-serif;
+$ubuntu-font: 'Open Sans', sans-serif;
 
 // Font sizes :
 
@@ -64,7 +65,7 @@ $menu-font: 2rem;
 $normal-font: 1.6rem;
 
 $big-font-mob: 2rem;
-$medium-font-mob: 1.25rem;
+$medium-font-mob: 2.25rem;
 
 // Font Weights
 

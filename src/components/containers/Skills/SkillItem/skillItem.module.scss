@@ -80,6 +80,10 @@
         font-family: $headings-font;
         color: $color-white;
         font-size: $medium-font;
+        @include media-q(phone) {
+
+          font-size: $medium-font-mob;
+        }
       }
     }
   }

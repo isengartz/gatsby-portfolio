@@ -7,14 +7,17 @@
   border:2px solid $primary-color;
   color: $primary-color;
   display: block;
+  margin: 0 auto;
   &:hover {
     color: $primary-color;
+    text-decoration: none;
   }
   &.ButtonInverse {
     color: $color-white;
     background: $primary-color;
     &:hover {
       color: $color-white;
+      text-decoration: none;
     }
   }
 }

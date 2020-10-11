@@ -181,7 +181,7 @@ const ContactForm = () => {
             <Col className={styles.RightContentContainer} md={6}>
               <div className={styles.RightContent}>
                 <div>
-                  <h3 className="subheading color-primary text-center">
+                  <h3 className="subheading color-white text-center">
                     Contact Details
                   </h3>
                 </div>

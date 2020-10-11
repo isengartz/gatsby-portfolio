@@ -72,11 +72,13 @@ exports.sourceNodes = async ({
   // eslint-disable-next-line no-restricted-syntax
   for (const project of data.data) {
     try {
-      console.debug(project);
       const node = {
         id: createNodeId(`Sin-Project-${project.id}`),
         project_id: `${project.id}`,
         title: `${project.title}`,
+        subtitle: `${project.subtitle}`,
+        overview: `${project.overview}`,
+        develop_dates: `${project.develop_dates}`,
         description: `${project.description}`,
         image: `${project.image}`,
         device_image: `${project.device_image}`,

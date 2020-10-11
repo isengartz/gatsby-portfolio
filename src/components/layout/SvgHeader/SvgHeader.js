@@ -1056,9 +1056,9 @@ const SvgHeader = React.memo(function SvgHeader() {
         className={styles.headerTypist}
       >
         <h1>Hello Lad, Im Thanasis</h1>
-        <h1>Backend Developer</h1>
-        <Typist.Backspace count={17} delay={200} />
-        <h1>FullStack Developer from Greece ^.^</h1>
+        <h1>A Backend Developer</h1>
+        <Typist.Backspace count={19} delay={200} />
+        <h1>A FullStack Developer ^.^</h1>
       </Typist>
     </div>
   );

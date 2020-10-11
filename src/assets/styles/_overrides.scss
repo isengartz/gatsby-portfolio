@@ -11,15 +11,124 @@
   .customHeadings {
     color: $primary-color;
   }
+  .project-overview-title {
+    font-size: 4rem;
+  }
+  .project-overview-description {
+    font-size: 2.6rem;
+    p {
+      font-size: 2rem;
+    }
+
+  }
+  .project-url-btn {
+    background-color: $color-black !important;
+    color: $white !important;
+    border: 2px solid $color-black !important;
+    font-size: 3rem;
+    font-weight: bold;
+
+  }
+  .project-skill-icon {
+    text-align: center;
+    .project-skill-image-wrapper {
+      box-shadow: 0 1rem 3rem #00000029;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      margin: 1.5rem;
+    }
+
+  }
   ul {
-      margin:2rem;
+    margin: 2rem;
     li {
-      list-style-type: circle;
+      list-style-type: none;
       padding: 1rem 0;
+      font-size: 2rem;
+      letter-spacing: 0;
+    &::before {
+      content: '';
+      width: 17px;
+      display: inline-block;
+      height: 17px;
+      margin-right: 1rem;
+      background: url("/check-icon.svg");
+      background-repeat: no-repeat;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
     }
   }
 }
+.custom-shape-divider-bottom {
+  position: relative;
+  //bottom: 0;
+  //left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
 
+  height: 85vh;
+  .customer-shape-overlay {
+    background: rgba(000, 000, 000, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .divider-bg-image {
+    height: 100%;
+   }
+  .content-wrapper {
+    z-index: 2;
+    font-family: $ubuntu-font;
+    @include full-center;
+    .project-subtitle {
+      font-size: 3.5rem;
+      color: $light-color-white;
+      text-shadow: 0px .5rem 1rem #00000080;
+      font-weight: bold;
+
+    }
+    .project-overview {
+      font-size: 2rem;
+      line-height: 2rem;
+      color: $light-color-white;
+      text-shadow: 0px .5rem 1rem #00000080;
+      font-weight: bold;
+
+    }
+    .project-date {
+      font-size: 2rem;
+      color: $light-color-white;
+      margin-bottom: 3rem;
+      font-weight: bold;
+    }
+
+  }
+  svg {
+    position: absolute;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 86px;
+    bottom: 0;
+    z-index: 3;
+    @include media-q(tab-port) {
+      display: none;
+    }
+    @include media-q(phone) {
+      display: none;
+    }
+  }
+  .shape-fill {
+    fill: #ffffff;
+  }
+
+}
 // Timeline
 
 .vertical-timeline-element-title {
@@ -193,8 +302,7 @@
   transform: translateX(-50%);
 }
 
-.bubble
-{
+.bubble {
   position: absolute;
   width: 25rem;
   height: 12rem;
