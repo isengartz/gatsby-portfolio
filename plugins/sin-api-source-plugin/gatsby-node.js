@@ -24,6 +24,7 @@ exports.sourceNodes = async ({
 
   const { data } = await axios
     .get(`${process.env.PRIVATE_API_URL}/projects`, phpApiHeaders)
+    // eslint-disable-next-line no-console
     .catch((e) => console.debug(e));
 
   const {
@@ -32,6 +33,7 @@ exports.sourceNodes = async ({
     },
   } = await axios
     .get(`${process.env.EXPRESS_API_URL}/blogs`, expressApiHeaders)
+    // eslint-disable-next-line no-console
     .catch((e) => console.log(e));
 
   // eslint-disable-next-line no-restricted-syntax
@@ -65,6 +67,7 @@ exports.sourceNodes = async ({
       node.featuredImg___NODE = imageNode.id;
       createNode(node);
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.warn('error creating node Blog', e);
     }
   }
@@ -89,6 +92,13 @@ exports.sourceNodes = async ({
           return {
             id: tag.id,
             title: tag.title,
+          };
+        }),
+        repositories: project.repositories.map((repo) => {
+          return {
+            id: repo.id,
+            title: repo.title,
+            url: repo.url,
           };
         }),
         parent: null,

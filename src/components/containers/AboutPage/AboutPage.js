@@ -89,8 +89,8 @@ const AboutPage = () => {
                 I hated the FullStack Javascript idea and all the "stupid" JS
                 Frameworks as I thought they were a trend that will fade out,
                 <br />
-                but after trying React and Node.js I find out that I never were
-                more wrong in my life ^^ .
+                but after trying React and Node.js I found out that I've never
+                been more wrong in my life ^^ .
               </p>
               <p className="aboutParagraph">
                 My hobbies include snowboarding in winter, gaming, watching

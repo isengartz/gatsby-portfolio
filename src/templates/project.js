@@ -137,6 +137,11 @@ export const pageQuery = graphql`
       tags {
         title
       }
+      repositories {
+        id
+        title
+        url
+      }
       deviceImg {
         childImageSharp {
           fluid(maxWidth: 4000) {

@@ -82,7 +82,7 @@ const ExpPage = () => (
               Larisa, Greece
             </h4>
             <p className="timeline-paragraph">
-              Graduating from Technological Institute of Larisa with Bachelor in
+              Graduated from Technological Institute of Larisa with Bachelor in
               Computer Science and Telecommunications
             </p>
           </VerticalTimelineElement>
