@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Fade } from 'react-awesome-reveal';
 import PopUp from '../../PopUp/popUp';
 import SkillItem from './SkillItem/skillItem';
 import { projectsItemPerPage } from '../../utils/consts';
@@ -184,6 +185,7 @@ const Skills = () => {
           const w = wrappers.current[index];
 
           const height = w.clientHeight + 0.5 * w.clientHeight;
+          // const height = w.clientHeight;
           // const [x, xEnd] = (index % 2) ? ['100%', (w.scrollWidth - section.offsetWidth) * -1] : [w.scrollWidth * -1, 0];
           // const [x, xEnd] = (index % 2) ? ['100%', 0] : [w.scrollWidth * -1, 0];
 

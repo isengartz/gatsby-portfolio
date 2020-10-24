@@ -8,6 +8,7 @@ import parse from 'html-react-parser';
 import Layout from '../components/layout';
 import EmptySpace from '../components/typography/EmptySpace/emptySpace';
 import NewButton from '../components/layout/Buttons/NewButton/newButton';
+import SEO from '../components/seo';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Project extends Component {
@@ -23,6 +24,7 @@ class Project extends Component {
 
     return (
       <Layout pageId="project-page">
+        <SEO title={project.title} description={project.overview || ''} />
         <div className="custom-shape-divider-bottom">
           <div className="customer-shape-overlay" />
           <BackgroundImage
@@ -69,22 +71,47 @@ class Project extends Component {
               </div>
             </Col>
           </Row>
-          <Row className="d-flex align-items-center align-content-center">
-            <Col md={6}>{parse(project.description)}</Col>
+
+          <Row className="d-flex align-items-center align-content-center mb-5">
+            <Col md={6}>
+              {project.repositories.length > 0 ? (
+                <Row>
+                  <h2 className="font-weight-bold project-overview-title mb-4">
+                    {project.repositories.length > 1
+                      ? `Repositories`
+                      : `Repository`}
+                  </h2>
+                  {project.repositories.map((repo) => {
+                    return (
+                      <Col md={12} key={repo.id}>
+                        <p>
+                          <strong>{repo.title} : </strong>
+                          <a href={repo.url} rel="noreferrer" target="_blank">
+                            {repo.url}
+                          </a>
+                        </p>
+                      </Col>
+                    );
+                  })}
+                  <EmptySpace space={40} />
+                </Row>
+              ) : null}
+              {parse(project.description)}
+            </Col>
             <Col md={6}>
               <Row>
                 {tagsSorted.map((icon) => {
                   return (
                     <Col
                       className="mb-3 project-skill-icon"
-                      md={4}
+                      md={3}
                       xs={6}
                       key={icon.node.name}
                     >
                       <div className="project-skill-image-wrapper">
-                        <Img fixed={icon.node.childImageSharp.fixed} />
+                        <Img fluid={icon.node.childImageSharp.fluid} />
                         <h3 className="text-center font-weight-bolder">
-                          {icon.node.name}
+                          {/*{icon.node.name}*/}
                         </h3>
                       </div>
                     </Col>
@@ -155,8 +182,8 @@ export const pageQuery = graphql`
         node {
           name
           childImageSharp {
-            fixed(width: 100) {
-              ...GatsbyImageSharpFixed_withWebp_tracedSVG
+            fluid(maxWidth: 300) {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
         }

@@ -202,7 +202,7 @@ const BlogSection = () => {
   };
 
   return (
-    <div>
+    <div className="position-relative">
       {shouldRender ? (
         <GlitchClip disabled={glitchIsDisabled}>
           <div

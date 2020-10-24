@@ -41,8 +41,8 @@ const AboutPage = () => {
   `);
 
   return (
-    <Fade cascade direction="top" triggerOnce>
-      <Container id="about" className={styles.AboutPage}>
+    <Container id="about" className={styles.AboutPage}>
+      <Fade cascade direction="top" triggerOnce>
         <h2 className="text-center customHeadings">WHOAMI</h2>
         <Row>
           <Col sm={4} xs={3} />
@@ -104,8 +104,8 @@ const AboutPage = () => {
           </Col>
           <Col md={2} />
         </Row>
-      </Container>
-    </Fade>
+      </Fade>
+    </Container>
   );
 };
 

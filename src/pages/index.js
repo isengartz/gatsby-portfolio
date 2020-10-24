@@ -21,6 +21,7 @@ const IndexPage = () => {
     <Layout>
       <SEO
         title="Sin Gatsby Portfolio"
+        description="An overkill portfolio project to showcase some of my skills"
         keywords={[`gatsby`, `application`, `react`]}
       />
 

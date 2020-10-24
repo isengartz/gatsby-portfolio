@@ -166,7 +166,7 @@ const SvgAnimal = ({ onClick, isVisible }) => {
     }
   }, [state.isHovered]);
   return (
-    <div className="position-relative">
+    <>
       <div
         ref={(el) => {
           bubble = el;
@@ -191,6 +191,7 @@ const SvgAnimal = ({ onClick, isVisible }) => {
           right: '0px',
           zIndex: '50',
           cursor: 'pointer',
+          // display: 'none',
           // opacity: '0',
         }}
         ref={(el) => {
@@ -451,7 +452,7 @@ const SvgAnimal = ({ onClick, isVisible }) => {
           />
         </g>
       </svg>
-    </div>
+    </>
   );
 };
 
