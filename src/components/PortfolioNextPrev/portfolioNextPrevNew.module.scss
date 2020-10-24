@@ -1,7 +1,7 @@
 $color_1: #fff;
 $background_color_1: #333;
 $background_color_2: rgba(13, 13, 13, 0.35);
-$background_color_3: rgba(13, 13, 13, 0.9);
+$background_color_3: rgba(13, 13, 13, 0.5);
 $background_color_4: #fff;
 
 /* hover action */
@@ -72,9 +72,11 @@ $background_color_4: #fff;
   }
   &:hover {
     .post-bg-img {
+      opacity: 1;
       &:before {
         -webkit-transform: scale(1.1);
         transform: scale(1.1);
+        opacity: 1;
       }
     }
     .next-arrow {
@@ -101,7 +103,7 @@ $background_color_4: #fff;
   float: none !important;
   overflow: hidden;
   position: relative;
-  background-color: $background_color_1;
+  //background-color: $background_color_1;
   font-size: 14px;
   text-align: right;
   &:after {
@@ -181,7 +183,7 @@ $background_color_4: #fff;
   float: none !important;
   overflow: hidden;
   position: relative;
-  background-color: $background_color_1;
+  //background-color: $background_color_1;
   &:after {
     background-color: $background_color_2;
     position: absolute;

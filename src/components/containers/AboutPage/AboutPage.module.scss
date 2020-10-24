@@ -1,5 +1,8 @@
 .AboutPage {
   min-height: 100vh;
+  @include media-q(tab-port) {
+    min-height: auto;
+  }
 }
 .aboutParagraphContainer {
   text-align: center;

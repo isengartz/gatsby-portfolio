@@ -15,7 +15,6 @@ class Project extends Component {
   render() {
     // eslint-disable-next-line react/prop-types,react/destructuring-assignment
     const { project, techIcons, next, prev } = this.props.data;
-    console.debug(next, prev);
     const tagsSorted = project.tags.map((item) => {
       return techIcons.edges.find(
         (element) => element.node.name === item.title

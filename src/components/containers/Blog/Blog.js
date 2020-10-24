@@ -257,7 +257,7 @@ const BlogSection = () => {
               <EmptySpace space={30} />
               <Row className="mt-5">
                 {allBlog.edges.map((blog, index) => (
-                  <Col key={blog.node.blog_id}>
+                  <Col className="mb-5" md={4} sm={6} key={blog.node.blog_id}>
                     <BlogItem
                       ref={(el) => {
                         items.current[index] = el;
@@ -272,6 +272,7 @@ const BlogSection = () => {
                   </Col>
                 ))}
               </Row>
+              <EmptySpace space={60} />
             </Container>
           </div>
         </GlitchClip>

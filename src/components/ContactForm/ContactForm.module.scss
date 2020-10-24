@@ -108,6 +108,9 @@
       width: 100%;
       height: 100%;
       padding: 6rem;
+      @include media-q(phone) {
+        padding: 2rem;
+      }
 
 
       .List {
@@ -129,6 +132,9 @@
           margin-left: 1rem;
           font-size: 2rem;
           color: $color-white;
+          @include media-q(phone) {
+            font-size: 1.4rem;
+          }
         }
       }
       .Copyrights {

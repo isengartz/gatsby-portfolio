@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Fade } from 'react-awesome-reveal';
+import Image from 'react-bootstrap/Image';
 import ReactCompareImage from '../../SinCompareImage/ReactCompareImage';
 import styles from './AboutPage.module.scss';
 
@@ -13,7 +14,11 @@ const AboutPage = () => {
       allFile(
         filter: {
           relativePath: {
-            in: ["split-images/cv-photo-V1.png", "split-images/cv-photo-V2.png"]
+            in: [
+              "split-images/cv-photo-V1.png"
+              "split-images/cv-photo-V2.png"
+              "split-images/profile-image.jpg"
+            ]
           }
         }
       ) {
@@ -44,23 +49,25 @@ const AboutPage = () => {
         <Row>
           <Col sm={4} xs={3} />
           <Col sm={4} xs={6}>
-            <ReactCompareImage
-              containerStyle={{
-                borderRadius: '50%',
-                backgroundColor: '#2B343D',
-              }}
-              leftImage={data.allFile.edges[0].node.childImageSharp.fixed.src}
-              leftImageSrcSet={
-                data.allFile.edges[0].node.childImageSharp.fixed.srcSetWebp
-              }
-              // leftImageCss={{borderRadius:'300px'}}
-              rightImage={data.allFile.edges[1].node.childImageSharp.fixed.src}
-              rightImageSrcSet={
-                data.allFile.edges[1].node.childImageSharp.fixed.srcSetWebp
-              }
-              // rightImageCss={{borderRadius:'300px'}}
+            <Image
+              className="mb-5 w-100"
+              src={data.allFile.edges[2].node.childImageSharp.fixed.src}
+              roundedCircle
             />
-            ;
+            {/*<ReactCompareImage*/}
+            {/*  containerStyle={{*/}
+            {/*    borderRadius: '50%',*/}
+            {/*    backgroundColor: '#2B343D',*/}
+            {/*  }}*/}
+            {/*  leftImage={data.allFile.edges[0].node.childImageSharp.fixed.src}*/}
+            {/*  leftImageSrcSet={*/}
+            {/*    data.allFile.edges[0].node.childImageSharp.fixed.srcSetWebp*/}
+            {/*  }*/}
+            {/*  rightImage={data.allFile.edges[1].node.childImageSharp.fixed.src}*/}
+            {/*  rightImageSrcSet={*/}
+            {/*    data.allFile.edges[1].node.childImageSharp.fixed.srcSetWebp*/}
+            {/*  }*/}
+            {/*/>*/}
           </Col>
 
           <Col sm={4} xs={3} />
