@@ -11,6 +11,9 @@
   .customHeadings {
     color: $primary-color;
   }
+  p {
+    font-size: 2rem;
+  }
   .project-overview-title {
     font-size: 4rem;
   }
@@ -35,7 +38,7 @@
       box-shadow: 0 1rem 3rem #00000029;
       border-radius: 1.5rem;
       padding: 1.5rem;
-      margin: 1.5rem;
+      margin: 1.5rem 0;
       width: 100%;
     }
 
@@ -162,7 +165,7 @@
   bottom: 5%;
 }
 .timeline-paragraph {
-  font-family: 'Open Sans';
+  font-family: $ubuntu-font;
 }
 
 .container {

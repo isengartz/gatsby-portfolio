@@ -112,7 +112,9 @@ const Layout = ({ children, pageId }) => {
             }}
           </Location>
 
-          <main id={pageId ?? 'home-page'}>{children}</main>
+          <main className="overflow-hidden" id={pageId ?? 'home-page'}>
+            {children}
+          </main>
         </>
       )}
     />

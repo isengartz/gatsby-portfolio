@@ -144,6 +144,9 @@ const SvgAnimal = ({ onClick, isVisible }) => {
   // Show the animal and start blinking
   useEffect(() => {
     if (isVisible && !localStorage.getItem('hideAnimal')) {
+      tl.set(animal, {
+        display: 'block',
+      });
       tl.to(animal, {
         x: '-=250',
         duration: 1.5,

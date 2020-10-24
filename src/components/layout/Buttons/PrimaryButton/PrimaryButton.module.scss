@@ -9,7 +9,7 @@
   -o-transition: 0.3s ease-out;
   transition: 0.3s ease-out;
   color: $primary-btn-color;
-  font-family: Open Sans;
+  font-family: $text-font;
   letter-spacing: 4px;
   line-height: 2rem;
 }

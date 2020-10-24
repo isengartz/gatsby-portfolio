@@ -111,10 +111,16 @@
 
 
       .List {
+
         @include media-q(tab-port-higher) {
           @include full-center;
         }
-
+        @include media-q(tab-port) {
+          text-align: center;
+        }
+        @include media-q(phone) {
+          text-align: center;
+        }
         svg {
           font-size: 2rem;
           color: $color-white;

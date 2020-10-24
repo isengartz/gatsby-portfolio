@@ -77,12 +77,15 @@
         -ms-transition: all 0.5s;
         -o-transition: all 0.5s;
         transition: all 0.5s;
-        font-family: $headings-font;
+        font-family: $text-font;
         color: $color-white;
         font-size: $medium-font;
+        font-weight: bold;
+        -ms-word-wrap: break-word;
+        word-wrap: break-word;
         @include media-q(phone) {
 
-          font-size: $medium-font-mob;
+          font-size: 1.5rem;
         }
       }
     }

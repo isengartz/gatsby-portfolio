@@ -189,7 +189,9 @@ const ContactForm = () => {
                   <ul className={styles.List}>
                     <li>
                       <FontAwesomeIcon icon={faEnvelope} />
-                      <a href="mailto:kontokostas.thanasis@gmail.com">Email</a>
+                      <a href="mailto:kontokostas.thanasis@gmail.com">
+                        kontokostas.thanasis@gmail.com
+                      </a>
                     </li>
                     <li>
                       <FontAwesomeIcon icon={faLinkedin} />
@@ -198,7 +200,7 @@ const ContactForm = () => {
                         rel="noreferrer"
                         href="https://www.linkedin.com/in/thanasis-kontokostas-208125b5/"
                       >
-                        Linkedin
+                        thanasis-kontokostas
                       </a>
                     </li>
                     <li>
@@ -208,7 +210,7 @@ const ContactForm = () => {
                         rel="noreferrer"
                         href="https://github.com/isengartz"
                       >
-                        Github
+                        isengartz
                       </a>
                     </li>
                   </ul>

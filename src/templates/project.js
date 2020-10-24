@@ -9,13 +9,13 @@ import Layout from '../components/layout';
 import EmptySpace from '../components/typography/EmptySpace/emptySpace';
 import NewButton from '../components/layout/Buttons/NewButton/newButton';
 import SEO from '../components/seo';
-
+import PortfolioNextPrevNew from '../components/PortfolioNextPrev/portfolioNextPrevNew';
 // eslint-disable-next-line react/prefer-stateless-function
 class Project extends Component {
   render() {
     // eslint-disable-next-line react/prop-types,react/destructuring-assignment
-    const { project, techIcons } = this.props.data;
-
+    const { project, techIcons, next, prev } = this.props.data;
+    console.debug(next, prev);
     const tagsSorted = project.tags.map((item) => {
       return techIcons.edges.find(
         (element) => element.node.name === item.title
@@ -76,11 +76,13 @@ class Project extends Component {
             <Col md={6}>
               {project.repositories.length > 0 ? (
                 <Row>
-                  <h2 className="font-weight-bold project-overview-title mb-4">
-                    {project.repositories.length > 1
-                      ? `Repositories`
-                      : `Repository`}
-                  </h2>
+                  <Col md={12}>
+                    <h2 className="font-weight-bold project-overview-title mb-4">
+                      {project.repositories.length > 1
+                        ? `Repositories`
+                        : `Repository`}
+                    </h2>
+                  </Col>
                   {project.repositories.map((repo) => {
                     return (
                       <Col md={12} key={repo.id}>
@@ -123,11 +125,9 @@ class Project extends Component {
         </Container>
         <Container>
           <EmptySpace space={40} />
-
-          <EmptySpace space={40} />
-
           {project.link ? (
             <Row>
+              <EmptySpace space={40} />
               <Col>
                 <NewButton
                   blank
@@ -141,7 +141,36 @@ class Project extends Component {
             </Row>
           ) : null}
 
-          <EmptySpace space={40} />
+          <EmptySpace space={20} />
+        </Container>
+        <Container fluid className="p-0">
+          <Row noGutters={true}>
+            {
+              // Prev blog Item
+              prev && prev.deviceImg ? (
+                <PortfolioNextPrevNew
+                  type="previous"
+                  url={`/project/${prev.slug}`}
+                  fluid={prev.deviceImg.childImageSharp.fluid}
+                  title={prev.title}
+                />
+              ) : (
+                <Col sm={6} />
+              )
+            }
+
+            {
+              // Next blog Item
+              next && next.deviceImg ? (
+                <PortfolioNextPrevNew
+                  type="next"
+                  url={`/project/${next.slug}`}
+                  fluid={next.deviceImg.childImageSharp.fluid}
+                  title={next.title}
+                />
+              ) : null
+            }
+          </Row>
         </Container>
       </Layout>
     );
@@ -150,8 +179,65 @@ class Project extends Component {
 
 export default Project;
 export const pageQuery = graphql`
-  query($slug: String!, $technologyIcons: [String]) {
+  query(
+    $slug: String!
+    $next: String
+    $prev: String
+    $technologyIcons: [String]
+  ) {
     project(slug: { eq: $slug }) {
+      id
+      slug
+      title
+      subtitle
+      project_id
+      overview
+      description
+      develop_dates
+      link
+      tags {
+        title
+      }
+      repositories {
+        id
+        title
+        url
+      }
+      deviceImg {
+        childImageSharp {
+          fluid(maxWidth: 4000) {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
+        }
+      }
+    }
+    next: project(slug: { eq: $next }) {
+      id
+      slug
+      title
+      subtitle
+      project_id
+      overview
+      description
+      develop_dates
+      link
+      tags {
+        title
+      }
+      repositories {
+        id
+        title
+        url
+      }
+      deviceImg {
+        childImageSharp {
+          fluid(maxWidth: 4000) {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
+        }
+      }
+    }
+    prev: project(slug: { eq: $prev }) {
       id
       slug
       title
@@ -189,35 +275,5 @@ export const pageQuery = graphql`
         }
       }
     }
-    #    next: wordpressWpProjects(slug: { eq: $next }) {
-    #      featured_media {
-    #        alt_text
-    #        localFile {
-    #          childImageSharp {
-    #            fluid(maxWidth: 600) {
-    #              ...GatsbyImageSharpFluid_withWebp_tracedSVG
-    #            }
-    #          }
-    #        }
-    #      }
-    #      slug
-    #      path
-    #      title
-    #    }
-    #    prev: wordpressWpProjects(slug: { eq: $prev }) {
-    #      featured_media {
-    #        alt_text
-    #        localFile {
-    #          childImageSharp {
-    #            fluid(maxWidth: 600) {
-    #              ...GatsbyImageSharpFluid_withWebp_tracedSVG
-    #            }
-    #          }
-    #        }
-    #      }
-    #      slug
-    #      path
-    #      title
-    #    }
   }
 `;

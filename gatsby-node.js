@@ -10,7 +10,10 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const result = await graphql(`
     query {
-      allProject {
+      allProject(
+        filter: { slug: { ne: "3d-virtual-tour" } }
+        sort: { fields: sorting }
+      ) {
         edges {
           node {
             description

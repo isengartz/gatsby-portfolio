@@ -1,0 +1,62 @@
+.Previous {
+  text-align: left;
+  margin: auto;
+
+  span {
+    margin-left: 1rem;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+  }
+
+  &:hover {
+    span {
+      margin-left: 2rem;
+    }
+  }
+}
+
+.AllItems {
+  text-align: center;
+}
+
+.Next {
+  text-align: right;
+  margin: auto;
+
+  span {
+    margin-right: 1rem;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+  }
+
+  &:hover {
+    span {
+      margin-right: 2rem;
+    }
+  }
+}
+
+.Link {
+  color: $primary-color;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+@media screen and (max-width: 579px) {
+  .Previous {
+    text-align: center !important;
+    margin: 1rem;
+  }
+  .Next {
+    text-align: center !important;
+    margin: 1rem;
+  }
+}
