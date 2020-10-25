@@ -120,6 +120,7 @@ const ContactForm = () => {
               <Row>
                 <form
                   method="POST"
+                  netlify-honeypot="bot-field"
                   data-netlify="true"
                   action="/contact-sent"
                   autoComplete="off"

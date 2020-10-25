@@ -15,21 +15,21 @@ import Gdpr from '../components/Gdpr/gdpr';
 const FooterSvgLoadable = loadable(() =>
   import('../components/layout/SvgFooter/SvgFooter')
 );
-const HeaderSvgLoadable = loadable(() =>
-  import('../components/layout/SvgHeader/SvgHeader')
-);
+// const HeaderSvgLoadable = loadable(() =>
+//   import('../components/layout/SvgHeader/SvgHeader')
+// );
 const IndexPage = () => {
   return (
     <Layout>
       <SEO
-        title="Sin Gatsby Portfolio"
+        title="Thanasis Kontokostas Portfolio"
         description="An overkill portfolio project to showcase some of my skills"
         keywords={[`gatsby`, `application`, `react`]}
       />
 
       <section id="home">
-        <HeaderSvgLoadable />
-        {/*<SvgHeader />*/}
+        {/*<HeaderSvgLoadable />*/}
+        <SvgHeader />
       </section>
 
       <AboutPage />

@@ -49,6 +49,14 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Raleway', 'Sedgwick Ave Display'],
+        },
+      },
+    },
     // `gatsby-plugin-loadable-components-ssr`,
     {
       resolve: `gatsby-plugin-offline`,
@@ -56,6 +64,6 @@ module.exports = {
         precachePages: [`/`],
       },
     },
-    `gatsby-plugin-netlify-headers`,
+    `gatsby-plugin-netlify`,
   ],
 };
