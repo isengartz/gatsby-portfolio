@@ -1,8 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `An overkill Project`,
+    title: `Thanasis Kontokostas Portfolio`,
     description: `An overkill portfolio project to show my skills`,
     author: `@isengartz`,
+    siteUrl: `https://thanasis-kontokostas.dev`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -55,5 +56,6 @@ module.exports = {
         precachePages: [`/`],
       },
     },
+    `gatsby-plugin-netlify-headers`,
   ],
 };

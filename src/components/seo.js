@@ -4,13 +4,19 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 
-function SEO({ description, lang, meta, keywords, title }) {
+function SEO({ description, lang, meta, keywords, title, image }) {
   return (
     <StaticQuery
       query={detailsQuery}
       render={(data) => {
+        const ogTitle = title ?? data.site.siteMetadata.title;
         const metaDescription =
           description || data.site.siteMetadata.description;
+        const ogImage = image
+          ? data.site.siteMetadata.siteUrl + image
+          : data.site.siteMetadata.siteUrl +
+            data.shareImage.childImageSharp.fixed.src;
+
         return (
           <Helmet
             htmlAttributes={{
@@ -25,7 +31,11 @@ function SEO({ description, lang, meta, keywords, title }) {
               },
               {
                 property: `og:title`,
-                content: title,
+                content: ogTitle,
+              },
+              {
+                property: `og:image`,
+                content: ogImage,
               },
               {
                 property: `og:description`,
@@ -45,7 +55,7 @@ function SEO({ description, lang, meta, keywords, title }) {
               },
               {
                 name: `twitter:title`,
-                content: title,
+                content: ogTitle,
               },
               {
                 name: `twitter:description`,
@@ -81,6 +91,7 @@ SEO.propTypes = {
   meta: PropTypes.array,
   keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
+  image: PropTypes.string
 };
 
 export default SEO;
@@ -92,6 +103,14 @@ const detailsQuery = graphql`
         title
         description
         author
+        siteUrl
+      }
+    }
+    shareImage: file(relativePath: { eq: "share-img.png" }) {
+      childImageSharp {
+        fixed(width: 1200) {
+          src
+        }
       }
     }
   }
