@@ -9,6 +9,7 @@ import Image from 'react-bootstrap/Image';
 import ReactCompareImage from '../../SinCompareImage/ReactCompareImage';
 import styles from './AboutPage.module.scss';
 
+
 const AboutPage = () => {
   const data = useStaticQuery(graphql`
     query splitImages {
@@ -19,7 +20,7 @@ const AboutPage = () => {
           node {
             id
             childImageSharp {
-              fixed(width: 600) {
+              fixed(width: 400) {
                 ...GatsbyImageSharpFixed_withWebp_tracedSVG
                 src
                 srcSetWebp
@@ -39,9 +40,8 @@ const AboutPage = () => {
     <Container id="about" className={styles.AboutPage}>
       <Fade cascade direction="top" triggerOnce>
         <h2 className="text-center customHeadings">WHOAMI</h2>
-        <Row>
-          <Col sm={4} xs={3} />
-          <Col sm={4} xs={6}>
+        <Row className="align-items-center align-content-center justify-content-center" >
+          <Col sm={3} xs={6}>
             <Image
               className="mb-5 w-100"
               src={data.allFile.edges[0].node.childImageSharp.fixed.src}
@@ -63,7 +63,7 @@ const AboutPage = () => {
             {/*/>*/}
           </Col>
 
-          <Col sm={4} xs={3} />
+
         </Row>
         <Row noGutters>
           <Col md={2} />

@@ -15,7 +15,9 @@ import Gdpr from '../components/Gdpr/gdpr';
 const FooterSvgLoadable = loadable(() =>
   import('../components/layout/SvgFooter/SvgFooter')
 );
-// const HeaderSvgLoadable = loadable(() => import('../components/layout/SvgHeader/SvgHeader'));
+const HeaderSvgLoadable = loadable(() =>
+  import('../components/layout/SvgHeader/SvgHeader')
+);
 const IndexPage = () => {
   return (
     <Layout>
@@ -26,10 +28,10 @@ const IndexPage = () => {
       />
 
       <section id="home">
-        <SvgHeader />
+        <HeaderSvgLoadable />
+        {/*<SvgHeader />*/}
       </section>
 
-      {/*<HeaderSvgLoadable/>*/}
       <AboutPage />
       <ExpPage />
       <ProjectsGrid />
