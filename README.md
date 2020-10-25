@@ -4,7 +4,7 @@
 </h1>
 
 An overkill project that I created in order to showcase my skills.
-It consumes a Micro-Services API build in Lumen for fetching the Projects and a Node/Express API for Blog Items.
+It consumes a Micro-Services API built in Lumen for fetching the Projects and a Node/Express API for Blog Items.
 ## 🚀 Quick start
 
 1.  **Config.**

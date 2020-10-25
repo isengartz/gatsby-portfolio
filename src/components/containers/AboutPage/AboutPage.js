@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Fade } from 'react-awesome-reveal';
 import Image from 'react-bootstrap/Image';
+// eslint-disable-next-line no-unused-vars
 import ReactCompareImage from '../../SinCompareImage/ReactCompareImage';
 import styles from './AboutPage.module.scss';
 
@@ -12,15 +13,7 @@ const AboutPage = () => {
   const data = useStaticQuery(graphql`
     query splitImages {
       allFile(
-        filter: {
-          relativePath: {
-            in: [
-              "split-images/cv-photo-V1.png"
-              "split-images/cv-photo-V2.png"
-              "split-images/profile-image.jpg"
-            ]
-          }
-        }
+        filter: { relativePath: { in: ["split-images/profile-image.jpg"] } }
       ) {
         edges {
           node {
@@ -51,7 +44,7 @@ const AboutPage = () => {
           <Col sm={4} xs={6}>
             <Image
               className="mb-5 w-100"
-              src={data.allFile.edges[2].node.childImageSharp.fixed.src}
+              src={data.allFile.edges[0].node.childImageSharp.fixed.src}
               roundedCircle
             />
             {/*<ReactCompareImage*/}
