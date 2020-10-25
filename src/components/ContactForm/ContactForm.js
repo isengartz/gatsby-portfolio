@@ -118,7 +118,13 @@ const ContactForm = () => {
           <Row>
             <Col className={styles.LeftContent} md={6}>
               <Row>
-                <form>
+                <form
+                  method="POST"
+                  data-netlify="true"
+                  autoComplete="off"
+                  id="contact-form"
+                  name="contact-form"
+                >
                   <div>
                     <h3 className="subheading color-white text-center">
                       Contact Form
