@@ -121,6 +121,7 @@ const ContactForm = () => {
                 <form
                   method="POST"
                   data-netlify="true"
+                  action="/contact-sent"
                   autoComplete="off"
                   id="contact-form"
                   name="contact-form"
